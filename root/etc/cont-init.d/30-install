@@ -2,7 +2,7 @@
 
 # fetch site
 [[ ! -d /config/www/Dashboard/.git ]] && \
-git clone https://github.com/causefx/Organizr /config/www/Dashboard
+git clone https://github.com/electerious/Lychee.git /config/www/lychee
 
 # permissions
 chown -R abc:abc \

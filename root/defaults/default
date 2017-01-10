@@ -1,6 +1,6 @@
 server {
 	listen 80 default_server;
-	root /config/www/Dashboard;
+	root /config/www/lychee;
 	index index.html index.htm index.php;
 
 	server_name _;
@@ -10,6 +10,7 @@ server {
 		try_files $uri $uri/ /index.html /index.php?$args =404;
 	}
 	location ~ \.php$ {
+		include fastcgi.conf;
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
 		# With php5-cgi alone:
 		fastcgi_pass 127.0.0.1:9000;
@@ -17,6 +18,11 @@ server {
 		#fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_index index.php;
 		include /etc/nginx/fastcgi_params;
+		fastcgi_param PHP_VALUE "max_execution_time=1800
+                                        post_max_size=1500M
+                                        upload_max_filesize=32M
+                                        max_input_time=1800
+                                        max_file_uploads=300";
 
 	}
 }

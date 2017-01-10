@@ -10,7 +10,7 @@ server {
 		try_files $uri $uri/ /index.html /index.php?$args =404;
 	}
 	location ~ \.php$ {
-		include fastcgi.conf;
+		#include fastcgi.conf;
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
 		# With php5-cgi alone:
 		fastcgi_pass 127.0.0.1:9000;

@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.nginx
+FROM lsiobase/alpine.nginx:3.5
 MAINTAINER chbmb
 
 # set version label

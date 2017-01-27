@@ -1,9 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# fetch site
-[[ ! -d /config/www/lychee/.git ]] && \
-git clone https://github.com/electerious/Lychee.git /config/www/lychee
-
-# permissions
-chown -R abc:abc \
-	/config

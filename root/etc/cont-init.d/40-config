@@ -2,7 +2,7 @@
 
 # create folders
 mkdir -p \
-	/config/cache
+	/config/{data,uploads}
 
 # make symlinks
 [[ ! -e /var/www/localhost/lychee ]] && \

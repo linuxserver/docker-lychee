@@ -28,8 +28,8 @@ git clone \
 RUN \
 mkdir -p \
 	/config/lychee/{data,uploads} && \
-ln -s /config/lychee/data /usr/share/webapps/lychee/data && \
-ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
+ln -s /usr/share/webapps/lychee/data /config/lychee/data  && \
+ln -s /usr/share/webapps/lychee/uploads /config/lychee/uploads 
 	
 # add local files
 COPY root/ /

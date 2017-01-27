@@ -34,14 +34,9 @@ mkdir -p \
  rm -rf \
         /tmp/*
 	
-# symlinks
-RUN \
-ln -s /usr/share/webapps/lychee/data data  && \
-ln -s /usr/share/webapps/lychee/uploads uploads 
-	
 # add local files
 COPY root/ /
 
 # ports and volumes
 EXPOSE 80
-VOLUME /config /uploads /data
+VOLUME /config

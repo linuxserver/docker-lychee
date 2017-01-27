@@ -9,10 +9,12 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 # install packages
 RUN \
  apk add --no-cache \
-	php-exif \
-	php-gd \
-	php-mysqli \
-	php-zip
+ 	php5-curl \
+	php5-exif \
+	php5-gd \
+	php5-mysqli \
+	php5-mysqlnd \
+	php5-zip 
 
 # add local files
 COPY root/ /

@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+
+# create folders
+mkdir -p \
+	/config/cache
+
+# make symlinks
+[[ ! -e /var/www/localhost/lychee ]] && \
+	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
+  ln -s /usr/share/webapps/lychee/data /config/data
+  ln -s /usr/share/webapps/lychee/uploads /config/uploads
+
+# permissions
+chown -R abc:abc \
+	/config \
+	/usr/share/webapps/lychee \
+	var/www/localhost/lychee

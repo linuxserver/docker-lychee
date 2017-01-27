@@ -26,10 +26,8 @@ git clone \
 	
 # symlinks
 RUN \
-mkdir -p \
-	/config/lychee/{data,uploads} && \
-ln -s /usr/share/webapps/lychee/data /config/lychee/data  && \
-ln -s /usr/share/webapps/lychee/uploads /config/lychee/uploads 
+ln -s /usr/share/webapps/lychee/data data  && \
+ln -s /usr/share/webapps/lychee/uploads uploads 
 	
 # add local files
 COPY root/ /
@@ -37,3 +35,5 @@ COPY root/ /
 # ports and volumes
 EXPOSE 80
 VOLUME /config
+VOLUME /uploads
+VOLUME /data

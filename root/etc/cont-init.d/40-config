@@ -6,12 +6,12 @@
 
 [[ ! -e /config/lychee/data ]]
 	mkdir -p /config/lychee/data && \
-	cp -r /usr/share/webapps/lychee/data /config/lychee/data && \
+	cp -r /usr/share/webapps/lychee/data /config/lychee && \
 	rm -rf /usr/share/webapps/lychee/data
 	
 [[ ! -e /config/lychee/uploads ]]
 	mkdir -p /config/lychee/uploads && \
-	cp -r /usr/share/webapps/lychee/uploads /config/lychee/uploads && \
+	cp -r /usr/share/webapps/lychee/uploads /config/lychee && \
 	rm -rf /usr/share/webapps/lychee/uploads
 	
 ln -s /user/share/webapps/lychee/data /config/lychee/data

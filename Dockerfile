@@ -9,6 +9,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 # install packages
 RUN \
  apk add --no-cache \
+ 	imagemagick \
  	php5-curl \
 	php5-exif \
 	php5-gd \

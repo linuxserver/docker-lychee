@@ -18,7 +18,7 @@ RUN \
 	php5-zip 
 	
 # install lychee
-
+RUN \
 mkdir -p \
 	/usr/share/webapps/lychee && \
 git clone \

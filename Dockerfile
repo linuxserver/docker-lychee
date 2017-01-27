@@ -24,6 +24,8 @@ RUN \
  curl -o \
  /tmp/lychee.tar.gz -L \
         https://github.com/electerious/Lychee/archive/master.tar.gz && \
+mkdir -p \
+	/usr/share/webapps/lychee && \
  tar xf \
  /tmp/lychee.tar.gz -C \
         /usr/share/webapps/lychee --strip-components=1 && \

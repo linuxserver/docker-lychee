@@ -16,7 +16,14 @@ RUN \
 	php5-mysqli \
 	php5-mysql \
 	php5-zip 
+	
+# install lychee
 
+mkdir -p \
+	/usr/share/webapps/lychee && \
+git clone \
+	https://github.com/electerious/Lychee.git /usr/share/webapps/lychee
+	
 # add local files
 COPY root/ /
 

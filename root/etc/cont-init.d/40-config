@@ -7,8 +7,8 @@ mkdir -p \
 # make symlinks
 [[ ! -e /var/www/localhost/lychee ]] && \
 	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
-  ln -s /usr/share/webapps/lychee/data /config/lychee/data
-  ln -s /usr/share/webapps/lychee/uploads /config/lychee/uploads
+  ln -s /config/lychee/data /usr/share/webapps/lychee/data
+  ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
 
 # permissions
 chown -R abc:abc \

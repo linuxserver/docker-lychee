@@ -9,12 +9,10 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 # install packages
 RUN \
  apk add --no-cache \
- 	php5-curl \
-	php5-exif \
-	php5-imagick \
-	php5-mysqli \
-	php5-mysql \
-	php5-zip 
+ 	php7-curl \
+	php7-exif \
+	php7-mysqlnd \
+	php7-zip 
 	
 # install lychee
 RUN \

@@ -7,6 +7,7 @@ ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
+ARG LYCHEE_VERSION="3.1.5"
 ARG PHP_IMAGICK_VER="3.4.2"
 
 # install build packages
@@ -36,7 +37,7 @@ RUN \
 	/usr/share/webapps/lychee && \
  curl -o \
  /tmp/lychee.tar.gz -L \
-	https://github.com/electerious/Lychee/archive/master.tar.gz && \
+	https://github.com/electerious/Lychee/archive/v${LYCHEE_VERSION}.tar.gz && \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \

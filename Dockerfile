@@ -34,6 +34,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 80
-VOLUME /config
-VOLUME /uploads
-VOLUME /data
+VOLUME /config /uploads /data

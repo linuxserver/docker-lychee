@@ -14,7 +14,7 @@
 	rm -rf /usr/share/webapps/lychee/uploads
 	
 ln -s /config/lychee/data /usr/share/webapps/lychee/data
-ln -s /usr/share/webapps/lychee/uploads /config/lychee
+ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
 
 # permissions
 chown -R abc:abc \

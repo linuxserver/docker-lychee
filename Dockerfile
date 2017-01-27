@@ -18,10 +18,21 @@ RUN \
 	
 # install lychee
 RUN \
-mkdir -p \
-	/usr/share/webapps/lychee && \
-git clone \
-	https://github.com/electerious/Lychee.git /usr/share/webapps/lychee
+ apk add --no-cache --virtual=build-dependencies \
+	curl \
+	tar && \
+ curl -o \
+ /tmp/lychee.tar.gz -L \
+        https://github.com/electerious/Lychee/archive/master.tar.gz && \
+ tar xf \
+ /tmp/lychee.tar.gz -C \
+        /usr/share/webapps/lychee --strip-components=1 && \
+
+# cleanup
+ apk del --purge \
+	build-dependencies && \
+ rm -rf \
+        /tmp/*
 	
 # symlinks
 RUN \

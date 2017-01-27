@@ -3,14 +3,20 @@
 # make symlinks
 [[ ! -e /var/www/localhost/lychee ]] && \
 	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
+
+[[ ! -e /config/lychee/data ]]
+	cp /usr/share/webapps/lychee/data /config/lychee/data
+	rm -rf /usr/share/webapps/lychee/data
 	
-# make subdirectories
-mkdir -p /uploads/{big,import,medium,thumb}
+[[ ! -e /config/lychee/uploads ]]
+	cp /usr/share/webapps/lychee/uploads /config/lychee/uploads
+	rm -rf /usr/share/webapps/lychee/uploads
+	
+ln -s /user/share/webapps/lychee/data /config/lychee/data
+ln -s /user/share/webapps/lychee/uploads /config/lychee/uploads
 
 # permissions
 chown -R abc:abc \
 	/config \
-	/data \
-	/uploads \
 	/usr/share/webapps/lychee \
 	/var/www/localhost/lychee

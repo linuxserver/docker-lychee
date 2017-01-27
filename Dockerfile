@@ -25,6 +25,7 @@ RUN \
 # install runtime packages
  apk add --no-cache \
 	imagemagick \
+	mc \
 	php7-curl \
 	php7-exif \
 	php7-gd \

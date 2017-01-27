@@ -7,5 +7,7 @@
 # permissions
 chown -R abc:abc \
 	/config \
+	/data \
+	/uploads \
 	/usr/share/webapps/lychee \
-	var/www/localhost/lychee
+	/var/www/localhost/lychee

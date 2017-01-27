@@ -12,8 +12,11 @@
 [[ ! -e /config/lychee/uploads ]]
 	cp -R /usr/share/webapps/lychee/uploads /config/lychee && \
 	rm -rf /usr/share/webapps/lychee/uploads
-	
+
+[[ ! -e /usr/share/webapps/lychee/data ]]
 ln -s /config/lychee/data /usr/share/webapps/lychee/data
+
+[[ ! -e /usr/share/webapps/lychee/uploads ]]
 ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
 
 # permissions

@@ -3,6 +3,9 @@
 # make symlinks
 [[ ! -e /var/www/localhost/lychee ]] && \
 	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
+	
+# make subdirectories
+mkdir -p /uploads/{big,import,medium,thumb}
 
 # permissions
 chown -R abc:abc \

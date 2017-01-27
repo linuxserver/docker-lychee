@@ -11,7 +11,6 @@ RUN \
  apk add --no-cache \
  	php5-curl \
 	php5-exif \
-	php5-gd \
 	php5-imagick \
 	php5-mysqli \
 	php5-mysql \

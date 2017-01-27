@@ -24,6 +24,13 @@ mkdir -p \
 git clone \
 	https://github.com/electerious/Lychee.git /usr/share/webapps/lychee
 	
+# symlinks
+RUN \
+mkdir -p \
+	/config/lychee/{data,uploads} && \
+ln -s /config/lychee/data /usr/share/webapps/lychee/data && \
+ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
+	
 # add local files
 COPY root/ /
 

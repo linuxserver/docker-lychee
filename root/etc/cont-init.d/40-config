@@ -2,13 +2,13 @@
 
 # create folders
 mkdir -p \
-	/config/{data,uploads}
+	/config/lychee/{data,uploads}
 
 # make symlinks
 [[ ! -e /var/www/localhost/lychee ]] && \
 	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
-  ln -s /usr/share/webapps/lychee/data /config/cache/data
-  ln -s /usr/share/webapps/lychee/uploads /config/cache/uploads
+  ln -s /usr/share/webapps/lychee/data /config/lychee/data
+  ln -s /usr/share/webapps/lychee/uploads /config/lychee/uploads
 
 # permissions
 chown -R abc:abc \

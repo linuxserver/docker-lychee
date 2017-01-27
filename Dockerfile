@@ -13,7 +13,7 @@ RUN \
 	php5-exif \
 	php5-gd \
 	php5-mysqli \
-	php5-mysqlnd \
+	php5-mysql \
 	php5-zip 
 
 # add local files

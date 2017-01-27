@@ -5,11 +5,13 @@
 	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
 
 [[ ! -e /config/lychee/data ]]
-	cp -r /usr/share/webapps/lychee/data /config/lychee/data
+	mkdir -p /lychee/data && \
+	cp -r /usr/share/webapps/lychee/data /config/lychee/data && \
 	rm -rf /usr/share/webapps/lychee/data
 	
 [[ ! -e /config/lychee/uploads ]]
-	cp -r /usr/share/webapps/lychee/uploads /config/lychee/uploads
+	mkdir -p /lychee/uploads && \
+	cp -r /usr/share/webapps/lychee/uploads /config/lychee/uploads && \
 	rm -rf /usr/share/webapps/lychee/uploads
 	
 ln -s /user/share/webapps/lychee/data /config/lychee/data

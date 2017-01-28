@@ -37,7 +37,7 @@ RUN \
 	/usr/share/webapps/lychee && \
  curl -o \
  /tmp/lychee.tar.gz -L \
-	"https://github.com/electerious/Lychee/archive/v${LYCHEE_VERSION}.tar.gz" && \
+	"https://github.com/electerious/Lychee/archive/master.tar.gz" && \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \

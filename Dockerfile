@@ -76,4 +76,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 80
-VOLUME /config /pictures
+VOLUME /config /images

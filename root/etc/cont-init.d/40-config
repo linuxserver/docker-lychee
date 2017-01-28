@@ -1,6 +1,9 @@
 #!/usr/bin/with-contenv bash
 
 # create our folders
+mkdir -p \
+	/config/lychee
+
 for image_index in {big,import,medium,thumb}; do
 if [ ! -f /pictures/${image_index}/index.html ]; then
 mkdir -p /pictures/${image_index}

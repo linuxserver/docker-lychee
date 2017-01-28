@@ -1,23 +1,29 @@
 #!/usr/bin/with-contenv bash
 
-# make symlinks
-[[ ! -e /var/www/localhost/lychee ]] && \
+# create our folders
+for image_index in {big,import,medium,thumb}; do
+if [ ! -f /config/lychee/uploads/${image_index}/index.html ]; then
+mkdir -p /config/lychee/uploads/${image_index}
+> /config/lychee/uploads/${image_index}/index.html
+fi
+done
+
+# copy config
+[[ ! -e /config/lychee/user.ini ]] && \
+	cp /defaults/user.ini /config/lychee/user.ini
+cp /config/lychee/user.ini /usr/share/webapps/lychee/.user.ini
+
+# create symlinks
+[[ ! -L /var/www/localhost/lychee ]] && \
 	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
-
-[[ ! -e /config/lychee/data ]]
-	mkdir -p /config/lychee && \
-	cp -R /usr/share/webapps/lychee/data /config/lychee && \
-	rm -rf /usr/share/webapps/lychee/data
-	
-[[ ! -e /config/lychee/uploads ]]
-	cp -R /usr/share/webapps/lychee/uploads /config/lychee && \
+[[ -d /usr/share/webapps/lychee/uploads ]] && \
 	rm -rf /usr/share/webapps/lychee/uploads
-
-[[ ! -e /usr/share/webapps/lychee/data ]]
-ln -s /config/lychee/data /usr/share/webapps/lychee/data
-
-[[ ! -e /usr/share/webapps/lychee/uploads ]]
-ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
+[[ ! -L /usr/share/webapps/lychee/uploads ]] && \
+	ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
+[[ -d /usr/share/webapps/lychee/data ]] && \
+	rm -rf /usr/share/webapps/lychee/data
+[[ ! -L /usr/share/webapps/lychee/data ]]
+	ln -s /config/lychee /usr/share/webapps/lychee/data
 
 # permissions
 chown -R abc:abc \

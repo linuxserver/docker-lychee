@@ -7,7 +7,6 @@ ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG LYCHEE_VERSION="3.1.5"
 ARG PHP_IMAGICK_VER="3.4.2"
 
 # install build packages
@@ -35,14 +34,19 @@ RUN \
 	php7-session \
 	php7-zip && \
 
+# install lychee
  mkdir -p \
 	/usr/share/webapps/lychee && \
+ lychee_tag=$(curl -sX GET "https://api.github.com/repos/electerious/Lychee/releases/latest" \
+	| awk '/tag_name/{print $4;exit}' FS='[""]') && \
  curl -o \
  /tmp/lychee.tar.gz -L \
-	"https://github.com/electerious/Lychee/archive/v${LYCHEE_VERSION}.tar.gz" && \
+	"https://github.com/electerious/Lychee/archive/${lychee_tag}.tar.gz" && \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \
+ if [ -e /usr/share/webapps/lychee/.user.ini ]; then rm /usr/share/webapps/lychee/.user.ini; fi && \
+
 # install php imagemagick
  mkdir -p \
 	/tmp/imagick-src && \

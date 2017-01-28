@@ -1,13 +1,10 @@
 #!/usr/bin/with-contenv bash
 
 # create our folders
- mkdir -p \
-	/config/lychee
-
 for image_index in {big,import,medium,thumb}; do
-if [ ! -f /images/${image_index}/index.html ]; then
-mkdir -p /images/${image_index}
-> /images/${image_index}/index.html
+if [ ! -f /config/lychee/uploads/${image_index}/index.html ]; then
+mkdir -p /config/lychee/uploads/${image_index}
+> /config/lychee/uploads/${image_index}/index.html
 fi
 done
 
@@ -22,7 +19,7 @@ cp /config/lychee/user.ini /usr/share/webapps/lychee/.user.ini
 [[ -d /usr/share/webapps/lychee/uploads ]] && \
 	rm -rf /usr/share/webapps/lychee/uploads
 [[ ! -L /usr/share/webapps/lychee/uploads ]] && \
-	ln -s /pictures /usr/share/webapps/lychee/uploads
+	ln -s /config/lychee/uploads /usr/share/webapps/lychee/uploads
 [[ -d /usr/share/webapps/lychee/data ]] && \
 	rm -rf /usr/share/webapps/lychee/data
 [[ ! -L /usr/share/webapps/lychee/data ]]
@@ -31,6 +28,5 @@ cp /config/lychee/user.ini /usr/share/webapps/lychee/.user.ini
 # permissions
 chown -R abc:abc \
 	/config \
-	/images \
 	/usr/share/webapps/lychee \
 	/var/www/localhost/lychee

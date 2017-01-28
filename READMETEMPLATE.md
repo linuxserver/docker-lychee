@@ -26,6 +26,7 @@ Lychee is a free photo-management tool, which runs on your server or web-space. 
 docker create \
   --name=lychee \
   -v <path to data>:/config \
+  -v <path to data>:/pictures \
   -e PGID=<gid> -e PUID=<uid>  \
   -p 80:80 \
   linuxserver/lychee
@@ -42,6 +43,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 * `-p 80` - the port(s)
 * `-v /config` - config files for lychee
+* `-v /pictures` - where lychee will store uploaded data
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 

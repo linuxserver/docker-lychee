@@ -45,7 +45,6 @@ RUN \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \
- if [ -e /usr/share/webapps/lychee/.user.ini ]; then rm /usr/share/webapps/lychee/.user.ini; fi && \
 
 # install php imagemagick
  mkdir -p \

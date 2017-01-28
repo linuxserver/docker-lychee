@@ -6,9 +6,6 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# package version
-ARG PHP_IMAGICK_VER="3.4.2"
-
 # install build packages
 RUN \
  apk add --no-cache --virtual=build-dependencies \
@@ -32,7 +29,8 @@ RUN \
 	php7-mbstring \
 	php7-mysqlnd \
 	php7-session \
-	php7-zip && \
+	php7-zip \
+	re2c && \
 
 # install lychee
  mkdir -p \
@@ -51,7 +49,7 @@ RUN \
 	/tmp/imagick-src && \
  curl -o \
  /tmp/imagick.tgz -L \
-	"http://pecl.php.net/get/imagick-${PHP_IMAGICK_VER}.tgz" && \
+	https://pecl.php.net/get/imagick && \
  tar xf \
  /tmp/imagick.tgz -C \
 	/tmp/imagick-src --strip-components=1 && \

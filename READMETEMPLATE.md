@@ -10,25 +10,25 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [IRC][ircurl] on freenode at `#linuxserver.io`
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
-# linuxserver/organizr
+# linuxserver/lychee
 
-HTPC/Homelab Services Organizer - Written in PHP
+Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
 
-[![](https://images.microbadger.com/badges/image/linuxserver/organizr.svg)](http://microbadger.com/images/linuxserver/organizr "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/organizr.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/organizr.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io-hub-built/linuxserver-organizr)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io-hub-built/job/linuxserver-organizr/)
-[hub]: https://hub.docker.com/r/linuxserver/organizr/
+[![](https://images.microbadger.com/badges/image/linuxserver/lychee.svg)](http://microbadger.com/images/linuxserver/lychee "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/lychee.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/lychee.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io-hub-built/linuxserver-lychee)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io-hub-built/job/linuxserver-lychee/)
+[hub]: https://hub.docker.com/r/linuxserver/lychee/
 
-[![organizr](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/organizr-icon.png)][organizrurl]
-[organizrurl]: https://github.com/causefx/Organizr
+[![lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png)][lycheeurl]
+[lycheeurl]: https://lychee.electerious.com/
 
 ## Usage
 
 ```
 docker create \
-  --name=organizr \
+  --name=lychee \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
   -p 80:80 \
-  linuxserver/organizr
+  linuxserver/lychee
 ```
 
 ## Parameters
@@ -41,7 +41,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 
 * `-p 80` - the port(s)
-* `-v /config` - config files for organizr
+* `-v /config` - config files for lychee
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 
@@ -60,20 +60,20 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Setup accounts etc via the webui, more info at [Organizr][organizrurl].
+Setup accounts etc via the webui, more info at [lychee][lycheeurl].
 
 ## Info
 
-* Shell access whilst the container is running: `docker exec -it organizr /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f organizr`
+* Shell access whilst the container is running: `docker exec -it lychee /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f lychee`
 
 * container version number 
 
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' organizr`
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' lychee`
 
 * image version number
 
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/organizr`
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/lychee`
 
 ## Versions
 

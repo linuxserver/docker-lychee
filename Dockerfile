@@ -30,6 +30,7 @@ RUN \
 	php7-curl \
 	php7-exif \
 	php7-gd \
+	php7-mbstring \
 	php7-mysqlnd \
 	php7-zip && \
 

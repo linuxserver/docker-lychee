@@ -79,4 +79,4 @@ Setup mysql/mariadb and account via the webui, more info at [lychee][lycheeurl].
 
 ## Versions
 
-+ **dd.MM.yy:** Initial Release.
++ **12.02.17:** Initial Release.

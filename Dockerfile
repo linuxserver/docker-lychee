@@ -28,7 +28,6 @@ RUN \
 	php7-gd \
 	php7-mbstring \
 	php7-mysqlnd \
-	php7-session \
 	php7-zip \
 	re2c && \
 

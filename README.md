@@ -2,6 +2,8 @@
 [forumurl]: https://forum.linuxserver.io
 [ircurl]: https://www.linuxserver.io/irc/
 [podcasturl]: https://www.linuxserver.io/podcast/
+[appurl]: https://lychee.electerious.com/
+[hub]: https://hub.docker.com/r/linuxserver/lychee/
 
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
@@ -12,13 +14,11 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 
 # linuxserver/lychee
 [![](https://images.microbadger.com/badges/version/linuxserver/lychee.svg)](https://microbadger.com/images/linuxserver/lychee "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/lychee.svg)](http://microbadger.com/images/linuxserver/lychee "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/lychee.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/lychee.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-lychee)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-lychee/)
-[hub]: https://hub.docker.com/r/linuxserver/lychee/
 
 Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
 
 
-[![lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png)][lycheeurl]
-[lycheeurl]: https://lychee.electerious.com/
+[![lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png)][appurl]
 
 ## Usage
 
@@ -62,7 +62,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Setup mysql/mariadb and account via the webui, more info at [lychee][lycheeurl].
+Setup mysql/mariadb and account via the webui, more info at [lychee][appurl].
 
 ## Info
 

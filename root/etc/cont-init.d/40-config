@@ -7,7 +7,7 @@ mkdir -p \
 for image_index in {big,import,medium,thumb}; do
 if [ ! -f /pictures/${image_index}/index.html ]; then
 mkdir -p /pictures/${image_index}
-> /pictures/${image_index}/index.html
+: > /pictures/${image_index}/index.html
 fi
 done
 

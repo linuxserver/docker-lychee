@@ -16,20 +16,27 @@ RUN \
 	gcc \
 	imagemagick-dev \
 	libtool \
-	make \
+	make && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-dev && \
 
 # install runtime packages
  apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	libwebp && \
+ apk add --no-cache \
 	imagemagick \
 	mc \
+	re2c && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-curl \
 	php7-exif \
 	php7-gd \
 	php7-mbstring \
 	php7-mysqlnd \
-	php7-zip \
-	re2c && \
+	php7-zip && \
 
 # install lychee
  mkdir -p \

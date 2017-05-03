@@ -6,39 +6,30 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# install build packages
+# add repositories
 RUN \
- apk add --no-cache --virtual=build-dependencies \
-	autoconf \
-	curl \
-	file \
-	g++ \
-	gcc \
-	imagemagick-dev \
-	libtool \
-	make && \
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/community \
-	php7-dev && \
+ echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+ echo "@community http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
 
-# install runtime packages
+# install packages
  apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/main \
-	libwebp && \
- apk add --no-cache \
-	imagemagick \
+	curl \
 	mc \
 	re2c && \
  apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/community \
-	php7-curl \
-	php7-exif \
-	php7-gd \
-	php7-mbstring \
-	php7-mysqlnd \
-	php7-zip && \
+	imagemagick@edge \
+	libwebp@edge && \
+ apk add --no-cache \
+	php7-curl@community \
+	php7-exif@community \
+	php7-gd@community \
+	php7-imagick@community \
+	php7-mbstring@community \
+	php7-mysqli@community \
+	php7-mysqlnd@community \
+	php7-zip@community && \
 
-# install lychee
+# install lychee
  mkdir -p \
 	/usr/share/webapps/lychee && \
  lychee_tag=$(curl -sX GET "https://api.github.com/repos/electerious/Lychee/releases/latest" \
@@ -50,27 +41,7 @@ RUN \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \
 
-# install php imagemagick
- mkdir -p \
-	/tmp/imagick-src && \
- curl -o \
- /tmp/imagick.tgz -L \
-	https://pecl.php.net/get/imagick && \
- tar xf \
- /tmp/imagick.tgz -C \
-	/tmp/imagick-src --strip-components=1 && \
- cd /tmp/imagick-src && \
- phpize7 && \
- ./configure \
-	--prefix=/usr \
-	--with-php-config=/usr/bin/php-config7 && \
- make && \
- make install && \
- echo "extension=imagick.so" > /etc/php7/conf.d/00_imagick.ini && \
-
-# cleanup
- apk del --purge \
-	build-dependencies && \
+# cleanup
  rm -rf \
 	/tmp/*
 

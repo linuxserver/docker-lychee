@@ -79,4 +79,5 @@ Setup mysql/mariadb and account via the webui, more info at [lychee][appurl].
 
 ## Versions
 
++ **03.05.17:** Use repo pinning to better solve dependencies, use repo version of php7-imagick.
 + **12.02.17:** Initial Release.

@@ -1,14 +1,13 @@
-FROM lsiobase/alpine.nginx:3.6
-MAINTAINER chbmb
+FROM lsiobase/alpine.nginx:3.7
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="chbmb"
 
-
-# install packages
 RUN \
+ echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
 	imagemagick \
@@ -22,8 +21,7 @@ RUN \
 	php7-mysqlnd \
 	php7-zip \
 	re2c && \
-
-# install lychee
+ echo "**** install lychee ****" && \
  mkdir -p \
 	/usr/share/webapps/lychee && \
  lychee_tag=$(curl -sX GET "https://api.github.com/repos/electerious/Lychee/releases/latest" \
@@ -34,8 +32,7 @@ RUN \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \
-
-# cleanup
+ echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*
 

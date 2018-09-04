@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.nginx:3.7
+FROM lsiobase/alpine.nginx:3.8
 
 # set version label
 ARG BUILD_DATE
@@ -16,7 +16,6 @@ RUN \
 	php7-exif \
 	php7-gd \
 	php7-imagick \
-	php7-mbstring \
 	php7-mysqli \
 	php7-mysqlnd \
 	php7-zip \

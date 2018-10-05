@@ -21,7 +21,7 @@ RUN \
 	php7-zip \
 	re2c && \
  echo "**** install lychee ****" && \
- git clone https://github.com/LycheeOrg/Lychee /usr/share/webapps/lychee && \
+ git clone --recurse-submodules https://github.com/LycheeOrg/Lychee /usr/share/webapps/lychee && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*

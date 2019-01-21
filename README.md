@@ -79,6 +79,7 @@ Setup mysql/mariadb and account via the webui, more info at [lychee][appurl].
 
 ## Versions
 
++ **21.01.19:** Added ffmpeg for video thumbnail creation.
 + **14.01.19:** Adding pipeline logic and multi arch.
 + **04.09.18:** Rebase to alpine 3.8, switch to LycheeOrg repository.
 + **08.01.18:** Rebase to alpine 3.7.

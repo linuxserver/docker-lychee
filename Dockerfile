@@ -13,12 +13,14 @@ RUN \
 	curl \
 	imagemagick \
 	mc \
+	ffmpeg \
 	php7-curl \
 	php7-exif \
 	php7-gd \
 	php7-imagick \
 	php7-mysqli \
 	php7-mysqlnd \
+	php7-phar \
 	php7-zip \
 	re2c && \
  echo "**** install lychee ****" && \
@@ -34,6 +36,12 @@ RUN \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	/usr/share/webapps/lychee --strip-components=1 && \
+ echo "**** install  composer ****" && \
+ cd /tmp && \
+ curl -sS https://getcomposer.org/installer | php && \
+ mv /tmp/composer.phar /usr/local/bin/composer && \
+ echo "**** install composer dependencies ****" && \
+ composer install -d /usr/share/webapps/lychee && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*

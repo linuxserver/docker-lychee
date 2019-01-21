@@ -15,6 +15,7 @@ RUN \
  apk add --no-cache \
 	curl \
 	imagemagick \
+	jq \
 	mc \
 	ffmpeg \
 	php7-curl \
@@ -31,14 +32,15 @@ RUN \
 	LYCHEE_RELEASE=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
+ LYCHEE_FILENAME=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
+	| jq -jr '. | .assets[0].name') && \
  mkdir -p \
 	/usr/share/webapps/lychee && \
  curl -o \
- /tmp/lychee.tar.gz -L \
-	"https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_RELEASE}.tar.gz" && \
- tar xf \
- /tmp/lychee.tar.gz -C \
-	/usr/share/webapps/lychee --strip-components=1 && \
+ /tmp/lychee.zip -L \
+	"https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_RELEASE}/${LYCHEE_FILENAME}" && \
+ unzip /tmp/lychee.zip -d /tmp && \
+ cp -R /tmp/Lychee*/. /usr/share/webapps/lychee/ && \
  echo "**** install  composer ****" && \
  cd /tmp && \
  curl -sS https://getcomposer.org/installer | php && \

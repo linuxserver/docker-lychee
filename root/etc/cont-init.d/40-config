@@ -28,6 +28,12 @@ cp /config/lychee/user.ini /usr/share/webapps/lychee/.user.ini
 [[ ! -L /usr/share/webapps/lychee/data ]]
 	ln -s /config/lychee /usr/share/webapps/lychee/data
 
+# set ffmpeg binary path
+sed -i 's#$ffmpeg = FFMpeg\\FFMpeg::create();#$ffmpeg = FFMpeg\\FFMpeg::create(array('"'"'ffmpeg.binaries'"'"'  => '"'"'/usr/bin/ffmpeg'"'"','"'"'ffprobe.binaries'"'"' => '"'"'/usr/bin/ffprobe'"'"',));#g' \
+	/usr/share/webapps/lychee/php/Modules/Photo.php
+sed -i 's#$ffprobe = FFMpeg\\FFProbe::create();#$ffprobe = FFMpeg\\FFProbe::create(array('"'"'ffmpeg.binaries'"'"'  => '"'"'/usr/bin/ffmpeg'"'"','"'"'ffprobe.binaries'"'"' => '"'"'/usr/bin/ffprobe'"'"',));#g' \
+	/usr/share/webapps/lychee/php/Modules/Photo.php
+
 # permissions
 chown -R abc:abc \
 	/config \

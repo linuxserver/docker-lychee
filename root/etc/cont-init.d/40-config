@@ -40,3 +40,4 @@ chown -R abc:abc \
 	/pictures \
 	/usr/share/webapps/lychee \
 	/var/www/localhost/lychee
+chmod -R 777 /var/tmp/nginx

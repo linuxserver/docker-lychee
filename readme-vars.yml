@@ -34,10 +34,13 @@ optional_block_1_items: ""
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT  
+  Set up mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT  
+  You can change the php upload limits by editing the file `/config/lychee/user.ini` and restarting the container.  
   More info at [lychee]({{ project_url }}).  
+
 # changelog
 changelogs:
+  - { date: "21.02.19:", desc: "Add info on changing php upload limits to readme." }
   - { date: "21.01.18:", desc: "Added ffmpeg for video thumbnail creation, switched to installing zip release instead of source tarball, created small thumbnails folder, switched to dynamic readme." }
   - { date: "14.01.19:", desc: "Adding pipeline logic and multi arch.." }
   - { date: "04.09.18:", desc: "Rebase to alpine 3.8, switch to LycheeOrg repository." }

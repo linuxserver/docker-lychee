@@ -158,6 +158,7 @@ Below are the instructions for updating containers:
 
 ## Versions
 
+* **22.02.19:** - Rebasing to alpine 3.9.
 * **21.02.19:** - Add info on changing php upload limits to readme.
 * **21.01.18:** - Added ffmpeg for video thumbnail creation, switched to installing zip release instead of source tarball, created small thumbnails folder, switched to dynamic readme.
 * **14.01.19:** - Adding pipeline logic and multi arch..

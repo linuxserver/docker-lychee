@@ -21,7 +21,7 @@ fontconfig-2.12.6-r1
 freetype-2.9.1-r1
 fribidi-1.0.2-r0
 gdk-pixbuf-2.36.11-r2
-ghostscript-9.26-r1
+ghostscript-9.26-r2
 git-2.18.1-r0
 glib-2.56.1-r0
 gmp-6.1.2-r1

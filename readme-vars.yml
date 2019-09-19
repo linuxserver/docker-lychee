@@ -2,7 +2,7 @@
 
 # project information
 project_name: lychee
-project_url: "https://lychee.electerious.com/"
+project_url: "https://lycheeorg.github.io/"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
@@ -38,6 +38,7 @@ app_setup_block: |
   More info at [lychee]({{ project_url }}).  
 # changelog
 changelogs:
+  - { date: "19.09.19:", desc: "Update project website url." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "05.05.19:", desc: "Rebase to alpine 3.9, use new armv7 image format." }
   - { date: "21.01.18:", desc: "Added ffmpeg for video thumbnail creation, switched to installing zip release instead of source tarball, created small thumbnails folder, switched to dynamic readme." }

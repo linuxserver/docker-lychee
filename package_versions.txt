@@ -16,7 +16,7 @@ coreutils-8.31-r0
 cups-libs-2.2.12-r0
 curl-7.66.0-r0
 dbus-libs-1.12.16-r0
-expat-2.2.7-r1
+expat-2.2.8-r0
 ffmpeg-4.1.4-r0
 ffmpeg-libs-4.1.4-r0
 fontconfig-2.13.1-r0

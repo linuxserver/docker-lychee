@@ -65,7 +65,7 @@ libressl2.7-libcrypto-2.7.5-r0
 libressl2.7-libssl-2.7.5-r0
 librsvg-2.40.20-r0
 libsm-1.2.3-r0
-libssh2-1.8.2-r1
+libssh2-1.9.0-r0
 libssl1.1-1.1.1d-r0
 libstdc++-8.3.0-r0
 libtasn1-4.14-r0

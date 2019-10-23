@@ -38,6 +38,7 @@ app_setup_block: |
   More info at [lychee]({{ project_url }}).  
 # changelog
 changelogs:
+  - { date: "23.10.19:", desc: "Increase fastcgi timeouts (existing users need to manually update)." }
   - { date: "19.09.19:", desc: "Update project website url." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "05.05.19:", desc: "Rebase to alpine 3.9, use new armv7 image format." }

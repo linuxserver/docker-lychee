@@ -18,11 +18,10 @@ server {
 
 	location ~ \.php$ {
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
-		# With php7-cgi alone:
 		fastcgi_pass 127.0.0.1:9000;
-		# With php7-fpm:
-		#fastcgi_pass unix:/var/run/php7-fpm.sock;
 		fastcgi_index index.php;
+		fastcgi_read_timeout 1800;
+		fastcgi_send_timeout 1800;
 		include /etc/nginx/fastcgi_params;
 
 	}

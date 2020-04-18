@@ -26,16 +26,16 @@ RUN \
 	re2c && \
  echo "**** install lychee ****" && \
  if [ -z ${LYCHEE_RELEASE+x} ]; then \
-	LYCHEE_RELEASE=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
+	LYCHEE_RELEASE=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee-v3/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
- LYCHEE_FILENAME=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
+ LYCHEE_FILENAME=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee-v3/releases/latest" \
 	| jq -jr '. | .assets[0].name') && \
  mkdir -p \
 	/usr/share/webapps/lychee && \
  curl -o \
  /tmp/lychee.zip -L \
-	"https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_RELEASE}/${LYCHEE_FILENAME}" && \
+	"https://github.com/LycheeOrg/Lychee-v3/releases/download/${LYCHEE_RELEASE}/${LYCHEE_FILENAME}" && \
  unzip /tmp/lychee.zip -d /tmp && \
  cp -R /tmp/Lychee*/. /usr/share/webapps/lychee/ && \
  echo "**** install  composer ****" && \

@@ -16,6 +16,7 @@ RUN \
  apk add --no-cache \
 	curl \
 	ffmpeg \
+	php7-dom \
 	php7-exif \
 	php7-gd \
 	php7-imagick \
@@ -28,12 +29,18 @@ RUN \
 	php7-xml \
 	php7-zip && \
  echo "**** install lychee ****" && \
- if [ -z ${LYCHEE_RELEASE+x} ]; then \
- 	LYCHEE_RELEASE=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/commits/master" \
-	| awk '/sha/{print $4;exit}' FS='[""]'); \
+ mkdir -p /app/lychee && \
+ if [ -z ${LYCHEE_VERSION} ]; then \
+	LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
+	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
- git clone --recursive https://github.com/LycheeOrg/Lychee /app/lychee && \
- git -C /app/lychee checkout ${LYCHEE_RELEASE} && \
+ curl -o \
+ 	/tmp/lychee.tar.gz -L \
+	"https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
+ tar xf \
+ /tmp/lychee.tar.gz -C \
+	 /app/lychee/ --strip-components=1 && \
+ cd /app/lychee && \
  echo "**** install composer dependencies ****" && \
  composer install \
  	-d /app/lychee \

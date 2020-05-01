@@ -26,10 +26,21 @@ ln -sf /config/.env /app/lychee/.env
 
 # check for .env and copy default if needed
 if [ ! -f "/config/.env" ]; then
-	cp /app/lychee/.env.example /config/.env
+	if [[ -v DB_HOST && -v DB_USERNAME && -v DB_PASSWORD && -v DB_DATABASE ]]; then
+		# populate config from variables
+		cp /app/lychee/.env.example /config/.env
 
-	# attempt upgrade
-	if [ -f "/config/lychee/config.php" ]; then
+		echo "Populating config from variables"
+		sed -i "s|DB_HOST=.*$|DB_HOST=${DB_HOST}|g" /config/.env
+		sed -i "s|DB_USERNAME=.*$|DB_USERNAME=${DB_USERNAME}|g" /config/.env
+		sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=${DB_PASSWORD}|g" /config/.env
+		sed -i "s|DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
+
+		php artisan key:generate
+		php artisan migrate
+	elif [ -f "/config/lychee/config.php" ]; then
+		# attempt upgrade
+		cp /app/lychee/.env.example /config/.env
 		php /defaults/upgrade.php
 		mv /config/lychee /config/lychee.old
 
@@ -39,6 +50,8 @@ if [ ! -f "/config/.env" ]; then
 
 		php artisan key:generate
 		php artisan migrate
+	else
+		echo "No upgrade or variables provided - set up application via the web interface"
 	fi
 else
 	php artisan migrate

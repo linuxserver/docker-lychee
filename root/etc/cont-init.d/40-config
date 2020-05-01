@@ -1,42 +1,75 @@
 #!/usr/bin/with-contenv bash
 
-# create our folders
-mkdir -p \
-	/config/lychee
+DB_HOST=${DB_HOST:-mariadb}
+DB_USERNAME=${DB_USERNAME:-root}
+DB_PASSWORD=${DB_PASSWORD:-root}
+DB_DATABASE=${DB_DATABASE:-lychee}
 
-for image_index in {big,import,medium,small,thumb}; do
-if [ ! -f /pictures/${image_index}/index.html ]; then
-mkdir -p /pictures/${image_index}
-: > /pictures/${image_index}/index.html
+# copy config
+[[ ! -e /config/user.ini ]] && \
+	cp /defaults/user.ini /config/user.ini
+cp /config/user.ini /etc/php7/conf.d/99-user.ini
+
+# check for .env and copy default if needed
+if [ ! -f "/config/.env" ]; then
+	cp /app/lychee/.env.example /config/.env
+
+	# attempt upgrade
+	if [ -f "/config/lychee/config.php" ]; then
+		php /defaults/upgrade.php
+		mv /config/lychee /config/lychee.old
+
+		# force nginx config upgrade
+		mv /config/nginx/site-confs/default /config/nginx/default.bak
+		mv /defaults/default /config/nginx/site-confs/default
+	else
+		# build initial .env from variables
+		sed -i "s|DB_HOST=.*$|DB_HOST=${DB_HOST}|g" /config/.env
+		sed -i "s|DB_USERNAME=.*$|DB_USERNAME=${DB_USERNAME}|g" /config/.env
+		sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=${DB_PASSWORD}|g" /config/.env
+		sed -i "s|DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
+	fi
 fi
-done
 
-# copy config
-[[ ! -e /config/lychee/user.ini ]] && \
-	cp /defaults/user.ini /config/lychee/user.ini
-cp /config/lychee/user.ini /usr/share/webapps/lychee/.user.ini
+ln -sf /config/.env /app/lychee/.env
 
-# create symlinks
-[[ ! -L /var/www/localhost/lychee ]] && \
-	ln -s /usr/share/webapps/lychee /var/www/localhost/lychee
-[[ -d /usr/share/webapps/lychee/uploads ]] && \
-	rm -rf /usr/share/webapps/lychee/uploads
-[[ ! -L /usr/share/webapps/lychee/uploads ]] && \
-	ln -s /pictures /usr/share/webapps/lychee/uploads
-[[ -d /usr/share/webapps/lychee/data ]] && \
-	rm -rf /usr/share/webapps/lychee/data
-[[ ! -L /usr/share/webapps/lychee/data ]]
-	ln -s /config/lychee /usr/share/webapps/lychee/data
+# pre-populate /pictures directory if it's empty
+if [ ! "$(ls -A /pictures)" ]; then
+	mv /app/lychee/public/uploads/* /pictures/
+fi
 
-# set ffmpeg binary path
-sed -i 's#$ffmpeg = FFMpeg\\FFMpeg::create();#$ffmpeg = FFMpeg\\FFMpeg::create(array('"'"'ffmpeg.binaries'"'"'  => '"'"'/usr/bin/ffmpeg'"'"','"'"'ffprobe.binaries'"'"' => '"'"'/usr/bin/ffprobe'"'"',));#g' \
-	/usr/share/webapps/lychee/php/Modules/Photo.php
-sed -i 's#$ffprobe = FFMpeg\\FFProbe::create();#$ffprobe = FFMpeg\\FFProbe::create(array('"'"'ffmpeg.binaries'"'"'  => '"'"'/usr/bin/ffmpeg'"'"','"'"'ffprobe.binaries'"'"' => '"'"'/usr/bin/ffprobe'"'"',));#g' \
-	/usr/share/webapps/lychee/php/Modules/Photo.php
+[[ ! -L "/app/lychee/public/uploads" ]] && rm -rf /app/lychee/public/uploads
+ln -sf /pictures /app/lychee/public/uploads
+
+# Create API key if needed
+if [ ! -f "/config/LYCHEE_APP_KEY.txt" ];
+	then
+	echo "Generating Lychee app key for first run"
+	key=$(php /app/lychee/artisan key:generate --show)
+	echo $key > /config/LYCHEE_APP_KEY.txt
+	echo "App Key set to $key you can modify the file to update /config/LYCHEE_APP_KEY.txt"
+elif [ -f "/config/LYCHEE_APP_KEY.txt" ];
+	then
+	echo "App Key found - setting variable for seds"
+	key=$(cat /config/LYCHEE_APP_KEY.txt)
+fi
+
+# set app key here
+sed -i "s|APP_KEY=$|APP_KEY=${key}|g" /config/.env
+
+# handle storage directory
+[[ ! -e "/config/storage" ]] && \
+	mv /app/lychee/storage /config/
+
+rm -rf /app/lychee/storage
+ln -s /config/storage /app/lychee/storage
+
+# update database - will set up database if fresh or migrate existing - only run if ENV variables are set (so not on first launch)
+echo "attempt running database migrations"
+php /app/lychee/artisan migrate
 
 # permissions
 chown -R abc:abc \
+	/app/lychee \
 	/config \
-	/pictures \
-	/usr/share/webapps/lychee \
-	/var/www/localhost/lychee
+	/pictures

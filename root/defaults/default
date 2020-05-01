@@ -1,28 +1,49 @@
+## Version 2020/05/01 - Changelog: https://github.com/linuxserver/docker-lychee/commits/master/root/defaults/default
+
 server {
-	listen 80 default_server;
-	root /var/www/localhost/lychee;
-	index index.html index.htm index.php;
+    listen 80 default_server;
 
-	server_name _;
-	client_max_body_size 0;
+    listen 443 ssl;
 
-	location / {
-		try_files $uri $uri/ /index.html /index.php?$args =404;
-		}
+    root /app/lychee/public;
+    index index.php index.html index.htm;
 
-	 location ~* \.(?:ico|css|js|gif|jpe?g|png)$ {
-                expires max;
-                add_header Pragma public;
-                add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+    server_name _;
+
+    ssl_certificate /config/keys/cert.crt;
+    ssl_certificate_key /config/keys/cert.key;
+
+    client_max_body_size 0;
+
+    error_page 599 = @noauth;
+
+    location / {
+        if (!-f /config/nginx/.htpasswd) {
+			return 599;
         }
+        auth_basic "Restricted";
+        auth_basic_user_file /config/nginx/.htpasswd;
+        try_files $uri $uri/ /index.php?$args;
+    }
 
-	location ~ \.php$ {
-		fastcgi_split_path_info ^(.+\.php)(/.+)$;
-		fastcgi_pass 127.0.0.1:9000;
-		fastcgi_index index.php;
-		fastcgi_read_timeout 1800;
-		fastcgi_send_timeout 1800;
-		include /etc/nginx/fastcgi_params;
+    location @noauth {
+        try_files $uri $uri/ /index.php?$args;
+    }
 
+	# unless the request is for a valid file (image, js, css, etc.), send to bootstrap
+	if (!-e $request_filename)
+	{
+		rewrite ^/(.*)$ /index.php?/$1 last;
+		break;
 	}
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        # With php5-cgi alone:
+        fastcgi_pass 127.0.0.1:9000;
+        # With php5-fpm:
+        #fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include /etc/nginx/fastcgi_params;
+    }
 }

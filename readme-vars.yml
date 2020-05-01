@@ -25,7 +25,10 @@ param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "http gui" }
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
+  - { env_var: "DB_HOST", env_value: "<yourdbhost>", desc: "for specifying the database host" }
+  - { env_var: "DB_USERNAME", env_value: "<yourdbuser>", desc: "for specifying the database user" }
+  - { env_var: "DB_PASSWORD", env_value: "<yourdbpass>", desc: "for specifying the database password" }
+  - { env_var: "DB_DATABASE", env_value: "monica", desc: "for specifying the database to be used" }
 
 # optional parameters
 optional_block_1: false
@@ -34,10 +37,11 @@ optional_block_1_items: ""
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT  
-  More info at [lychee]({{ project_url }}).  
+  Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT
+  More info at [lychee]({{ project_url }}).
 # changelog
 changelogs:
+  - { date: "01.05.20:", desc: "Upgrade to Lychee v4" }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "23.10.19:", desc: "Increase fastcgi timeouts (existing users need to manually update)." }
   - { date: "19.09.19:", desc: "Update project website url." }

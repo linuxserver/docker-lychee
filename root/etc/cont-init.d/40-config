@@ -1,14 +1,28 @@
 #!/usr/bin/with-contenv bash
 
-DB_HOST=${DB_HOST:-mariadb}
-DB_USERNAME=${DB_USERNAME:-root}
-DB_PASSWORD=${DB_PASSWORD:-root}
-DB_DATABASE=${DB_DATABASE:-lychee}
+cd /app/lychee
 
 # copy config
 [[ ! -e /config/user.ini ]] && \
 	cp /defaults/user.ini /config/user.ini
 cp /config/user.ini /etc/php7/conf.d/99-user.ini
+
+# pre-populate /pictures directory if it's empty
+if [ ! "$(ls -A /pictures)" ]; then
+	mv /app/lychee/public/uploads/* /pictures/
+	chown -R abc:abc /pictures
+fi
+
+[[ ! -L "/app/lychee/public/uploads" ]] && rm -rf /app/lychee/public/uploads
+ln -sf /pictures /app/lychee/public/uploads
+
+# handle storage directory
+[[ ! -e "/config/storage" ]] && \
+	mv /app/lychee/storage /config/
+
+rm -rf /app/lychee/storage
+ln -s /config/storage /app/lychee/storage
+ln -sf /config/.env /app/lychee/.env
 
 # check for .env and copy default if needed
 if [ ! -f "/config/.env" ]; then
@@ -22,54 +36,15 @@ if [ ! -f "/config/.env" ]; then
 		# force nginx config upgrade
 		mv /config/nginx/site-confs/default /config/nginx/default.bak
 		mv /defaults/default /config/nginx/site-confs/default
-	else
-		# build initial .env from variables
-		sed -i "s|DB_HOST=.*$|DB_HOST=${DB_HOST}|g" /config/.env
-		sed -i "s|DB_USERNAME=.*$|DB_USERNAME=${DB_USERNAME}|g" /config/.env
-		sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=${DB_PASSWORD}|g" /config/.env
-		sed -i "s|DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
+
+		php artisan key:generate
+		php artisan migrate
 	fi
+else
+	php artisan migrate
 fi
-
-ln -sf /config/.env /app/lychee/.env
-
-# pre-populate /pictures directory if it's empty
-if [ ! "$(ls -A /pictures)" ]; then
-	mv /app/lychee/public/uploads/* /pictures/
-fi
-
-[[ ! -L "/app/lychee/public/uploads" ]] && rm -rf /app/lychee/public/uploads
-ln -sf /pictures /app/lychee/public/uploads
-
-# Create API key if needed
-if [ ! -f "/config/LYCHEE_APP_KEY.txt" ];
-	then
-	echo "Generating Lychee app key for first run"
-	key=$(php /app/lychee/artisan key:generate --show)
-	echo $key > /config/LYCHEE_APP_KEY.txt
-	echo "App Key set to $key you can modify the file to update /config/LYCHEE_APP_KEY.txt"
-elif [ -f "/config/LYCHEE_APP_KEY.txt" ];
-	then
-	echo "App Key found - setting variable for seds"
-	key=$(cat /config/LYCHEE_APP_KEY.txt)
-fi
-
-# set app key here
-sed -i "s|APP_KEY=$|APP_KEY=${key}|g" /config/.env
-
-# handle storage directory
-[[ ! -e "/config/storage" ]] && \
-	mv /app/lychee/storage /config/
-
-rm -rf /app/lychee/storage
-ln -s /config/storage /app/lychee/storage
-
-# update database - will set up database if fresh or migrate existing - only run if ENV variables are set (so not on first launch)
-echo "attempt running database migrations"
-php /app/lychee/artisan migrate
 
 # permissions
 chown -R abc:abc \
 	/app/lychee \
-	/config \
-	/pictures
+	/config

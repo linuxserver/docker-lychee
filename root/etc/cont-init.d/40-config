@@ -31,10 +31,11 @@ if [ ! -f "/config/.env" ]; then
 		cp /app/lychee/.env.example /config/.env
 
 		echo "Populating config from variables"
+		sed -i "s|DB_CONNECTION=sqlite|DB_CONNECTION=mysql|g" /config/.env
 		sed -i "s|DB_HOST=.*$|DB_HOST=${DB_HOST}|g" /config/.env
 		sed -i "s|DB_USERNAME=.*$|DB_USERNAME=${DB_USERNAME}|g" /config/.env
 		sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=${DB_PASSWORD}|g" /config/.env
-		sed -i "s|DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
+		sed -i "s|#DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
 
 		php artisan key:generate
 		php artisan migrate

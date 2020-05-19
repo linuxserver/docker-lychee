@@ -15,7 +15,10 @@ RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
 	curl \
+	exiftool \
 	ffmpeg \
+	gd \
+	imagemagick \
 	php7-dom \
 	php7-exif \
 	php7-gd \

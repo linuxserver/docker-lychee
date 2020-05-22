@@ -55,7 +55,7 @@ if [ ! -f "/config/.env" ]; then
 		echo "No upgrade or variables provided - set up application via the web interface"
 	fi
 else
-	php artisan migrate
+	php artisan migrate --force
 fi
 
 # permissions

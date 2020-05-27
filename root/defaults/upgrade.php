@@ -16,10 +16,11 @@ logMessage("  dbPassword = $dbPassword");
 logMessage("  dbName = $dbName");
 logMessage("  dbTablePrefix = $dbTablePrefix");
 
+`sed -i "s|DB_CONNECTION=sqlite|DB_CONNECTION=mysql|g" /config/.env`;
 `sed -i "s|DB_HOST=.*$|DB_HOST=$dbHost|g" /config/.env`;
 `sed -i "s|DB_USERNAME=.*$|DB_USERNAME=$dbUser|g" /config/.env`;
 `sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=$dbPassword|g" /config/.env`;
-`sed -i "s|DB_DATABASE=.*$|DB_DATABASE=$dbName|g" /config/.env`;
+`sed -i "s|#DB_DATABASE=.*$|DB_DATABASE=$dbName|g" /config/.env`;
 `sed -i "s|DB_OLD_LYCHEE_PREFIX=.*$|DB_OLD_LYCHEE_PREFIX=$dbTablePrefix|g" /config/.env`;
 
 logMessage("Upgrade complete.");

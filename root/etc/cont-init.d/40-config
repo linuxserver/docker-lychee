@@ -58,6 +58,9 @@ else
 	php artisan migrate --force
 fi
 
+# add line to preserve environment variables in FPM so Lychee can use $PATH (for things like ffprobe)
+grep -qxF 'clear_env = no' /config/php/www2.conf || echo 'clear_env = no' >> /config/php/www2.conf
+
 # permissions
 chown -R abc:abc \
 	/app/lychee \

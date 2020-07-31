@@ -35,7 +35,12 @@ Find us at:
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-lychee%2Fjob%2Fmaster%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-lychee/job/master/)
 [![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Flsio-ci.ams3.digitaloceanspaces.com%2Flinuxserver%2Flychee%2Flatest%2Fci-status.yml)](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/lychee/latest/index.html)
 
-[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
+[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely."
+
+### UPGRADE WARNING
+
+Please note that the upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.
+
 
 [![lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png)](https://lycheeorg.github.io/)
 
@@ -65,6 +70,7 @@ docker create \
   --name=lychee \
   -e PUID=1000 \
   -e PGID=1000 \
+  -e TZ=Europe/London \
   -e DB_HOST=<yourdbhost> \
   -e DB_USERNAME=<yourdbuser> \
   -e DB_PASSWORD=<yourdbpass> \
@@ -91,6 +97,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Europe/London
       - DB_HOST=<yourdbhost>
       - DB_USERNAME=<yourdbuser>
       - DB_PASSWORD=<yourdbpass>
@@ -112,6 +119,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 80` | http gui |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London |
 | `-e DB_HOST=<yourdbhost>` | for specifying the database host |
 | `-e DB_USERNAME=<yourdbuser>` | for specifying the database user |
 | `-e DB_PASSWORD=<yourdbpass>` | for specifying the database password |

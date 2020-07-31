@@ -25,6 +25,21 @@ logMessage("  dbTablePrefix = $dbTablePrefix");
 
 logMessage("Upgrade complete.");
 
+$updateWarning = <<<__LOG__
+
+
+!!! WARNING !!!
+
+It appears you are upgrading your existing Lychee instance.
+Please note that the upgrade process resets ALL password-protected
+albums. Any albums that were made public with a password will need
+to be re-secured.
+
+
+__LOG__;
+
+logMessage($updateWarning);
+
 function logMessage($msg)
 {
     echo "$msg\n";

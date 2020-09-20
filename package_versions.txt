@@ -17,7 +17,7 @@ cairo-1.16.0-r2
 cairo-gobject-1.16.0-r2
 coreutils-8.32-r0
 cups-libs-2.3.3-r0
-curl-7.69.1-r0
+curl-7.69.1-r1
 dbus-libs-1.12.18-r0
 exiftool-11.99-r0
 expat-2.2.9-r1

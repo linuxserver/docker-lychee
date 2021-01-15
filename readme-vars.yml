@@ -23,30 +23,70 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "</path/to/appdata/config>", desc: "Contains all relevant configuration files." }
-  - { vol_path: "/pictures", vol_host_path: "</path/to/pictures>", desc: "Where lychee will store uploaded data." }
+  - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Contains all relevant configuration files." }
+  - { vol_path: "/pictures", vol_host_path: "/path/to/pictures", desc: "Where lychee will store uploaded data." }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "http gui" }
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
-  - { env_var: "DB_HOST", env_value: "<yourdbhost>", desc: "for specifying the database host" }
-  - { env_var: "DB_USERNAME", env_value: "<yourdbuser>", desc: "for specifying the database user" }
-  - { env_var: "DB_PASSWORD", env_value: "<yourdbpass>", desc: "for specifying the database password" }
-  - { env_var: "DB_DATABASE", env_value: "monica", desc: "for specifying the database to be used" }
+  - { env_var: "DB_HOST", env_value: "mariadb", desc: "for specifying the database host" }
+  - { env_var: "DB_USERNAME", env_value: "lychee", desc: "for specifying the database user" }
+  - { env_var: "DB_PASSWORD", env_value: "dbpassword", desc: "for specifying the database password" }
+  - { env_var: "DB_DATABASE", env_value: "lychee", desc: "for specifying the database to be used" }
 
 # optional parameters
 optional_block_1: false
 optional_block_1_items: ""
+
+custom_compose: |
+  version: "3"
+  services:
+    mariadb:
+      image: ghcr.io/linuxserver/mariadb:latest
+      container_name: lychee_mariadb
+      restart: always
+      volumes:
+        - /path/to/mariadb/data:/config
+      environment:
+        - MYSQL_ROOT_PASSWORD=rootpassword
+        - MYSQL_DATABASE=lychee
+        - MYSQL_USER=lychee
+        - MYSQL_PASSWORD=dbpassword
+        - PGID=1000
+        - PUID=1000
+        - TZ=Europe/London
+    lychee:
+      image: ghcr.io/linuxserver/lychee:latest
+      container_name: lychee
+      restart: always
+      depends_on:
+        - mariadb
+      volumes:
+        - /path/to/config:/config
+        - /path/to/pictures:/pictures
+      environment:
+        - DB_HOST=mariadb
+        - DB_USER=lychee
+        - DB_PASS=dbpassword
+        - DB_NAME=lychee
+        - DB_PORT=3306
+        - PGID=1000
+        - PUID=1000
+        - TZ=Europe/London
+      ports:
+        - 80:80
 
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
   Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT
   More info at [lychee]({{ project_url }}).
+
 # changelog
 changelogs:
+  - { date: "15.01.21:", desc: "Rebase to alpine 3.13, add php7-ctype." }
   - { date: "10.07.20:", desc: "Upgrade to Lychee v4 and rebased to alpine 3.12." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "23.10.19:", desc: "Increase fastcgi timeouts (existing users need to manually update)." }

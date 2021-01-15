@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.12
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.13
 
 # set version label
 ARG BUILD_DATE
@@ -10,15 +10,16 @@ LABEL maintainer="hackerman"
 RUN \
  echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
-	git \
-	composer && \
+	git && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
+	composer \
 	curl \
 	exiftool \
 	ffmpeg \
 	gd \
 	imagemagick \
+	php7-ctype \
 	php7-dom \
 	php7-exif \
 	php7-gd \

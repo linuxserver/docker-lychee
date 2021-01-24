@@ -19,6 +19,7 @@ RUN \
 	ffmpeg \
 	gd \
 	imagemagick \
+	php7-bcmath \
 	php7-ctype \
 	php7-dom \
 	php7-exif \

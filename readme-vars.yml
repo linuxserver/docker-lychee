@@ -86,6 +86,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "31.01.21:", desc: "Add jpegoptim." }
   - { date: "15.01.21:", desc: "Rebase to alpine 3.13, add php7-ctype." }
   - { date: "10.07.20:", desc: "Upgrade to Lychee v4 and rebased to alpine 3.12." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }

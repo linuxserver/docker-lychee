@@ -256,6 +256,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **31.01.21:** - Add jpegoptim.
 * **15.01.21:** - Rebase to alpine 3.13, add php7-ctype.
 * **10.07.20:** - Upgrade to Lychee v4 and rebased to alpine 3.12.
 * **19.12.19:** - Rebasing to alpine 3.11.

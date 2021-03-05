@@ -51,7 +51,7 @@ libbsd-0.10.0-r0
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcrypto1.1-1.1.1j-r0
-libcurl-7.74.0-r0
+libcurl-7.74.0-r1
 libdav1d-0.8.1-r0
 libde265-1.0.4-r0
 libdrm-2.4.104-r0

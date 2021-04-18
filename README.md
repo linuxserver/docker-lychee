@@ -43,7 +43,7 @@ Find us at:
 
 ### UPGRADE WARNING
 
-Please note that the upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.
+Please note that the v4 upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.
 
 [![lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png)](https://lycheeorg.github.io/)
 
@@ -259,6 +259,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **18.04.21:** - Add php-intl for v4.3.
 * **31.01.21:** - Add jpegoptim.
 * **15.01.21:** - Rebase to alpine 3.13, add php7-ctype.
 * **10.07.20:** - Upgrade to Lychee v4 and rebased to alpine 3.12.

@@ -403,7 +403,7 @@ pipeline {
           --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
           --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.title=Lychee\" \
-          --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
+          --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the v4 upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
           --no-cache --pull -t ${IMAGE}:${META_TAG} \
           --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
       }
@@ -430,7 +430,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Lychee\" \
-              --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
+              --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the v4 upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
               --no-cache --pull -t ${IMAGE}:amd64-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
           }
@@ -457,7 +457,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Lychee\" \
-              --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
+              --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the v4 upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
               --no-cache --pull -f Dockerfile.armhf -t ${IMAGE}:arm32v7-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
             sh "docker tag ${IMAGE}:arm32v7-${META_TAG} ghcr.io/linuxserver/lsiodev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}"
@@ -491,7 +491,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Lychee\" \
-              --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
+              --label \"org.opencontainers.image.description=[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.    ### UPGRADE WARNING    Please note that the v4 upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.  \" \
               --no-cache --pull -f Dockerfile.aarch64 -t ${IMAGE}:arm64v8-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
             sh "docker tag ${IMAGE}:arm64v8-${META_TAG} ghcr.io/linuxserver/lsiodev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}"

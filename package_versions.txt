@@ -15,7 +15,6 @@ ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 cairo-1.16.0-r2
 cairo-gobject-1.16.0-r2
-composer-2.0.13-r0
 coreutils-8.32-r2
 cups-libs-2.3.3-r1
 curl-7.76.1-r0
@@ -127,13 +126,11 @@ php7-7.4.19-r0
 php7-bcmath-7.4.19-r0
 php7-common-7.4.19-r0
 php7-ctype-7.4.19-r0
-php7-curl-7.4.19-r0
 php7-dom-7.4.19-r0
 php7-exif-7.4.19-r0
 php7-fileinfo-7.4.19-r0
 php7-fpm-7.4.19-r0
 php7-gd-7.4.19-r0
-php7-iconv-7.4.19-r0
 php7-intl-7.4.19-r0
 php7-json-7.4.19-r0
 php7-mbstring-7.4.19-r0
@@ -143,7 +140,6 @@ php7-openssl-7.4.19-r0
 php7-pdo-7.4.19-r0
 php7-pdo_mysql-7.4.19-r0
 php7-pecl-imagick-3.4.4-r7
-php7-phar-7.4.19-r0
 php7-session-7.4.19-r0
 php7-simplexml-7.4.19-r0
 php7-tokenizer-7.4.19-r0

@@ -68,9 +68,9 @@ custom_compose: |
         - /path/to/pictures:/pictures
       environment:
         - DB_HOST=mariadb
-        - DB_USER=lychee
-        - DB_PASS=dbpassword
-        - DB_NAME=lychee
+        - DB_USERNAME=lychee
+        - DB_PASSWORD=dbpassword
+        - DB_DATABASE=lychee
         - DB_PORT=3306
         - PGID=1000
         - PUID=1000
@@ -81,11 +81,14 @@ custom_compose: |
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
+  **This image will not work with a prefilled `/pictures` mount, lychee wants total control over this folder**
+
   Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT
   More info at [lychee]({{ project_url }}).
 
 # changelog
 changelogs:
+  - { date: "13.05.21:", desc: "Make readme clearer." }
   - { date: "18.04.21:", desc: "Add php-intl for v4.3." }
   - { date: "31.01.21:", desc: "Add jpegoptim." }
   - { date: "15.01.21:", desc: "Rebase to alpine 3.13, add php7-ctype." }

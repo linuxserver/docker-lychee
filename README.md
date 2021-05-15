@@ -63,6 +63,8 @@ The architectures supported by this image are:
 
 ## Application Setup
 
+**This image will not work with a prefilled `/pictures` mount, lychee wants total control over this folder**
+
 Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT
 More info at [lychee](https://lycheeorg.github.io/).
 
@@ -102,9 +104,9 @@ services:
       - /path/to/pictures:/pictures
     environment:
       - DB_HOST=mariadb
-      - DB_USER=lychee
-      - DB_PASS=dbpassword
-      - DB_NAME=lychee
+      - DB_USERNAME=lychee
+      - DB_PASSWORD=dbpassword
+      - DB_DATABASE=lychee
       - DB_PORT=3306
       - PGID=1000
       - PUID=1000
@@ -259,6 +261,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **13.05.21:** - Make readme clearer.
 * **18.04.21:** - Add php-intl for v4.3.
 * **31.01.21:** - Add jpegoptim.
 * **15.01.21:** - Rebase to alpine 3.13, add php7-ctype.

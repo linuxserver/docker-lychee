@@ -1,26 +1,27 @@
 #!/usr/bin/with-contenv bash
 
-mkdir /pictures
+mkdir -p /pictures
 
 cd /app/lychee
 
 # copy config
 [[ ! -e /config/user.ini ]] && \
-	cp /defaults/user.ini /config/user.ini
+    cp /defaults/user.ini /config/user.ini
 cp /config/user.ini /etc/php7/conf.d/99-user.ini
 
 # pre-populate /pictures directory if it's empty
 if [ ! "$(ls -A /pictures)" ]; then
-	mv /app/lychee/public/uploads/* /pictures/
-	chown -R abc:abc /pictures
+    mv /app/lychee/public/uploads/* /pictures/
+    chown -R abc:abc /pictures
+elif [ ! "$(ls -A /pictures/import 2>/dev/null)" ]; then
+    printf "\n\n\n\nSeems like you tried to use a path thats not managed by lychee, this is unsupported\n\n\n\n"
 fi
 
-[[ ! -L "/app/lychee/public/uploads" ]] && rm -rf /app/lychee/public/uploads
-ln -sf /pictures /app/lychee/public/uploads
+[[ ! -L "/app/lychee/public/uploads" ]] && rm -rf /app/lychee/public/uploads && ln -sf /pictures /app/lychee/public/uploads
 
 # handle storage directory
 [[ ! -e "/config/storage" ]] && \
-	mv /app/lychee/storage /config/
+    mv /app/lychee/storage /config/
 
 rm -rf /app/lychee/storage
 ln -s /config/storage /app/lychee/storage
@@ -28,36 +29,54 @@ ln -sf /config/.env /app/lychee/.env
 
 # check for .env and copy default if needed
 if [ ! -f "/config/.env" ]; then
-	if [[ -v DB_HOST && -v DB_USERNAME && -v DB_PASSWORD && -v DB_DATABASE ]]; then
-		# populate config from variables
-		cp /app/lychee/.env.example /config/.env
+    if [[ -v DB_HOST && -v DB_USERNAME && -v DB_PASSWORD && -v DB_DATABASE ]]; then
+        # check for the mysql endpoint for 30 seconds
+        until nc -z -v -w30 "${DB_HOST}" "${DB_PORT}"
+        do
+            echo "Waiting for database connection..."
+            # wait for 5 seconds before check again
+            sleep 5
+        done
 
-		echo "Populating config from variables"
-		sed -i "s|DB_CONNECTION=sqlite|DB_CONNECTION=mysql|g" /config/.env
-		sed -i "s|DB_HOST=.*$|DB_HOST=${DB_HOST}|g" /config/.env
-		sed -i "s|DB_USERNAME=.*$|DB_USERNAME=${DB_USERNAME}|g" /config/.env
-		sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=${DB_PASSWORD}|g" /config/.env
-		sed -i "s|#DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
+        # populate config from variables
+        cp /app/lychee/.env.example /config/.env
 
-		php artisan key:generate
-		php artisan migrate --force
-	elif [ -f "/config/lychee/config.php" ]; then
-		# attempt upgrade
-		cp /app/lychee/.env.example /config/.env
-		php /defaults/upgrade.php
-		mv /config/lychee /config/lychee.old
+        echo "Populating config from variables"
+        sed -i "s|DB_CONNECTION=sqlite|DB_CONNECTION=mysql|g" /config/.env
+        sed -i "s|DB_HOST=.*$|DB_HOST=${DB_HOST}|g" /config/.env
+        sed -i "s|DB_USERNAME=.*$|DB_USERNAME=${DB_USERNAME}|g" /config/.env
+        sed -i "s|DB_PASSWORD=.*$|DB_PASSWORD=${DB_PASSWORD}|g" /config/.env
+        sed -i "s|#DB_DATABASE=.*$|DB_DATABASE=${DB_DATABASE}|g" /config/.env
+        sed -i "s|DB_PORT=.*$|DB_PORT=${DB_PORT}|g" /config/.env
+        sed -i "s|TIMEZONE=.*$|TIMEZONE=${TZ}|g" /config/.env
 
-		# force nginx config upgrade
-		mv /config/nginx/site-confs/default /config/nginx/default.bak
-		mv /defaults/default /config/nginx/site-confs/default
+        php artisan key:generate
+        php artisan migrate --force
+    elif [ -f "/config/lychee/config.php" ]; then
+        # attempt upgrade
+        cp /app/lychee/.env.example /config/.env
+        php /defaults/upgrade.php
+        mv /config/lychee /config/lychee.old
 
-		php artisan key:generate
-		php artisan migrate --force
-	else
-		echo "No upgrade or variables provided - set up application via the web interface"
-	fi
+        # force nginx config upgrade
+        mv /config/nginx/site-confs/default /config/nginx/default.bak
+        mv /defaults/default /config/nginx/site-confs/default
+
+        php artisan key:generate
+        php artisan migrate --force
+    else
+        echo "No upgrade or variables provided - set up application via the web interface"
+    fi
 else
-	php artisan migrate --force
+    if [[ -v DB_HOST && -v DB_PORT ]]; then
+        # check for the mysql endpoint for 30 seconds
+        until nc -z -v -w30 "${DB_HOST}" "${DB_PORT}"
+        do
+            echo "Waiting for database connection..."
+            sleep 5
+        done
+    fi
+    php artisan migrate --force
 fi
 
 # add line to preserve environment variables in FPM so Lychee can use $PATH (for things like ffprobe)
@@ -66,5 +85,5 @@ grep -qxF 'clear_env = no' /config/php/www2.conf || echo 'clear_env = no' >> /co
 
 # permissions
 chown -R abc:abc \
-	/app/lychee \
-	/config
+    /app/lychee \
+    /config

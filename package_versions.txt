@@ -50,7 +50,7 @@ libblkid-2.36.1-r1
 libbsd-0.10.0-r0
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
-libcrypto1.1-1.1.1k-r0
+libcrypto1.1-1.1.1l-r0
 libcurl-7.78.0-r0
 libdav1d-0.8.1-r0
 libde265-1.0.4-r0
@@ -77,7 +77,7 @@ librsvg-2.50.4-r0
 libsm-1.2.3-r0
 libsrt-1.4.2-r0
 libssh-0.9.5-r0
-libssl1.1-1.1.1k-r0
+libssl1.1-1.1.1l-r0
 libstdc++-10.2.1_pre1-r3
 libtasn1-4.16.0-r1
 libtheora-1.1.1-r16

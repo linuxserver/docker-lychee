@@ -7,7 +7,7 @@ cd /app/lychee
 # copy config
 [[ ! -e /config/user.ini ]] && \
     cp /defaults/user.ini /config/user.ini
-cp /config/user.ini /etc/php7/conf.d/99-user.ini
+cp /config/user.ini /etc/php8/conf.d/99-user.ini
 
 # pre-populate /pictures directory if it's empty
 if [ ! "$(ls -A /pictures)" ]; then

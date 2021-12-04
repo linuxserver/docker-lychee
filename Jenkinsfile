@@ -20,7 +20,7 @@ pipeline {
     EXT_GIT_BRANCH = 'master'
     EXT_USER = 'LycheeOrg'
     EXT_REPO = 'Lychee'
-    BUILD_VERSION_ARG = 'LYCHEE_RELEASE'
+    BUILD_VERSION_ARG = 'LYCHEE_VERSION'
     LS_USER = 'linuxserver'
     LS_REPO = 'docker-lychee'
     CONTAINER_NAME = 'lychee'

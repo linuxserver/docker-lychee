@@ -20,7 +20,7 @@ cups-libs-2.3.3-r5
 curl-7.80.0-r0
 dbus-libs-1.12.20-r4
 exiftool-12.30-r0
-expat-2.4.5-r0
+expat-2.4.6-r0
 ffmpeg-4.4.1-r2
 ffmpeg-libs-4.4.1-r2
 fontconfig-2.13.1-r4

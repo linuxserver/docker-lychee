@@ -17,7 +17,7 @@ cairo-1.16.0-r5
 cairo-gobject-1.16.0-r5
 coreutils-9.0-r2
 cups-libs-2.3.3-r6
-curl-7.80.0-r1
+curl-7.80.0-r2
 dbus-libs-1.12.20-r4
 exiftool-12.30-r0
 expat-2.4.7-r0
@@ -51,7 +51,7 @@ libbsd-0.11.3-r1
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcrypto1.1-1.1.1o-r0
-libcurl-7.80.0-r1
+libcurl-7.80.0-r2
 libdav1d-0.9.2-r0
 libde265-1.0.8-r2
 libdrm-2.4.109-r0

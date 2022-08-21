@@ -65,7 +65,7 @@ RUN \
     /root/.composer \
     /tmp/*
 
-# add local files
+# copy local files
 COPY root/ /
 
 # ports and volumes

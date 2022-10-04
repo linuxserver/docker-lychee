@@ -36,23 +36,18 @@ RUN \
     php8-xml \
     php8-zip && \
   echo "**** install lychee ****" && \
-  mkdir -p /app/lychee && \
-  if [ -z ${LYCHEE_VERSION} ]; then \
+  if [ -z "${LYCHEE_VERSION}" ]; then \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
-  curl -o \
-    /tmp/lychee.tar.gz -L \
-    "https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
-  tar xf \
-  /tmp/lychee.tar.gz -C \
-    /app/lychee/ --strip-components=1 && \
+  mkdir /app/lychee && \
+  git clone --recurse-submodules https://github.com/LycheeOrg/Lychee.git /app/lychee && \
   cd /app/lychee && \
+  git checkout "${LYCHEE_VERSION}" && \
   echo "**** install composer dependencies ****" && \
   composer install \
     -d /app/lychee \
     --no-dev \
-    --no-suggest \
     --no-interaction && \
   echo "**** cleanup ****" && \
   apk del --purge \

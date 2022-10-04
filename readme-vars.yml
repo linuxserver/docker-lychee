@@ -88,6 +88,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "04.10.22:", desc: "Switch to git clone as builds fail with the release artifact." }
   - { date: "04.12.21:", desc: "Rebase to alpine 3.15 with php8." }
   - { date: "13.05.21:", desc: "Make readme clearer." }
   - { date: "18.04.21:", desc: "Add php-intl for v4.3." }

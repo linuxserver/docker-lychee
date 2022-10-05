@@ -39,23 +39,18 @@ RUN \
   sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php8/php-fpm.d/www.conf && \
   grep -qxF 'clear_env = no' /etc/php8/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php8/php-fpm.d/www.conf && \
   echo "**** install lychee ****" && \
-  mkdir -p /app/www && \
-  if [ -z ${LYCHEE_VERSION} ]; then \
+  if [ -z "${LYCHEE_VERSION}" ]; then \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
-  curl -o \
-    /tmp/lychee.tar.gz -L \
-    "https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
-  tar xf \
-    /tmp/lychee.tar.gz -C \
-    /app/www/ --strip-components=1 && \
-  cd /app/www && \
+  mkdir /app/lychee && \
+  git clone --recurse-submodules https://github.com/LycheeOrg/Lychee.git /app/lychee && \
+  cd /app/lychee && \
+  git checkout "${LYCHEE_VERSION}" && \
   echo "**** install composer dependencies ****" && \
   composer install \
-    -d /app/www \
+    -d /app/lychee \
     --no-dev \
-    --no-suggest \
     --no-interaction && \
   echo "**** cleanup ****" && \
   apk del --purge \

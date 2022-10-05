@@ -43,13 +43,13 @@ RUN \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
-  mkdir /app/lychee && \
-  git clone --recurse-submodules https://github.com/LycheeOrg/Lychee.git /app/lychee && \
-  cd /app/lychee && \
+  mkdir /app/www && \
+  git clone --recurse-submodules https://github.com/LycheeOrg/Lychee.git /app/www && \
+  cd /app/www && \
   git checkout "${LYCHEE_VERSION}" && \
   echo "**** install composer dependencies ****" && \
   composer install \
-    -d /app/lychee \
+    -d /app/www \
     --no-dev \
     --no-interaction && \
   echo "**** cleanup ****" && \

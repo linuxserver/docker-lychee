@@ -43,7 +43,7 @@ RUN \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
-  mkdir /app/www && \
+  mkdir -p /app/www && \
   git clone --recurse-submodules https://github.com/LycheeOrg/Lychee.git /app/www && \
   cd /app/www && \
   git checkout "${LYCHEE_VERSION}" && \

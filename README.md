@@ -124,6 +124,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -e DB_HOST=mariadb \
+  -e DB_PORT=3306 \
   -e DB_USERNAME=lychee \
   -e DB_PASSWORD=dbpassword \
   -e DB_DATABASE=lychee \
@@ -145,6 +146,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London |
 | `-e DB_HOST=mariadb` | for specifying the database host |
+| `-e DB_PORT=3306` | for specifying the database port |
 | `-e DB_USERNAME=lychee` | for specifying the database user |
 | `-e DB_PASSWORD=dbpassword` | for specifying the database password |
 | `-e DB_DATABASE=lychee` | for specifying the database to be used |

@@ -32,6 +32,7 @@ param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
   - { env_var: "DB_HOST", env_value: "mariadb", desc: "for specifying the database host" }
+  - { env_var: "DB_PORT", env_value: "3306", desc: "for specifying the database port" }
   - { env_var: "DB_USERNAME", env_value: "lychee", desc: "for specifying the database user" }
   - { env_var: "DB_PASSWORD", env_value: "dbpassword", desc: "for specifying the database password" }
   - { env_var: "DB_DATABASE", env_value: "lychee", desc: "for specifying the database to be used" }

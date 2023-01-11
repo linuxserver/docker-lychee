@@ -1,19 +1,20 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 mkdir -p /pictures
 
-cd /app/www
+cd /app/www || exit 1
 
 # copy config
 if [[ ! -e /config/user.ini ]]; then
     cp /defaults/user.ini /config/user.ini
 fi
-cp /config/user.ini /etc/php8/conf.d/99-user.ini
+cp /config/user.ini /etc/php81/conf.d/99-user.ini
 
 # pre-populate /pictures directory if it's empty
 if [ ! "$(ls -A /pictures)" ]; then
     mv /app/www/public/uploads/* /pictures/
-    chown -R abc:abc /pictures
+    lsiown -R abc:abc /pictures
 elif [ ! "$(ls -A /pictures/import 2>/dev/null)" ]; then
     printf "\n\n\n\nSeems like you tried to use a path thats not managed by lychee, this is unsupported\n\n\n\n"
 fi
@@ -85,6 +86,6 @@ else
 fi
 
 # permissions
-chown -R abc:abc \
+lsiown -R abc:abc \
     /app/www \
     /config

@@ -15,7 +15,6 @@ RUN \
     composer && \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
-    curl \
     exiftool \
     ffmpeg \
     gd \
@@ -27,7 +26,6 @@ RUN \
     php81-exif \
     php81-gd \
     php81-intl \
-    php81-json \
     php81-mbstring \
     php81-mysqli \
     php81-pdo_mysql \

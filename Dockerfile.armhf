@@ -26,14 +26,11 @@ RUN \
     php81-exif \
     php81-gd \
     php81-intl \
-    php81-mbstring \
     php81-mysqli \
     php81-pdo_mysql \
     php81-pecl-imagick \
     php81-phar \
-    php81-session \
     php81-tokenizer \
-    php81-xml \
     php81-zip && \
   echo "**** configure php-fpm to pass env vars ****" && \
   sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php81/php-fpm.d/www.conf && \

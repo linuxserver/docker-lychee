@@ -1,31 +1,37 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 mkdir -p /pictures
 
-cd /app/lychee
+cd /app/www || exit 1
 
 # copy config
-[[ ! -e /config/user.ini ]] && \
+if [[ ! -e /config/user.ini ]]; then
     cp /defaults/user.ini /config/user.ini
-cp /config/user.ini /etc/php8/conf.d/99-user.ini
+fi
+cp /config/user.ini /etc/php81/conf.d/99-user.ini
 
 # pre-populate /pictures directory if it's empty
 if [ ! "$(ls -A /pictures)" ]; then
-    mv /app/lychee/public/uploads/* /pictures/
-    chown -R abc:abc /pictures
+    mv /app/www/public/uploads/* /pictures/
+    lsiown -R abc:abc /pictures
 elif [ ! "$(ls -A /pictures/import 2>/dev/null)" ]; then
     printf "\n\n\n\nSeems like you tried to use a path thats not managed by lychee, this is unsupported\n\n\n\n"
 fi
 
-[[ ! -L "/app/lychee/public/uploads" ]] && rm -rf /app/lychee/public/uploads && ln -sf /pictures /app/lychee/public/uploads
+if [[ ! -L "/app/www/public/uploads" ]]; then
+    rm -rf /app/www/public/uploads
+    ln -sf /pictures /app/www/public/uploads
+fi
 
 # handle storage directory
-[[ ! -e "/config/storage" ]] && \
-    mv /app/lychee/storage /config/
+if [[ ! -e "/config/storage" ]]; then
+    mv /app/www/storage /config/
+fi
 
-rm -rf /app/lychee/storage
-ln -s /config/storage /app/lychee/storage
-ln -sf /config/.env /app/lychee/.env
+rm -rf /app/www/storage
+ln -s /config/storage /app/www/storage
+ln -sf /config/.env /app/www/.env
 
 # check for .env and copy default if needed
 if [ ! -f "/config/.env" ]; then
@@ -39,7 +45,7 @@ if [ ! -f "/config/.env" ]; then
         done
 
         # populate config from variables
-        cp /app/lychee/.env.example /config/.env
+        cp /app/www/.env.example /config/.env
 
         echo "Populating config from variables"
         sed -i "s|DB_CONNECTION=sqlite|DB_CONNECTION=mysql|g" /config/.env
@@ -54,13 +60,13 @@ if [ ! -f "/config/.env" ]; then
         php artisan migrate --force
     elif [ -f "/config/lychee/config.php" ]; then
         # attempt upgrade
-        cp /app/lychee/.env.example /config/.env
+        cp /app/www/.env.example /config/.env
         php /defaults/upgrade.php
         mv /config/lychee /config/lychee.old
 
         # force nginx config upgrade
-        mv /config/nginx/site-confs/default /config/nginx/default.bak
-        mv /defaults/default /config/nginx/site-confs/default
+        mv /config/nginx/site-confs/default.conf /config/nginx/site-confs/default.conf.bak
+        cp /defaults/nginx/site-confs/default.conf.sample /config/nginx/site-confs/default.conf
 
         php artisan key:generate
         php artisan migrate --force
@@ -79,11 +85,7 @@ else
     php artisan migrate --force
 fi
 
-# add line to preserve environment variables in FPM so Lychee can use $PATH (for things like ffprobe)
-sed -E -i 's/^clear_env =.*$/clear_env = no/g' /config/php/www2.conf
-grep -qxF 'clear_env = no' /config/php/www2.conf || echo 'clear_env = no' >> /config/php/www2.conf
-
 # permissions
-chown -R abc:abc \
-    /app/lychee \
+lsiown -R abc:abc \
+    /app/www \
     /config

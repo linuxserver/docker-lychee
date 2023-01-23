@@ -32,6 +32,7 @@ param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
   - { env_var: "DB_HOST", env_value: "mariadb", desc: "for specifying the database host" }
+  - { env_var: "DB_PORT", env_value: "3306", desc: "for specifying the database port" }
   - { env_var: "DB_USERNAME", env_value: "lychee", desc: "for specifying the database user" }
   - { env_var: "DB_PASSWORD", env_value: "dbpassword", desc: "for specifying the database password" }
   - { env_var: "DB_DATABASE", env_value: "lychee", desc: "for specifying the database to be used" }
@@ -88,7 +89,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "04.12.21:", desc: "Rebase to alpine 3.15 with php8." }
+  - { date: "11.01.23:", desc: "Rebasing to alpine 3.17 with php8.1. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base)). Switch to git clone as builds fail with the release artifact." }
   - { date: "13.05.21:", desc: "Make readme clearer." }
   - { date: "18.04.21:", desc: "Add php-intl for v4.3." }
   - { date: "31.01.21:", desc: "Add jpegoptim." }

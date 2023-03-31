@@ -90,7 +90,7 @@ libblkid                               2.38.1-r1              apk
 libbsd                                 0.11.7-r0              apk           
 libbz2                                 1.0.8-r4               apk           
 libc-utils                             0.7.2-r3               apk           
-libcrypto3                             3.0.8-r0               apk           
+libcrypto3                             3.0.8-r1               apk           
 libcurl                                7.88.1-r1              apk           
 libdav1d                               1.0.0-r2               apk           
 libde265                               1.0.11-r1              apk           
@@ -121,7 +121,7 @@ libsndfile                             1.1.0-r2               apk
 libsodium                              1.0.18-r2              apk           
 libsrt                                 1.5.1-r0               apk           
 libssh                                 0.10.4-r0              apk           
-libssl3                                3.0.8-r0               apk           
+libssl3                                3.0.8-r1               apk           
 libstdc++                              12.2.1_git20220924-r4  apk           
 libtasn1                               4.19.0-r0              apk           
 libtheora                              1.1.1-r16              apk           
@@ -152,7 +152,7 @@ lychee                                 4.0.10                 npm
 lychee-org/nestedset                   v6.0.2                 php-composer  
 lychee-org/php-exif                    v0.8.0                 php-composer  
 maennchen/zipstream-php                v2.4.0                 php-composer  
-mbedtls                                2.28.2-r0              apk           
+mbedtls                                2.28.3-r0              apk           
 monolog/monolog                        2.8.0                  php-composer  
 musl                                   1.2.3-r4               apk           
 musl-utils                             1.2.3-r4               apk           
@@ -170,7 +170,7 @@ nginx                                  1.22.1-r0              apk
 numactl                                2.0.16-r1              apk           
 nunomaduro/termwind                    v1.15.0                php-composer  
 oniguruma                              6.9.8-r0               apk           
-openssl                                3.0.8-r1               apk           
+openssl                                3.0.8-r3               apk           
 opus                                   1.3.1-r1               apk           
 orc                                    0.4.33-r0              apk           
 p11-kit                                0.24.1-r1              apk           
@@ -277,11 +277,11 @@ symfony/translation-contracts          v3.2.0                 php-composer
 symfony/uid                            v6.2.0                 php-composer  
 symfony/var-dumper                     v6.2.3                 php-composer  
 symfony/var-exporter                   v6.2.3                 php-composer  
-tdb-libs                               1.4.7-r0               apk           
+tdb-libs                               1.4.6-r0               apk           
 thecodingmachine/safe                  v2.4.0                 php-composer  
 tiff                                   4.4.0-r3               apk           
 tijsverkoyen/css-to-inline-styles      2.2.5                  php-composer  
-tzdata                                 2022f-r1               apk           
+tzdata                                 2023b-r1               apk           
 utmps-libs                             0.1.2.0-r1             apk           
 v4l-utils-libs                         1.22.1-r2              apk           
 vidstab                                1.1.0-r2               apk           

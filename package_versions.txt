@@ -2,7 +2,7 @@ NAME                                   VERSION                TYPE
 alpine-baselayout                      3.4.0-r0               apk           
 alpine-baselayout-data                 3.4.0-r0               apk           
 alpine-keys                            2.4-r1                 apk           
-alpine-release                         3.17.2-r0              apk           
+alpine-release                         3.17.3-r0              apk           
 alsa-lib                               1.2.8-r0               apk           
 aom-libs                               3.5.0-r0               apk           
 apache2-utils                          2.4.56-r0              apk           
@@ -67,8 +67,8 @@ harfbuzz                               5.3.1-r1               apk
 hwdata-pci                             0.364-r0               apk           
 icu-data-en                            72.1-r1                apk           
 icu-libs                               72.1-r1                apk           
-imagemagick                            7.1.0.52-r0            apk           
-imagemagick-libs                       7.1.0.52-r0            apk           
+imagemagick                            7.1.0.62-r0            apk           
+imagemagick-libs                       7.1.0.62-r0            apk           
 jbig2dec                               0.19-r1                apk           
 jpegoptim                              1.5.3-r0               apk           
 jq                                     1.6-r2                 apk           
@@ -90,7 +90,7 @@ libblkid                               2.38.1-r1              apk
 libbsd                                 0.11.7-r0              apk           
 libbz2                                 1.0.8-r4               apk           
 libc-utils                             0.7.2-r3               apk           
-libcrypto3                             3.0.8-r1               apk           
+libcrypto3                             3.0.8-r3               apk           
 libcurl                                7.88.1-r1              apk           
 libdav1d                               1.0.0-r2               apk           
 libde265                               1.0.11-r1              apk           
@@ -121,7 +121,7 @@ libsndfile                             1.1.0-r2               apk
 libsodium                              1.0.18-r2              apk           
 libsrt                                 1.5.1-r0               apk           
 libssh                                 0.10.4-r0              apk           
-libssl3                                3.0.8-r1               apk           
+libssl3                                3.0.8-r3               apk           
 libstdc++                              12.2.1_git20220924-r4  apk           
 libtasn1                               4.19.0-r0              apk           
 libtheora                              1.1.1-r16              apk           
@@ -232,7 +232,7 @@ ramsey/collection                      1.3.0                  php-composer
 ramsey/uuid                            4.7.0                  php-composer  
 readline                               8.2.0-r0               apk           
 scanelf                                1.3.5-r1               apk           
-sdl2                                   2.26.3-r0              apk           
+sdl2                                   2.26.5-r0              apk           
 shadow                                 4.13-r0                apk           
 shared-mime-info                       2.2-r2                 apk           
 skalibs                                2.12.0.1-r0            apk           
@@ -281,7 +281,7 @@ tdb-libs                               1.4.6-r0               apk
 thecodingmachine/safe                  v2.4.0                 php-composer  
 tiff                                   4.4.0-r3               apk           
 tijsverkoyen/css-to-inline-styles      2.2.5                  php-composer  
-tzdata                                 2023b-r1               apk           
+tzdata                                 2023c-r0               apk           
 utmps-libs                             0.1.2.0-r1             apk           
 v4l-utils-libs                         1.22.1-r2              apk           
 vidstab                                1.1.0-r2               apk           
@@ -296,4 +296,4 @@ xvidcore                               1.3.7-r1               apk
 xz                                     5.2.9-r0               apk           
 xz-libs                                5.2.9-r0               apk           
 zlib                                   1.2.13-r0              apk           
-zstd-libs                              1.5.2-r9               apk           
+zstd-libs                              1.5.5-r0               apk           

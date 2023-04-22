@@ -31,7 +31,8 @@ RUN \
     php81-pecl-imagick \
     php81-phar \
     php81-tokenizer \
-    php81-zip && \
+    php81-zip \
+    rsync && \
   echo "**** configure php-fpm to pass env vars ****" && \
   sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php81/php-fpm.d/www.conf && \
   grep -qxF 'clear_env = no' /etc/php81/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php81/php-fpm.d/www.conf && \

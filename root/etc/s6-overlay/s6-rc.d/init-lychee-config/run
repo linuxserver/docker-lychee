@@ -27,6 +27,9 @@ fi
 # handle storage directory
 if [[ ! -e "/config/storage" ]]; then
     mv /app/www/storage /config/
+else
+    # account for new files in the storage dir that may have been added in a new release
+    rsync -azvP --ignore-existing /app/www/storage/ /config/storage/
 fi
 
 rm -rf /app/www/storage

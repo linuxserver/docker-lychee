@@ -102,7 +102,7 @@ app_setup_block: |
 
   After making these changes, you'll need to restart the Docker container for the changes to take effect. Here's how to do it:
 
-  #### 🔁 Via Docker Compose
+  #### Via Docker Compose
 
   ```bash
   docker-compose restart lychee

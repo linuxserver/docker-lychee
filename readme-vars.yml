@@ -108,7 +108,7 @@ app_setup_block: |
   docker-compose restart lychee
   ```
 
-  #### 🔁 Via Docker Run
+  #### Via Docker Run
 
   ```bash
   docker restart lychee

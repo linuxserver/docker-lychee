@@ -114,7 +114,7 @@ app_setup_block: |
   docker restart lychee
   ```
 
-  ⚠️ Please note that these changes might have implications on your server's performance, depending on its available resources. Thus, it's recommended to modify these settings with caution.
+  **Please note that these changes might have implications on your server's performance, depending on its available resources. Thus, it's recommended to modify these settings with caution.**
 
 # changelog
 changelogs:

@@ -89,7 +89,7 @@ app_setup_block: |
 
   ## Customization
 
-  In certain scenarios, you might need to change the default settings of Lychee. For instance, if you encounter limitations when uploading large files, you can increase this limit. 📈
+  In certain scenarios, you might need to change the default settings of Lychee. For instance, if you encounter limitations when uploading large files, you can increase this limit.
 
   ### 📤 Increasing Upload Limit
 

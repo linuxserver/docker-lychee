@@ -55,7 +55,7 @@ geocoder-php/nominatim-provider        5.7.0                  php-composer
 ghostscript                            10.01.1-r0             apk           
 git                                    2.38.5-r0              apk           
 git-perl                               2.38.5-r0              apk           
-glib                                   2.74.6-r0              apk           
+glib                                   2.74.7-r0              apk           
 gmp                                    6.2.1-r2               apk           
 gnutls                                 3.7.8-r3               apk           
 graham-campbell/result-type            v1.1.1                 php-composer  
@@ -133,7 +133,7 @@ libva                                  2.16.0-r0              apk
 libvdpau                               1.5-r0                 apk           
 libvorbis                              1.3.7-r0               apk           
 libvpx                                 1.12.0-r1              apk           
-libwebp                                1.2.4-r1               apk           
+libwebp                                1.2.4-r2               apk           
 libx11                                 1.8.4-r0               apk           
 libxau                                 1.0.10-r0              apk           
 libxcb                                 1.15-r0                apk           
@@ -180,7 +180,7 @@ p11-kit                                0.24.1-r1              apk
 pango                                  1.50.13-r0             apk           
 pcre                                   8.45-r2                apk           
 pcre2                                  10.42-r0               apk           
-perl                                   5.36.0-r1              apk           
+perl                                   5.36.0-r2              apk           
 perl-error                             0.17029-r1             apk           
 perl-git                               2.38.5-r0              apk           
 perl-image-exiftool                    12.50-r0               apk           

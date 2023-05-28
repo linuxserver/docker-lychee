@@ -102,18 +102,6 @@ app_setup_block: |
 
   After making these changes, you'll need to restart the Docker container for the changes to take effect. Here's how to do it:
 
-  #### Via Docker Compose
-
-  ```bash
-  docker-compose restart lychee
-  ```
-
-  #### Via Docker Run
-
-  ```bash
-  docker restart lychee
-  ```
-
   **Please note that these changes might have implications on your server's performance, depending on its available resources. Thus, it's recommended to modify these settings with caution.**
 
 # changelog

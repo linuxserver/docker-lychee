@@ -87,7 +87,7 @@ app_setup_block: |
   Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT
   More info at [lychee]({{ project_url }}).
 
-  ## Customization
+  ### Customization
 
   In certain scenarios, you might need to change the default settings of Lychee. For instance, if you encounter limitations when uploading large files, you can increase this limit.
 

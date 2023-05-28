@@ -91,7 +91,7 @@ app_setup_block: |
 
   In certain scenarios, you might need to change the default settings of Lychee. For instance, if you encounter limitations when uploading large files, you can increase this limit.
 
-  ### Increasing Upload Limit
+  #### Increasing Upload Limit
 
   The upload limit is defined in the `user.ini` file located in the config directory (`/config`). You can increase this limit by modifying the following values:
 

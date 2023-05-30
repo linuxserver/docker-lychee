@@ -42,6 +42,10 @@ cp -n /defaults/user.ini /config/user.ini
 rm -rf /etc/php82/conf.d/99-user.ini
 ln -s /config/user.ini /etc/php82/conf.d/99-user.ini
 
+if [ -z "${DB_CONNECTION}" ]; then
+    DB_CONNECTION=$(grep "^DB_CONNECTION=" /config/.env 2>/dev/null | cut -d'=' -f2-)
+fi
+
 cd /app/www || exit 1
 
 if [ "${DB_CONNECTION}" = "sqlite" ] || [ -z "${DB_CONNECTION}" ]; then

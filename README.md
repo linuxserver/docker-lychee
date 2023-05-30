@@ -102,11 +102,12 @@ services:
       - /path/to/config:/config
       - /path/to/pictures:/pictures
     environment:
+      - DB_CONNECTION=mysql
       - DB_HOST=mariadb
+      - DB_PORT=3306
       - DB_USERNAME=lychee
       - DB_PASSWORD=dbpassword
       - DB_DATABASE=lychee
-      - DB_PORT=3306
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
@@ -123,6 +124,7 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
+  -e DB_CONNECTION=mysql \
   -e DB_HOST=mariadb \
   -e DB_PORT=3306 \
   -e DB_USERNAME=lychee \
@@ -146,6 +148,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
+| `-e DB_CONNECTION=mysql` | for specifying the database type |
 | `-e DB_HOST=mariadb` | for specifying the database host |
 | `-e DB_PORT=3306` | for specifying the database port |
 | `-e DB_USERNAME=lychee` | for specifying the database user |

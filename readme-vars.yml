@@ -30,6 +30,7 @@ param_ports:
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
+  - { env_var: "DB_CONNECTION", env_value: "mysql", desc: "for specifying the database type" }
   - { env_var: "DB_HOST", env_value: "mariadb", desc: "for specifying the database host" }
   - { env_var: "DB_PORT", env_value: "3306", desc: "for specifying the database port" }
   - { env_var: "DB_USERNAME", env_value: "lychee", desc: "for specifying the database user" }
@@ -67,11 +68,12 @@ custom_compose: |
         - /path/to/config:/config
         - /path/to/pictures:/pictures
       environment:
+        - DB_CONNECTION=mysql
         - DB_HOST=mariadb
+        - DB_PORT=3306
         - DB_USERNAME=lychee
         - DB_PASSWORD=dbpassword
         - DB_DATABASE=lychee
-        - DB_PORT=3306
         - PGID=1000
         - PUID=1000
         - TZ=Europe/London

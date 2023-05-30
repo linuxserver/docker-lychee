@@ -16,30 +16,31 @@ fi
 
 echo "**** Create the symbolic link for the uploads folder ****"
 if [ ! -L /app/www/public/uploads ]; then
-    cp -r /app/www/public/uploads/* /pictures
-    rm -r /app/www/public/uploads
+    cp -nr /app/www/public/uploads/* /pictures
+    rm -rf /app/www/public/uploads
     ln -s /pictures /app/www/public/uploads
 fi
 
 echo "**** Create the symbolic link for the sym folder ****"
 if [ ! -L /app/www/public/sym ]; then
     touch /app/www/public/sym/empty_file
-    cp -r /app/www/public/sym/* /config/sym
-    rm -r /app/www/public/sym
+    cp -nr /app/www/public/sym/* /config/sym
+    rm -rf /app/www/public/sym
     ln -s /config/sym /app/www/public/sym
 fi
 
 echo "**** Create the symbolic link for the logs folder ****"
 if [ ! -L /app/www/storage/logs ]; then
     touch /app/www/storage/logs/empty_file
-    cp -r /app/www/storage/logs/* /config/logs
-    rm -r /app/www/storage/logs
+    cp -nr /app/www/storage/logs/* /config/logs
+    rm -rf /app/www/storage/logs
     ln -s /config/logs /app/www/storage/logs
 fi
 
 echo "**** Create user.ini for php settings ****"
 cp -n /defaults/user.ini /config/user.ini
-cp /config/user.ini /etc/php82/conf.d/99-user.ini
+rm -rf /etc/php82/conf.d/99-user.ini
+ln -s /config/user.ini /etc/php82/conf.d/99-user.ini
 
 cd /app/www || exit 1
 
@@ -62,7 +63,7 @@ if [ "${DB_CONNECTION}" = "sqlite" ] || [ -z "${DB_CONNECTION}" ]; then
             fi
             echo "**** Create the symbolic link for the database ****"
             rm "${DB_DATABASE}"
-            ln -s /config/database.sqlite database/database.sqlite
+            ln -s /config/database.sqlite "${DB_DATABASE}"
         fi
     fi
 else
@@ -80,6 +81,7 @@ if [ ! -e /config/.env ]; then
     sed 's|^#DB_DATABASE=$|DB_DATABASE='"${DB_DATABASE}"'|' /app/www/.env.example >/config/.env
 fi
 if [ ! -L /app/www/.env ]; then
+    rm -rf /app/www/.env
     ln -s /config/.env /app/www/.env
 fi
 
@@ -229,7 +231,7 @@ if [ ! -L /app/www/public/dist/custom.js ]; then
 fi
 
 echo "**** Make sure Laravel's log exists ****"
-touch /logs/laravel.log
+touch /config/logs/laravel.log
 
 echo "**** Set Permissions ****"
 lsiown -R abc:abc \

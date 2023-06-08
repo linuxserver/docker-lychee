@@ -16,7 +16,6 @@ project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
   - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-  - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -31,6 +30,7 @@ param_ports:
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
+  - { env_var: "DB_CONNECTION", env_value: "mysql", desc: "for specifying the database type" }
   - { env_var: "DB_HOST", env_value: "mariadb", desc: "for specifying the database host" }
   - { env_var: "DB_PORT", env_value: "3306", desc: "for specifying the database port" }
   - { env_var: "DB_USERNAME", env_value: "lychee", desc: "for specifying the database user" }
@@ -68,11 +68,12 @@ custom_compose: |
         - /path/to/config:/config
         - /path/to/pictures:/pictures
       environment:
+        - DB_CONNECTION=mysql
         - DB_HOST=mariadb
+        - DB_PORT=3306
         - DB_USERNAME=lychee
         - DB_PASSWORD=dbpassword
         - DB_DATABASE=lychee
-        - DB_PORT=3306
         - PGID=1000
         - PUID=1000
         - TZ=Europe/London
@@ -106,6 +107,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }
   - { date: "13.04.23:", desc: "Move ssl.conf include to default.conf." }
   - { date: "11.01.23:", desc: "Rebasing to alpine 3.17 with php8.1. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base)). Switch to git clone as builds fail with the release artifact." }
   - { date: "13.05.21:", desc: "Make readme clearer." }

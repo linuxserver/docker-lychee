@@ -1,0 +1,2 @@
+# min   hour    day     month   weekday command
+*       *       *       *       *       cd /app/www; /usr/bin/php artisan schedule:run 2>&1

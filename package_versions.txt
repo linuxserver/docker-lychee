@@ -133,7 +133,7 @@ libopenmpt                                                                      
 libpciaccess                                                                      0.17-r2                 apk           
 libplacebo                                                                        5.264.1-r1              apk           
 libpng                                                                            1.6.39-r3               apk           
-libpq                                                                             15.3-r0                 apk           
+libpq                                                                             15.4-r0                 apk           
 libproc2                                                                          4.0.3-r1                apk           
 libpulse                                                                          16.1-r10                apk           
 libraw                                                                            0.21.1-r1               apk           
@@ -209,7 +209,6 @@ perl-git                                                                        
 perl-image-exiftool                                                               12.60-r0                apk           
 php-cli                                                                           8.2.8                   binary        
 php-ffmpeg/php-ffmpeg                                                             v1.1.0                  php-composer  
-php-fpm                                                                           8.2.8                   binary        
 php-http/discovery                                                                1.19.1                  php-composer  
 php-http/guzzle7-adapter                                                          1.0.0                   php-composer  
 php-http/httplug                                                                  2.4.0                   php-composer  

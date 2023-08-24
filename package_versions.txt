@@ -189,7 +189,6 @@ nette/schema                                                                    
 nette/utils                                                                       v4.0.1                  php-composer  
 nettle                                                                            3.8.1-r2                apk           
 nghttp2-libs                                                                      1.55.1-r0               apk           
-nginx                                                                             1.24.0                  binary        
 nginx                                                                             1.24.0-r6               apk           
 numactl                                                                           2.0.16-r4               apk           
 nunomaduro/termwind                                                               v1.15.1                 php-composer  
@@ -208,7 +207,6 @@ perl-error                                                                      
 perl-git                                                                          2.40.1-r0               apk           
 perl-image-exiftool                                                               12.60-r0                apk           
 php-ffmpeg/php-ffmpeg                                                             v1.1.0                  php-composer  
-php-fpm                                                                           8.2.8                   binary        
 php-http/discovery                                                                1.19.1                  php-composer  
 php-http/guzzle7-adapter                                                          1.0.0                   php-composer  
 php-http/httplug                                                                  2.4.0                   php-composer  

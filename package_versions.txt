@@ -3,7 +3,7 @@ Reads from stdin without leaking info to the terminal and outputs back to stdout
 alpine-baselayout                                                                 3.4.3-r1                apk           
 alpine-baselayout-data                                                            3.4.3-r1                apk           
 alpine-keys                                                                       2.4-r1                  apk           
-alpine-release                                                                    3.18.3-r0               apk           
+alpine-release                                                                    3.18.4-r0               apk           
 alsa-lib                                                                          1.2.9-r1                apk           
 aom-libs                                                                          3.6.1-r0                apk           
 apache2-utils                                                                     2.4.57-r3               apk           
@@ -175,7 +175,7 @@ lychee-org/nestedset                                                            
 lychee-org/php-exif                                                               v1.0.2                  php-composer  
 lz4-libs                                                                          1.9.4-r4                apk           
 maennchen/zipstream-php                                                           3.1.0                   php-composer  
-mbedtls                                                                           2.28.4-r0               apk           
+mbedtls                                                                           2.28.5-r0               apk           
 monolog/monolog                                                                   3.4.0                   php-composer  
 mpg123-libs                                                                       1.31.3-r1               apk           
 musl                                                                              1.2.4-r1                apk           
@@ -235,7 +235,7 @@ php82-pdo_sqlite                                                                
 php82-pecl-igbinary                                                               3.2.14-r0               apk           
 php82-pecl-imagick                                                                3.7.0-r5                apk           
 php82-pecl-msgpack                                                                2.2.0-r0                apk           
-php82-pecl-redis                                                                  6.0.0-r0                apk           
+php82-pecl-redis                                                                  6.0.1-r0                apk           
 php82-pgsql                                                                       8.2.10-r0               apk           
 php82-phar                                                                        8.2.10-r0               apk           
 php82-session                                                                     8.2.10-r0               apk           

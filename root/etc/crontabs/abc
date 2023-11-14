@@ -1,1 +1,2 @@
-* * * * * cd /app/www && php artisan schedule:run >> /dev/null 2>&1
+# min   hour    day     month   weekday command
+*       *       *       *       *       cd /app/www; /usr/bin/php artisan schedule:run 2>&1

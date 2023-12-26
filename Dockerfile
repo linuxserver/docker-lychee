@@ -10,8 +10,12 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="hackerman"
 
 RUN \
+  echo "**** install build packages ****" && \
+  apk add --no-cache --upgrade --virtual=build-dependencies \
+    nodejs \
+    npm && \
   echo "**** install runtime packages ****" && \
-  apk add --no-cache \
+  apk add --no-cache --upgrade \
     exiftool \
     ffmpeg \
     gd \
@@ -54,7 +58,14 @@ RUN \
   rm -rf /app/www/storage/framework/sessions/* && \
   rm -rf /app/www/storage/framework/views/* && \
   rm -rf /app/www/storage/logs/* && \
+  echo "**** build npm dependencies ****" && \
+  cd /app/www && \
+  npm ci --no-audit && \
+  npm run build && \
+  rm -rf /app/www/node_modules && \
   echo "**** cleanup ****" && \
+  apk del --purge \
+    build-dependencies && \
   rm -rf \
     /tmp/* \
     $HOME/.cache \

@@ -347,7 +347,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
-* **25.12.23:** - Build npm dependencies into image.
+* **25.12.23:** - Existing users should update: site-confs/default.conf - Cleanup default site conf. Build npm dependencies into image.
 * **25.05.23:** - Rebase to Alpine 3.18, deprecate armhf.
 * **13.04.23:** - Move ssl.conf include to default.conf.
 * **11.01.23:** - Rebasing to alpine 3.17 with php8.1. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base)). Switch to git clone as builds fail with the release artifact.

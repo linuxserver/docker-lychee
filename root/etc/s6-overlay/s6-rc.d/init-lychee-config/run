@@ -43,12 +43,9 @@ if [[ "${DB_CONNECTION}" = "sqlite" ]] || [[ -z "${DB_CONNECTION}" ]]; then
         lsiown abc:abc "${DB_DATABASE}"
     else
         DB_DATABASE="/config/database.sqlite"
-        export DB_DATABASE
+        printf "/config/database.sqlite" > /var/run/s6/container_environment/DB_DATABASE
     fi
 elif [[ "${DB_CONNECTION}" = "mysql" ]]; then
-    if [[ -z "${DB_PORT}" ]]; then
-        DB_PORT="3306"
-    fi
     echo "Waiting for DB to be available"
     END=$((SECONDS + 30))
     while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
@@ -66,13 +63,10 @@ elif [[ "${DB_CONNECTION}" = "mysql" ]]; then
         fi
     done
 elif [[ "${DB_CONNECTION}" = "pgsql" ]]; then
-    if [[ -z "${DB_PORT}" ]]; then
-    DB_PORT="5432"
-    fi
     echo "Waiting for DB to be available"
     END=$((SECONDS + 30))
     while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
-        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT}" | tr -d '\0') ]]; then
+        if pg_isready -h "${DB_HOST}" -p "${DB_PORT}" -q; then
             if [[ -n "${RUN}" ]]; then
                 break
             fi

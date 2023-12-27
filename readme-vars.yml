@@ -26,7 +26,7 @@ param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "http gui" }
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "DB_CONNECTION", env_value: "sqlite", desc: "DB type, from `sqlite`, `mysql`, `pqsql`." }
+  - { env_var: "DB_CONNECTION", env_value: "", desc: "DB type, from `sqlite`, `mysql`, `pqsql`." }
   - { env_var: "DB_HOST", env_value: "", desc: "DB server hostname. For `mysql` and `pgsql` only." }
   - { env_var: "DB_PORT", env_value: "", desc: "DB server port. For `mysql` and `pgsql` only." }
   - { env_var: "DB_USERNAME", env_value: "", desc: "DB user. For `mysql` and `pgsql` only." }

@@ -33,7 +33,8 @@ RUN \
     php82-pecl-imagick \
     php82-pecl-redis \
     php82-sqlite3 \
-    php82-tokenizer && \
+    php82-tokenizer \
+    postgresql15-client && \
   echo "**** configure php-fpm to pass env vars ****" && \
   sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php82/php-fpm.d/www.conf && \
   grep -qxF 'clear_env = no' /etc/php82/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php82/php-fpm.d/www.conf && \

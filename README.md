@@ -41,10 +41,6 @@ Find us at:
 
 [Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely."
 
-### UPGRADE WARNING
-
-Please note that the v4 upgrade process resets ALL password-protected albums. Any albums that were made public with a password will need to be re-secured.
-
 [![lychee](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png)](https://lycheeorg.github.io/)
 
 ## Supported Architectures
@@ -63,9 +59,10 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-**This image will not work with a prefilled `/pictures` mount, lychee wants total control over this folder**
+**This image will not work with a prefilled `/pictures` mount, Lychee wants total control over this folder**
 
-Setup mysql/mariadb and account via the webui, accessible at http://SERVERIP:PORT
+Setup account via the webui, accessible at http://SERVERIP:PORT
+
 More info at [lychee](https://lycheeorg.github.io/).
 
 ### Customization
@@ -81,7 +78,7 @@ post_max_size = 500M
 upload_max_filesize = 500M
 ```
 
-After making these changes, you'll need to restart the Docker container for the changes to take effect. Here's how to do it:
+After making these changes, you'll need to restart the Docker container for the changes to take effect.
 
 **Please note that these changes might have implications on your server's performance, depending on its available resources. Thus, it's recommended to modify these settings with caution.**
 
@@ -92,43 +89,31 @@ To help you get started creating a container from this image you can either use 
 ### docker-compose (recommended, [click here for more info](https://docs.linuxserver.io/general/docker-compose))
 
 ```yaml
-version: "3"
+---
+version: "2.1"
 services:
-  mariadb:
-    image: lscr.io/linuxserver/mariadb:latest
-    container_name: lychee_mariadb
-    restart: always
-    volumes:
-      - /path/to/mariadb/data:/config
-    environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=lychee
-      - MYSQL_USER=lychee
-      - MYSQL_PASSWORD=dbpassword
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
   lychee:
     image: lscr.io/linuxserver/lychee:latest
     container_name: lychee
-    restart: always
-    depends_on:
-      - mariadb
-    volumes:
-      - /path/to/config:/config
-      - /path/to/pictures:/pictures
     environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=mariadb
-      - DB_PORT=3306
-      - DB_USERNAME=lychee
-      - DB_PASSWORD=dbpassword
-      - DB_DATABASE=lychee
-      - PGID=1000
       - PUID=1000
-      - TZ=Europe/London
+      - PGID=1000
+      - TZ=Etc/UTC
+      - DB_CONNECTION=sqlite
+      - DB_HOST=
+      - DB_PORT=
+      - DB_USERNAME=
+      - DB_PASSWORD=
+      - DB_DATABASE=
+      - APP_NAME=Lychee #optional
+      - APP_URL= #optional
+      - APP_FORCE_HTTPS= #optional
+    volumes:
+      - /path/to/lychee/config:/config
+      - /path/to/pictures:/pictures
     ports:
       - 80:80
+    restart: unless-stopped
 ```
 
 ### docker cli ([click here for more info](https://docs.docker.com/engine/reference/commandline/cli/))
@@ -139,14 +124,17 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
-  -e DB_CONNECTION=mysql \
-  -e DB_HOST=mariadb \
-  -e DB_PORT=3306 \
-  -e DB_USERNAME=lychee \
-  -e DB_PASSWORD=dbpassword \
-  -e DB_DATABASE=lychee \
+  -e DB_CONNECTION=sqlite \
+  -e DB_HOST= \
+  -e DB_PORT= \
+  -e DB_USERNAME= \
+  -e DB_PASSWORD= \
+  -e DB_DATABASE= \
+  -e APP_NAME=Lychee `#optional` \
+  -e APP_URL= `#optional` \
+  -e APP_FORCE_HTTPS= `#optional` \
   -p 80:80 \
-  -v /path/to/config:/config \
+  -v /path/to/lychee/config:/config \
   -v /path/to/pictures:/pictures \
   --restart unless-stopped \
   lscr.io/linuxserver/lychee:latest
@@ -162,14 +150,17 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e DB_CONNECTION=mysql` | for specifying the database type |
-| `-e DB_HOST=mariadb` | for specifying the database host |
-| `-e DB_PORT=3306` | for specifying the database port |
-| `-e DB_USERNAME=lychee` | for specifying the database user |
-| `-e DB_PASSWORD=dbpassword` | for specifying the database password |
-| `-e DB_DATABASE=lychee` | for specifying the database to be used |
-| `-v /config` | Contains all relevant configuration files. |
-| `-v /pictures` | Where lychee will store uploaded data. |
+| `-e DB_CONNECTION=sqlite` | DB type, from `sqlite`, `mysql`, `pqsql`. |
+| `-e DB_HOST=` | DB server hostname. For `mysql` and `pgsql` only. |
+| `-e DB_PORT=` | DB server port. For `mysql` and `pgsql` only. |
+| `-e DB_USERNAME=` | DB user. For `mysql` and `pgsql` only. |
+| `-e DB_PASSWORD=` | DB password. For `mysql` and `pgsql` only. |
+| `-e DB_DATABASE=` | Path to DB file for `sqlite`. DB name for `mysql` and `pgsql`. |
+| `-e APP_NAME=Lychee` | The gallery name. |
+| `-e APP_URL=` | The URL you will use to access Lychee including protocol, and port where appropriate. |
+| `-e APP_FORCE_HTTPS=` | Set to `true` if running behind an https reverse proxy. |
+| `-v /config` | Persistent config files. |
+| `-v /pictures` | Where lychee will store uploaded images. |
 
 ## Environment variables from files (Docker secrets)
 
@@ -347,6 +338,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **27.12.23:** - Update image to support v5.
 * **25.12.23:** - Existing users should update: site-confs/default.conf - Cleanup default site conf. Build npm dependencies into image.
 * **25.05.23:** - Rebase to Alpine 3.18, deprecate armhf.
 * **13.04.23:** - Move ssl.conf include to default.conf.

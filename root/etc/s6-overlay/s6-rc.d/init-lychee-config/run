@@ -43,7 +43,7 @@ if [[ "${DB_CONNECTION}" = "sqlite" ]] || [[ -z "${DB_CONNECTION}" ]]; then
         lsiown abc:abc "${DB_DATABASE}"
     else
         DB_DATABASE="/config/database.sqlite"
-        printf "/config/database.sqlite" > /var/run/s6/container_environment/DB_DATABASE
+        export DB_DATABASE
     fi
 elif [[ "${DB_CONNECTION}" = "mysql" ]]; then
     echo "Waiting for DB to be available"

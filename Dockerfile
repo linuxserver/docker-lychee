@@ -73,7 +73,8 @@ RUN \
   rm -rf \
     /tmp/* \
     $HOME/.cache \
-    $HOME/.composer
+    $HOME/.composer \
+    $HOME/.npm
 
 # copy local files
 COPY root/ /

@@ -19,7 +19,6 @@ if [[ ! -L /app/www/public/uploads ]]; then
 fi
 
 if [[ ! -L /app/www/public/sym ]]; then
-    cp -nr /app/www/public/sym/* /config/sym 2> >(grep -v 'cp: not replacing')
     rm -rf /app/www/public/sym
     ln -s /config/sym /app/www/public/sym
 fi

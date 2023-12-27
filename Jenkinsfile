@@ -33,7 +33,7 @@ pipeline {
     CI_PORT='80'
     CI_SSL='false'
     CI_DELAY='120'
-    CI_DOCKERENV='TZ=US/Pacific'
+    CI_DOCKERENV='TZ=Europe/London|DB_CONNECTION=sqlite'
     CI_AUTH='user:password'
     CI_WEBPATH=''
   }

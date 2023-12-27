@@ -99,7 +99,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - DB_CONNECTION=sqlite
+      - DB_CONNECTION=
       - DB_HOST=
       - DB_PORT=
       - DB_USERNAME=
@@ -124,7 +124,7 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
-  -e DB_CONNECTION=sqlite \
+  -e DB_CONNECTION= \
   -e DB_HOST= \
   -e DB_PORT= \
   -e DB_USERNAME= \
@@ -150,7 +150,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e DB_CONNECTION=sqlite` | DB type, from `sqlite`, `mysql`, `pqsql`. |
+| `-e DB_CONNECTION=` | DB type, from `sqlite`, `mysql`, `pqsql`. |
 | `-e DB_HOST=` | DB server hostname. For `mysql` and `pgsql` only. |
 | `-e DB_PORT=` | DB server port. For `mysql` and `pgsql` only. |
 | `-e DB_USERNAME=` | DB user. For `mysql` and `pgsql` only. |

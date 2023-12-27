@@ -6,25 +6,25 @@ mkdir -p \
     /pictures
 
 # pre-populate /pictures directory if it's empty
-if [ ! "$(ls -A /pictures)" ]; then
+if [[ ! "$(ls -A /pictures)" ]]; then
     mv /app/www/public/uploads/* /pictures/
     lsiown -R abc:abc /pictures
-elif [ ! "$(ls -A /pictures/import 2>/dev/null)" ]; then
+elif [[ ! "$(ls -A /pictures/import 2>/dev/null)" ]]; then
     printf "\n\n\n\nSeems like you tried to use a path thats not managed by lychee, this is unsupported\n\n\n\n"
 fi
 
-if [ ! -L /app/www/public/uploads ]; then
+if [[ ! -L /app/www/public/uploads ]]; then
     rm -rf /app/www/public/uploads
     ln -s /pictures /app/www/public/uploads
 fi
 
-if [ ! -L /app/www/public/sym ]; then
+if [[ ! -L /app/www/public/sym ]]; then
     cp -nr /app/www/public/sym/* /config/sym 2> >(grep -v 'cp: not replacing')
     rm -rf /app/www/public/sym
     ln -s /config/sym /app/www/public/sym
 fi
 
-if [ ! -L /app/www/storage/logs ]; then
+if [[ ! -L /app/www/storage/logs ]]; then
     rm -rf /app/www/storage/logs
     ln -s /config/log /app/www/storage/logs
 fi
@@ -35,9 +35,9 @@ ln -s /config/user.ini /etc/php82/conf.d/99-user.ini
 
 cd /app/www || exit 1
 
-if [ "${DB_CONNECTION}" = "sqlite" ] || [ -z "${DB_CONNECTION}" ]; then
-    if [ -n "${DB_DATABASE}" ]; then
-        if [ ! -e "${DB_DATABASE}" ]; then
+if [[ "${DB_CONNECTION}" = "sqlite" ]] || [[ -z "${DB_CONNECTION}" ]]; then
+    if [[ -n "${DB_DATABASE}" ]]; then
+        if [[ ! -e "${DB_DATABASE}" ]]; then
             touch "${DB_DATABASE}"
             lsiown abc:abc "${DB_DATABASE}"
         fi
@@ -46,7 +46,7 @@ if [ "${DB_CONNECTION}" = "sqlite" ] || [ -z "${DB_CONNECTION}" ]; then
         DB_DATABASE="/config/database.sqlite"
         export DB_DATABASE
     fi
-elif [ "${DB_CONNECTION}" = "mysql" ]; then
+elif [[ "${DB_CONNECTION}" = "mysql" ]]; then
     if [[ -z "${DB_PORT}" ]]; then
         DB_PORT="3306"
     fi
@@ -66,7 +66,7 @@ elif [ "${DB_CONNECTION}" = "mysql" ]; then
             sleep 1
         fi
     done
-elif [ "${DB_CONNECTION}" = "pgsql" ]; then
+elif [[ "${DB_CONNECTION}" = "pgsql" ]]; then
     if [[ -z "${DB_PORT}" ]]; then
     DB_PORT="5432"
     fi
@@ -88,10 +88,10 @@ elif [ "${DB_CONNECTION}" = "pgsql" ]; then
     done
 fi
 
-if [ ! -e /config/.env ]; then
+if [[ ! -e /config/.env ]]; then
     cp -n /app/www/.env.example /config/.env 2> >(grep -v 'cp: not replacing')
 fi
-if [ ! -L /app/www/.env ]; then
+if [[ ! -L /app/www/.env ]]; then
     rm -rf /app/www/.env
     ln -s /config/.env /app/www/.env
 fi
@@ -104,13 +104,13 @@ fi
 php /app/www/artisan migrate --force
 
 touch -a /config/user.css
-if [ ! -L /app/www/public/dist/user.css ]; then
+if [[ ! -L /app/www/public/dist/user.css ]]; then
     rm /app/www/public/dist/user.css
     ln -s /config/user.css /app/www/public/dist/user.css
 fi
 
 touch -a /config/custom.js
-if [ ! -L /app/www/public/dist/custom.js ]; then
+if [[ ! -L /app/www/public/dist/custom.js ]]; then
     rm /app/www/public/dist/custom.js
     ln -s /config/custom.js /app/www/public/dist/custom.js
 fi

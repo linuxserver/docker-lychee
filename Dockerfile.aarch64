@@ -19,6 +19,7 @@ RUN \
     exiftool \
     ffmpeg \
     gd \
+    grep \
     imagemagick \
     jpegoptim \
     php82-bcmath \

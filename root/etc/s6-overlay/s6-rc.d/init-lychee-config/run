@@ -1,9 +1,8 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-echo "**** Make sure the uploads (pictures), sym, and logs folders exist ****"
 mkdir -p \
-    /config/{sym,logs} \
+    /config/{sym,log} \
     /pictures
 
 # pre-populate /pictures directory if it's empty
@@ -14,230 +13,112 @@ elif [ ! "$(ls -A /pictures/import 2>/dev/null)" ]; then
     printf "\n\n\n\nSeems like you tried to use a path thats not managed by lychee, this is unsupported\n\n\n\n"
 fi
 
-echo "**** Create the symbolic link for the uploads folder ****"
 if [ ! -L /app/www/public/uploads ]; then
-    cp -nr /app/www/public/uploads/* /pictures
     rm -rf /app/www/public/uploads
     ln -s /pictures /app/www/public/uploads
 fi
 
-echo "**** Create the symbolic link for the sym folder ****"
 if [ ! -L /app/www/public/sym ]; then
-    touch /app/www/public/sym/empty_file
-    cp -nr /app/www/public/sym/* /config/sym
+    cp -nr /app/www/public/sym/* /config/sym 2> >(grep -v 'cp: not replacing')
     rm -rf /app/www/public/sym
     ln -s /config/sym /app/www/public/sym
 fi
 
-echo "**** Create the symbolic link for the logs folder ****"
 if [ ! -L /app/www/storage/logs ]; then
-    touch /app/www/storage/logs/empty_file
-    cp -nr /app/www/storage/logs/* /config/logs
     rm -rf /app/www/storage/logs
-    ln -s /config/logs /app/www/storage/logs
+    ln -s /config/log /app/www/storage/logs
 fi
 
-echo "**** Create user.ini for php settings ****"
-cp -n /defaults/user.ini /config/user.ini
+cp -n /defaults/user.ini /config/user.ini 2> >(grep -v 'cp: not replacing')
 rm -rf /etc/php82/conf.d/99-user.ini
 ln -s /config/user.ini /etc/php82/conf.d/99-user.ini
-
-if [ -z "${DB_CONNECTION}" ]; then
-    DB_CONNECTION=$(grep "^DB_CONNECTION=" /config/.env 2>/dev/null | cut -d'=' -f2-)
-fi
 
 cd /app/www || exit 1
 
 if [ "${DB_CONNECTION}" = "sqlite" ] || [ -z "${DB_CONNECTION}" ]; then
     if [ -n "${DB_DATABASE}" ]; then
         if [ ! -e "${DB_DATABASE}" ]; then
-            echo "**** Specified sqlite database doesn't exist. Creating it ****"
-            echo "**** Please make sure your database is on a persistent volume ****"
             touch "${DB_DATABASE}"
             lsiown abc:abc "${DB_DATABASE}"
         fi
         lsiown abc:abc "${DB_DATABASE}"
     else
-        DB_DATABASE="/app/www/database/database.sqlite"
+        DB_DATABASE="/config/database.sqlite"
         export DB_DATABASE
-        if [ ! -L "${DB_DATABASE}" ]; then
-            if [ ! -e /config/database.sqlite ]; then
-                echo "**** Copy the default database to /config ****"
-                cp "${DB_DATABASE}" /config/database.sqlite
+    fi
+elif [ "${DB_CONNECTION}" = "mysql" ]; then
+    if [[ -z "${DB_PORT}" ]]; then
+        DB_PORT="3306"
+    fi
+    echo "Waiting for DB to be available"
+    END=$((SECONDS + 30))
+    while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
+        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT}" | tr -d '\0') ]]; then
+            if [[ -n "${RUN}" ]]; then
+                break
             fi
-            echo "**** Create the symbolic link for the database ****"
-            rm "${DB_DATABASE}"
-            ln -s /config/database.sqlite "${DB_DATABASE}"
+            RUN="RAN"
+            # we sleep here again due to first run init on DB containers
+            if [[ ! -f /dbwait.lock ]]; then
+                sleep 5
+            fi
+        else
+            sleep 1
         fi
+    done
+elif [ "${DB_CONNECTION}" = "pgsql" ]; then
+    if [[ -z "${DB_PORT}" ]]; then
+    DB_PORT="5432"
     fi
-else
-    if [ -n "${DB_HOST}" ] && [ -n "${DB_PORT}" ]; then
-        # check for the mysql endpoint for 30 seconds
-        until nc -z -v -w30 "${DB_HOST}" "${DB_PORT}"; do
-            echo "Waiting for database connection..."
-            sleep 5
-        done
-    fi
+    echo "Waiting for DB to be available"
+    END=$((SECONDS + 30))
+    while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
+        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT}" | tr -d '\0') ]]; then
+            if [[ -n "${RUN}" ]]; then
+                break
+            fi
+            RUN="RAN"
+            # we sleep here again due to first run init on DB containers
+            if [[ ! -f /dbwait.lock ]]; then
+                sleep 5
+            fi
+        else
+            sleep 1
+        fi
+    done
 fi
 
-echo "**** Copy the .env to /config ****"
 if [ ! -e /config/.env ]; then
-    sed 's|^#DB_DATABASE=$|DB_DATABASE='"${DB_DATABASE}"'|' /app/www/.env.example >/config/.env
+    cp -n /app/www/.env.example /config/.env 2> >(grep -v 'cp: not replacing')
 fi
 if [ ! -L /app/www/.env ]; then
     rm -rf /app/www/.env
     ln -s /config/.env /app/www/.env
 fi
 
-echo "**** Inject .env values ****"
-if [ -n "${APP_NAME}" ]; then
-    sed -i "s|APP_NAME=.*|APP_NAME=${APP_NAME}|i" /config/.env
-fi
-if [ -n "${APP_ENV}" ]; then
-    sed -i "s|APP_ENV=.*|APP_ENV=${APP_ENV}|i" /config/.env
-fi
-if [ -n "${APP_DEBUG}" ]; then
-    sed -i "s|APP_DEBUG=.*|APP_DEBUG=${APP_DEBUG}|i" /config/.env
-fi
-if [ -n "${APP_URL}" ]; then
-    sed -i "s|APP_URL=.*|APP_URL=${APP_URL}|i" /config/.env
-fi
-if [ -n "${APP_FORCE_HTTPS}" ]; then
-    sed -i "s|APP_FORCE_HTTPS=.*|APP_FORCE_HTTPS=${APP_FORCE_HTTPS}|i" /config/.env
-fi
-if [ -n "${DEBUGBAR_ENABLED}" ]; then
-    sed -i "s|DEBUGBAR_ENABLED=.*|DEBUGBAR_ENABLED=${DEBUGBAR_ENABLED}|i" /config/.env
-fi
-if [ -n "${DB_OLD_LYCHEE_PREFIX}" ]; then
-    sed -i "s|DB_OLD_LYCHEE_PREFIX=.*|DB_OLD_LYCHEE_PREFIX=${DB_OLD_LYCHEE_PREFIX}|i" /config/.env
-fi
-if [ -n "${DB_CONNECTION}" ]; then
-    sed -i "s|DB_CONNECTION=.*|DB_CONNECTION=${DB_CONNECTION}|i" /config/.env
-fi
-if [ -n "${DB_HOST}" ]; then
-    sed -i "s|DB_HOST=.*|DB_HOST=${DB_HOST}|i" /config/.env
-fi
-if [ -n "${DB_PORT}" ]; then
-    sed -i "s|DB_PORT=.*|DB_PORT=${DB_PORT}|i" /config/.env
-fi
-if [ -n "${DB_DATABASE}" ]; then
-    sed -i "s|DB_DATABASE=.*|DB_DATABASE=${DB_DATABASE}|i" /config/.env
-fi
-if [ -n "${DB_USERNAME}" ]; then
-    sed -i "s|DB_USERNAME=.*|DB_USERNAME=${DB_USERNAME}|i" /config/.env
-fi
-if [ -n "${DB_PASSWORD_FILE}" ]; then
-    DB_PASSWORD=$(<"${DB_PASSWORD_FILE}")
-    export DB_PASSWORD
-fi
-if [ -n "${DB_PASSWORD}" ]; then
-    sed -i "s|DB_PASSWORD=.*|DB_PASSWORD=${DB_PASSWORD}|i" /config/.env
-fi
-if [ -z "${TIMEZONE}" ] && [ -n "${TZ}" ]; then
-    TIMEZONE="${TZ}"
-    export TIMEZONE
-fi
-if [ -n "${TIMEZONE}" ]; then
-    sed -i "s|TIMEZONE=.*|TIMEZONE=${TIMEZONE}|i" /config/.env
-fi
-if [ -n "${ENABLE_TOKEN_AUTH}" ]; then
-    sed -i "s|ENABLE_TOKEN_AUTH=.*|ENABLE_TOKEN_AUTH=${ENABLE_TOKEN_AUTH}|i" /config/.env
-fi
-if [ -n "${CACHE_DRIVER}" ]; then
-    sed -i "s|CACHE_DRIVER=.*|CACHE_DRIVER=${CACHE_DRIVER}|i" /config/.env
-fi
-if [ -n "${SESSION_DRIVER}" ]; then
-    sed -i "s|SESSION_DRIVER=.*|SESSION_DRIVER=${SESSION_DRIVER}|i" /config/.env
-fi
-if [ -n "${SESSION_LIFETIME}" ]; then
-    sed -i "s|SESSION_LIFETIME=.*|SESSION_LIFETIME=${SESSION_LIFETIME}|i" /config/.env
-fi
-if [ -n "${QUEUE_CONNECTION}" ]; then
-    sed -i "s|QUEUE_DRIVER=.*|QUEUE_DRIVER=${QUEUE_DRIVER}|i" /config/.env
-fi
-if [ -n "${SECURITY_HEADER_HSTS_ENABLE}" ]; then
-    sed -i "s|SECURITY_HEADER_HSTS_ENABLE=.*|SECURITY_HEADER_HSTS_ENABLE=${SECURITY_HEADER_HSTS_ENABLE}|i" /config/.env
-fi
-if [ -n "${SESSION_SECURE_COOKIE}" ]; then
-    sed -i "s|SESSION_SECURE_COOKIE=.*|SESSION_SECURE_COOKIE=${SESSION_SECURE_COOKIE}|i" /config/.env
-fi
-if [ -n "${REDIS_SCHEME}" ]; then
-    sed -i "s|REDIS_SCHEME=.*|REDIS_SCHEME=${REDIS_SCHEME}|i" /config/.env
-fi
-if [ -n "${REDIS_PATH}" ]; then
-    sed -i "s|REDIS_PATH=.*|REDIS_PATH=${REDIS_PATH}|i" /config/.env
-fi
-if [ -n "${REDIS_HOST}" ]; then
-    sed -i "s|REDIS_HOST=.*|REDIS_HOST=${REDIS_HOST}|i" /config/.env
-fi
-if [ -n "${REDIS_PORT}" ]; then
-    sed -i "s|REDIS_PORT=.*|REDIS_PORT=${REDIS_PORT}|i" /config/.env
-fi
-if [ -n "${REDIS_PASSWORD_FILE}" ]; then
-    REDIS_PASSWORD=$(<"${REDIS_PASSWORD_FILE}")
-    export REDIS_PASSWORD
-fi
-if [ -n "${REDIS_PASSWORD}" ]; then
-    sed -i "s|REDIS_PASSWORD=.*|REDIS_PASSWORD=${REDIS_PASSWORD}|i" /config/.env
-fi
-if [ -n "${MAIL_DRIVER}" ]; then
-    sed -i "s|MAIL_DRIVER=.*|MAIL_DRIVER=${MAIL_DRIVER}|i" /config/.env
-fi
-if [ -n "${MAIL_HOST}" ]; then
-    sed -i "s|MAIL_HOST=.*|MAIL_HOST=${MAIL_HOST}|i" /config/.env
-fi
-if [ -n "${MAIL_PORT}" ]; then
-    sed -i "s|MAIL_PORT=.*|MAIL_PORT=${MAIL_PORT}|i" /config/.env
-fi
-if [ -n "${MAIL_USERNAME}" ]; then
-    sed -i "s|MAIL_USERNAME=.*|MAIL_USERNAME=${MAIL_USERNAME}|i" /config/.env
-fi
-if [ -n "${MAIL_PASSWORD_FILE}" ]; then
-    MAIL_PASSWORD=$(<"${MAIL_PASSWORD_FILE}")
-    export MAIL_PASSWORD
-fi
-if [ -n "${MAIL_PASSWORD}" ]; then
-    sed -i "s|MAIL_PASSWORD=.*|MAIL_PASSWORD=${MAIL_PASSWORD}|i" /config/.env
-fi
-if [ -n "${MAIL_ENCRYPTION}" ]; then
-    sed -i "s|MAIL_ENCRYPTION=.*|MAIL_ENCRYPTION=${MAIL_ENCRYPTION}|i" /config/.env
-fi
-if [ -n "${MAIL_FROM_NAME}" ]; then
-    sed -i "s|MAIL_FROM_NAME=.*|MAIL_FROM_NAME=${MAIL_FROM_NAME}|i" /config/.env
-fi
-if [ -n "${MAIL_FROM_ADDRESS}" ]; then
-    sed -i "s|MAIL_FROM_ADDRESS=.*|MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}|i" /config/.env
-fi
-if [ -n "${TRUSTED_PROXIES}" ]; then
-    sed -i "s|TRUSTED_PROXIES=.*|TRUSTED_PROXIES=${TRUSTED_PROXIES}|i" /config/.env
+if grep -qPe '^APP_KEY=$' /config/.env; then
+    echo "**** Generating app key ****"
+    php /app/www/artisan key:generate -n
 fi
 
-if [ ! -e /tmp/first_run ]; then
-    echo "**** Generate the key (to make sure that cookies cannot be decrypted etc) ****"
-    php artisan key:generate -n
-    echo "**** Migrate the database ****"
-    php artisan migrate --force
-    touch /tmp/first_run
-fi
+php /app/www/artisan migrate --force
 
-echo "**** Make sure user.css exists and symlink it ****"
 touch -a /config/user.css
 if [ ! -L /app/www/public/dist/user.css ]; then
     rm /app/www/public/dist/user.css
     ln -s /config/user.css /app/www/public/dist/user.css
 fi
 
-echo "**** Make sure custom.js exists and symlink it ****"
 touch -a /config/custom.js
 if [ ! -L /app/www/public/dist/custom.js ]; then
     rm /app/www/public/dist/custom.js
     ln -s /config/custom.js /app/www/public/dist/custom.js
 fi
 
-echo "**** Make sure Laravel's log exists ****"
-touch /config/logs/laravel.log
-
-echo "**** Set Permissions ****"
+# permissions
 lsiown -R abc:abc \
-    /app/www \
+    /app/www/storage \
     /config
+
+# set lockfile to avoid DB waits for this specific container
+touch /dbwait.lock

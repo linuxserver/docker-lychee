@@ -2,7 +2,8 @@
 # shellcheck shell=bash
 
 mkdir -p \
-    /config/{sym,log} \
+    /config/sym \
+    /config/log/lychee \
     /pictures
 
 # pre-populate /pictures directory if it's empty
@@ -25,7 +26,7 @@ fi
 
 if [[ ! -L /app/www/storage/logs ]]; then
     rm -rf /app/www/storage/logs
-    ln -s /config/log /app/www/storage/logs
+    ln -s /config/log/lychee /app/www/storage/logs
 fi
 
 cp -n /defaults/user.ini /config/user.ini 2> >(grep -v 'cp: not replacing')

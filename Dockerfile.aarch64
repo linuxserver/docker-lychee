@@ -19,6 +19,7 @@ RUN \
     exiftool \
     ffmpeg \
     gd \
+    grep \
     imagemagick \
     jpegoptim \
     php82-bcmath \
@@ -26,15 +27,14 @@ RUN \
     php82-exif \
     php82-gd \
     php82-intl \
-    php82-mysqli \
     php82-pdo_mysql \
     php82-pdo_pgsql \
     php82-pdo_sqlite \
     php82-pecl-imagick \
     php82-pecl-redis \
-    php82-pgsql \
     php82-sqlite3 \
-    php82-tokenizer && \
+    php82-tokenizer \
+    postgresql15-client && \
   echo "**** configure php-fpm to pass env vars ****" && \
   sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php82/php-fpm.d/www.conf && \
   grep -qxF 'clear_env = no' /etc/php82/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php82/php-fpm.d/www.conf && \
@@ -44,7 +44,11 @@ RUN \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   mkdir -p /app/www && \
-  git clone --branch "${LYCHEE_VERSION}" --recurse-submodules https://github.com/LycheeOrg/Lychee.git /app/www && \
+  curl -o \
+    /tmp/lychee.tar.gz -L \
+    "https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
+  tar xf /tmp/lychee.tar.gz -C \
+    /app/www --strip-components=1 && \
   echo "**** install composer dependencies ****" && \
   composer install \
     -d /app/www \
@@ -69,7 +73,8 @@ RUN \
   rm -rf \
     /tmp/* \
     $HOME/.cache \
-    $HOME/.composer
+    $HOME/.composer \
+    $HOME/.npm
 
 # copy local files
 COPY root/ /

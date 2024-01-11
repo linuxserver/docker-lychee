@@ -27,11 +27,13 @@ RUN \
     php83-exif \
     php83-gd \
     php83-intl \
+    php83-mysqli \
     php83-pdo_mysql \
     php83-pdo_pgsql \
     php83-pdo_sqlite \
     php83-pecl-imagick \
     php83-pecl-redis \
+    php83-pgsql \
     php83-sqlite3 \
     php83-tokenizer \
     postgresql15-client && \

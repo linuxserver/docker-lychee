@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.18
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.19
 
 # set version label
 ARG BUILD_DATE
@@ -22,22 +22,22 @@ RUN \
     grep \
     imagemagick \
     jpegoptim \
-    php82-bcmath \
-    php82-dom \
-    php82-exif \
-    php82-gd \
-    php82-intl \
-    php82-pdo_mysql \
-    php82-pdo_pgsql \
-    php82-pdo_sqlite \
-    php82-pecl-imagick \
-    php82-pecl-redis \
-    php82-sqlite3 \
-    php82-tokenizer \
+    php83-bcmath \
+    php83-dom \
+    php83-exif \
+    php83-gd \
+    php83-intl \
+    php83-pdo_mysql \
+    php83-pdo_pgsql \
+    php83-pdo_sqlite \
+    php83-pecl-imagick \
+    php83-pecl-redis \
+    php83-sqlite3 \
+    php83-tokenizer \
     postgresql15-client && \
   echo "**** configure php-fpm to pass env vars ****" && \
-  sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php82/php-fpm.d/www.conf && \
-  grep -qxF 'clear_env = no' /etc/php82/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php82/php-fpm.d/www.conf && \
+  sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php83/php-fpm.d/www.conf && \
+  grep -qxF 'clear_env = no' /etc/php83/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php83/php-fpm.d/www.conf && \
   echo "**** install lychee ****" && \
   if [ -z "${LYCHEE_VERSION}" ]; then \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \

@@ -37,7 +37,7 @@ opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "APP_NAME", env_value: "Lychee", desc: "The gallery name." }
   - { env_var: "APP_URL", env_value: "", desc: "The URL you will use to access Lychee including protocol, and port where appropriate." }
-  - { env_var: "APP_FORCE_HTTPS", env_value: "", desc: "Set to `true` if running behind an https reverse proxy." }
+  - { env_var: "TRUSTED_PROXIES", env_value: "", desc: "Set to the IP or netmask covering your reverse proxy, if running behind one. Set to `*` to trust all IPs (**do not** use `*` if exposed to the internet`)" }
 
 # application setup block
 app_setup_block_enabled: true

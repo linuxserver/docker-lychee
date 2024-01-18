@@ -322,7 +322,8 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
-* **23.01.24:** - Rebase to Alpine 3.19 with php 8.3.
+* **18.01.24:** - Add php-sodium.
+* **13.01.24:** - Rebase to Alpine 3.19 with php 8.3.
 * **27.12.23:** - Update image to support v5.
 * **25.12.23:** - Existing users should update: site-confs/default.conf - Cleanup default site conf. Build npm dependencies into image.
 * **25.05.23:** - Rebase to Alpine 3.18, deprecate armhf.

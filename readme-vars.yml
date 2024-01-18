@@ -67,7 +67,8 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "23.01.24:", desc: "Rebase to Alpine 3.19 with php 8.3."}
+  - { date: "18.01.24:", desc: "Add php-sodium."}
+  - { date: "13.01.24:", desc: "Rebase to Alpine 3.19 with php 8.3."}
   - { date: "27.12.23:", desc: "Update image to support v5." }
   - { date: "25.12.23:", desc: "Existing users should update: site-confs/default.conf - Cleanup default site conf. Build npm dependencies into image." }
   - { date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }

@@ -3,7 +3,7 @@ Hidden Input                           1, 0, 0, 0             dotnet
 alpine-baselayout                      3.4.3-r2               apk           
 alpine-baselayout-data                 3.4.3-r2               apk           
 alpine-keys                            2.4-r1                 apk           
-alpine-release                         3.19.0-r0              apk           
+alpine-release                         3.19.1-r0              apk           
 alsa-lib                               1.2.10-r0              apk           
 anyhow                                 1.0.71                 rust-crate    
 anyhow                                 1.0.75                 rust-crate    
@@ -41,10 +41,10 @@ clap_lex                               0.3.0                  rust-crate
 clue/stream-filter                     v1.7.0                 php-composer  
 composer                               2.6.6                  binary        
 console                                0.15.5                 rust-crate    
-coreutils                              9.4-r1                 apk           
-coreutils-env                          9.4-r1                 apk           
-coreutils-fmt                          9.4-r1                 apk           
-coreutils-sha512sum                    9.4-r1                 apk           
+coreutils                              9.4-r2                 apk           
+coreutils-env                          9.4-r2                 apk           
+coreutils-fmt                          9.4-r2                 apk           
+coreutils-sha512sum                    9.4-r2                 apk           
 crc                                    3.0.1                  rust-crate    
 crc-catalog                            2.2.0                  rust-crate    
 crossbeam                              0.8.2                  rust-crate    
@@ -155,7 +155,7 @@ libbz2                                 1.0.8-r6               apk
 libc                                   0.2.144                rust-crate    
 libc                                   0.2.149                rust-crate    
 libc-utils                             0.7.2-r5               apk           
-libcrypto3                             3.1.4-r4               apk           
+libcrypto3                             3.1.4-r5               apk           
 libcurl                                8.5.0-r0               apk           
 libdav1d                               1.3.0-r0               apk           
 libdovi                                3.2.0-r1               apk           
@@ -192,7 +192,7 @@ libsndfile                             1.2.2-r0               apk
 libsodium                              1.0.19-r0              apk           
 libsrt                                 1.5.3-r0               apk           
 libssh                                 0.10.6-r0              apk           
-libssl3                                3.1.4-r4               apk           
+libssl3                                3.1.4-r5               apk           
 libstdc++                              13.2.1_git20231014-r0  apk           
 libtheora                              1.1.1-r18              apk           
 libunibreak                            5.1-r3                 apk           
@@ -243,7 +243,7 @@ nette/schema                           v1.2.5                 php-composer
 nette/utils                            v4.0.3                 php-composer  
 new_debug_unreachable                  1.0.4                  rust-crate    
 nghttp2-libs                           1.58.0-r0              apk           
-nginx                                  1.24.0-r14             apk           
+nginx                                  1.24.0-r15             apk           
 nom                                    7.1.3                  rust-crate    
 noop_proc_macro                        0.3.0                  rust-crate    
 num-bigint                             0.4.3                  rust-crate    
@@ -259,7 +259,7 @@ onevpl-libs                            2023.3.1-r2            apk
 oniguruma                              6.9.9-r0               apk           
 opcodesio/log-viewer                   dev-lycheeOrg          php-composer  
 opcodesio/mail-parser                  v0.1.6                 php-composer  
-openssl                                3.1.4-r4               apk           
+openssl                                3.1.4-r5               apk           
 opus                                   1.4-r0                 apk           
 orc                                    0.4.34-r0              apk           
 os_str_bytes                           6.5.0                  rust-crate    

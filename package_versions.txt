@@ -9,7 +9,7 @@ anyhow                                 1.0.71                 rust-crate
 anyhow                                 1.0.75                 rust-crate      
 aom-libs                               3.7.1-r0               apk             
 apache2-utils                          2.4.59-r0              apk             
-apk-tools                              2.14.3-r1              apk             
+apk-tools                              2.14.4-r0              apk             
 apr                                    1.7.4-r0               apk             
 apr-util                               1.6.3-r1               apk             
 arg_enum_proc_macro                    0.3.2                  rust-crate      
@@ -79,6 +79,7 @@ ffmpeg-libpostproc                     6.1.1-r0               apk
 ffmpeg-libswresample                   6.1.1-r0               apk             
 ffmpeg-libswscale                      6.1.1-r0               apk             
 fftw-double-libs                       3.3.10-r5              apk             
+findutils                              4.9.0-r5               apk             
 firebase/php-jwt                       v6.10.0                php-composer    
 fontconfig                             2.14.2-r4              apk             
 freetype                               2.13.2-r0              apk             
@@ -365,6 +366,7 @@ socialiteproviders/apple               5.6.1                  php-composer
 socialiteproviders/facebook            4.1.0                  php-composer    
 socialiteproviders/github              4.1.0                  php-composer    
 socialiteproviders/google              4.1.0                  php-composer    
+socialiteproviders/keycloak            5.3.0                  php-composer    
 socialiteproviders/manager             v4.5.1                 php-composer    
 socialiteproviders/microsoft           4.2.3                  php-composer    
 socialiteproviders/nextcloud           4.0.0                  php-composer    

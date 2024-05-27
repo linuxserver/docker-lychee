@@ -11,7 +11,7 @@ if [[ ! "$(ls -A /pictures)" ]]; then
     mv /app/www/public/uploads/* /pictures/
     lsiown -R abc:abc /pictures
 elif [[ ! "$(ls -A /pictures/import 2>/dev/null)" ]]; then
-    printf "\n\n\n\nSeems like you tried to use a path thats not managed by lychee, this is unsupported\n\n\n\n"
+    printf "\n\n\n\nSeems like you tried to use a path that's not managed by lychee, this is unsupported\n\n\n\n"
 fi
 
 if [[ ! -L /app/www/public/uploads ]]; then

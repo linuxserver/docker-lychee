@@ -67,6 +67,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "27.05.24:", desc: "Rebase to Alpine 3.20. Existing users should update their nginx confs to avoid http2 deprecation warnings."}
   - { date: "18.01.24:", desc: "Add php-sodium."}
   - { date: "13.01.24:", desc: "Rebase to Alpine 3.19 with php 8.3."}
   - { date: "27.12.23:", desc: "Update image to support v5." }

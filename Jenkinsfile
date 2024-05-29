@@ -33,9 +33,9 @@ pipeline {
     CI_WEB='true'
     CI_PORT='80'
     CI_SSL='false'
-    CI_DELAY='120'
-    CI_DOCKERENV='TZ=Europe/London|DB_CONNECTION=sqlite'
-    CI_AUTH='user:password'
+    CI_DELAY='60'
+    CI_DOCKERENV='DB_CONNECTION=sqlite'
+    CI_AUTH=''
     CI_WEBPATH=''
   }
   stages {

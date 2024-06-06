@@ -68,7 +68,6 @@ geocoder-php/nominatim-provider        5.7.0                  php-composer
 giflib                                 5.2.2-r0               apk             
 git                                    2.45.1-r0              apk             
 git-init-template                      2.45.1-r0              apk             
-git-perl                               2.45.1-r0              apk             
 glib                                   2.80.2-r0              apk             
 glslang-libs                           1.3.261.1-r0           apk             
 graham-campbell/markdown               v15.2.0                php-composer    
@@ -83,12 +82,12 @@ harfbuzz                               8.5.0-r0               apk
 hwdata-pci                             0.382-r0               apk             
 icu-data-en                            74.2-r0                apk             
 icu-libs                               74.2-r0                apk             
-imagemagick                            7.1.1.32-r1            apk             
-imagemagick-jpeg                       7.1.1.32-r1            apk             
-imagemagick-jxl                        7.1.1.32-r1            apk             
-imagemagick-libs                       7.1.1.32-r1            apk             
-imagemagick-tiff                       7.1.1.32-r1            apk             
-imagemagick-webp                       7.1.1.32-r1            apk             
+imagemagick                            7.1.1.32-r2            apk             
+imagemagick-jpeg                       7.1.1.32-r2            apk             
+imagemagick-jxl                        7.1.1.32-r2            apk             
+imagemagick-libs                       7.1.1.32-r2            apk             
+imagemagick-tiff                       7.1.1.32-r2            apk             
+imagemagick-webp                       7.1.1.32-r2            apk             
 imath                                  3.1.11-r2              apk             
 jpegoptim                              1.5.5-r0               apk             
 jq                                     1.7.1-r0               apk             
@@ -205,7 +204,7 @@ netcat-openbsd                         1.226-r0               apk
 nette/schema                           v1.3.0                 php-composer    
 nette/utils                            v4.0.4                 php-composer    
 nghttp2-libs                           1.62.0-r0              apk             
-nginx                                  1.26.0-r2              apk             
+nginx                                  1.26.1-r0              apk             
 numactl                                2.0.18-r0              apk             
 nunomaduro/termwind                    v1.15.1                php-composer    
 onevpl-libs                            2023.3.1-r2            apk             
@@ -223,8 +222,6 @@ paragonie/random_compat                v9.99.100              php-composer
 pcre                                   8.45-r3                apk             
 pcre2                                  10.43-r0               apk             
 perl                                   5.38.2-r0              apk             
-perl-error                             0.17029-r2             apk             
-perl-git                               2.45.1-r0              apk             
 perl-image-exiftool                    12.80-r0               apk             
 php-ffmpeg/php-ffmpeg                  v1.2.0                 php-composer    
 php-http/discovery                     1.19.4                 php-composer    
@@ -254,7 +251,7 @@ php83-pdo_pgsql                        8.3.7-r0               apk
 php83-pdo_sqlite                       8.3.7-r0               apk             
 php83-pecl-igbinary                    3.2.15-r0              apk             
 php83-pecl-imagick                     3.7.0-r0               apk             
-php83-pecl-msgpack                     2.2.0-r1               apk             
+php83-pecl-msgpack                     2.2.0-r2               apk             
 php83-pecl-redis                       6.0.2-r0               apk             
 php83-pgsql                            8.3.7-r0               apk             
 php83-phar                             8.3.7-r0               apk             

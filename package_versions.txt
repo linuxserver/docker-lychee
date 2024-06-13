@@ -58,7 +58,7 @@ findutils                              4.9.0-r5               apk
 firebase/php-jwt                       v6.10.1                php-composer    
 fontconfig                             2.15.0-r1              apk             
 freetype                               2.13.2-r0              apk             
-fribidi                                1.0.14-r0              apk             
+fribidi                                1.0.15-r0              apk             
 fruitcake/php-cors                     v1.3.0                 php-composer    
 fylax/forceutf8                        v3.0.3                 php-composer    
 gd                                     2.3.3-r9               apk             

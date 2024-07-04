@@ -3,7 +3,7 @@ Hidden Input                           1, 0, 0, 0             dotnet
 alpine-baselayout                      3.6.5-r0               apk             
 alpine-baselayout-data                 3.6.5-r0               apk             
 alpine-keys                            2.4-r1                 apk             
-alpine-release                         3.20.0-r0              apk             
+alpine-release                         3.20.1-r0              apk             
 alsa-lib                               1.2.11-r0              apk             
 aom-libs                               3.9.0-r0               apk             
 apache2-utils                          2.4.59-r0              apk             
@@ -205,7 +205,7 @@ nesbot/carbon                          3.6.0                  php-composer
 netcat-openbsd                         1.226-r0               apk             
 nette/schema                           v1.3.0                 php-composer    
 nette/utils                            v4.0.4                 php-composer    
-nghttp2-libs                           1.62.0-r0              apk             
+nghttp2-libs                           1.62.1-r0              apk             
 nginx                                  1.26.1-r0              apk             
 numactl                                2.0.18-r0              apk             
 nunomaduro/termwind                    v2.0.1                 php-composer    

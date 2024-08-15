@@ -206,7 +206,7 @@ netcat-openbsd                         1.226-r0               apk
 nette/schema                           v1.3.0                 php-composer    
 nette/utils                            v4.0.4                 php-composer    
 nghttp2-libs                           1.62.1-r0              apk             
-nginx                                  1.26.1-r0              apk             
+nginx                                  1.26.2-r0              apk             
 numactl                                2.0.18-r0              apk             
 nunomaduro/termwind                    v2.0.1                 php-composer    
 onevpl-libs                            2023.3.1-r2            apk             

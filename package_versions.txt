@@ -211,6 +211,7 @@ numactl                                2.0.18-r0              apk
 nunomaduro/termwind                    v2.0.1                 php-composer    
 onevpl-libs                            2023.3.1-r2            apk             
 oniguruma                              6.9.9-r0               apk             
+opcodesio-log-viewer                   UNKNOWN                npm             
 opcodesio/log-viewer                   dev-lycheeOrg          php-composer    
 opcodesio/mail-parser                  v0.1.6                 php-composer    
 openexr-libiex                         3.1.13-r1              apk             
@@ -256,7 +257,7 @@ php83-pdo_sqlite                       8.3.12-r0              apk
 php83-pecl-igbinary                    3.2.15-r0              apk             
 php83-pecl-imagick                     3.7.0-r0               apk             
 php83-pecl-msgpack                     2.2.0-r2               apk             
-php83-pecl-redis                       6.0.2-r0               apk             
+php83-pecl-redis                       6.1.0-r0               apk             
 php83-pgsql                            8.3.12-r0              apk             
 php83-phar                             8.3.12-r0              apk             
 php83-session                          8.3.12-r0              apk             

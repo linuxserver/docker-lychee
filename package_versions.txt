@@ -193,7 +193,7 @@ lychee-org/nestedset                   v9.0.0                 php-composer
 lychee-org/php-exif                    v1.0.4                 php-composer    
 lz4-libs                               1.9.4-r5               apk             
 maennchen/zipstream-php                3.1.0                  php-composer    
-mbedtls                                3.6.1-r0               apk             
+mbedtls                                3.6.2-r0               apk             
 monolog/monolog                        3.7.0                  php-composer    
 mpg123-libs                            1.32.6-r0              apk             
 mtdowling/jmespath.php                 2.7.0                  php-composer    

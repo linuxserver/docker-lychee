@@ -219,7 +219,7 @@ openexr-libilmthread                   3.1.13-r1              apk
 openexr-libopenexr                     3.1.13-r1              apk             
 openssl                                3.3.2-r0               apk             
 opus                                   1.5.2-r0               apk             
-orc                                    0.4.39-r0              apk             
+orc                                    0.4.40-r0              apk             
 paragonie/constant_time_encoding       v3.0.0                 php-composer    
 paragonie/random_compat                v9.99.100              php-composer    
 pcre                                   8.45-r3                apk             

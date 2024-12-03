@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1
 
+FROM ghcr.io/sigstore/cosign/cosign:latest AS cosign-bin
+
 FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm64v8-3.20
 
 # set version label
@@ -9,7 +11,8 @@ ARG LYCHEE_VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hackerman"
 
-RUN \
+RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bin/cosign \
+    --mount=type=bind,source=/lychee.pub,target=/config/lychee.pub \
   echo "**** install build packages ****" && \
   apk add --no-cache --upgrade --virtual=build-dependencies \
     nodejs \
@@ -37,7 +40,8 @@ RUN \
     php83-sodium \
     php83-sqlite3 \
     php83-tokenizer \
-    postgresql15-client && \
+    postgresql15-client \
+    unzip && \
   echo "**** configure php-fpm to pass env vars ****" && \
   sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php83/php-fpm.d/www.conf && \
   grep -qxF 'clear_env = no' /etc/php83/php-fpm.d/www.conf || echo 'clear_env = no' >> /etc/php83/php-fpm.d/www.conf && \
@@ -48,10 +52,14 @@ RUN \
   fi && \
   mkdir -p /app/www && \
   curl -o \
-    /tmp/lychee.tar.gz -L \
-    "https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
-  tar xf /tmp/lychee.tar.gz -C \
-    /app/www --strip-components=1 && \
+    /tmp/lychee.zip -L \
+    "https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_VERSION}/Lychee.zip" && \
+  curl -o \
+    /tmp/lychee.zip.asc -L \
+    "https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_VERSION}/Lychee.zip.asc" && \
+  cosign verify-blob --key /config/lychee.pub --signature /tmp/lychee.zip.asc /tmp/lychee.zip && \
+  unzip -q /tmp/lychee.zip -d /app && \
+  mv /app/Lychee /app/www && \
   echo "**** install composer dependencies ****" && \
   composer install \
     -d /app/www \
@@ -65,11 +73,6 @@ RUN \
   rm -rf /app/www/storage/framework/sessions/* && \
   rm -rf /app/www/storage/framework/views/* && \
   rm -rf /app/www/storage/logs/* && \
-  echo "**** build npm dependencies ****" && \
-  cd /app/www && \
-  npm ci --no-audit && \
-  npm run build && \
-  rm -rf /app/www/node_modules && \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
   apk del --purge \

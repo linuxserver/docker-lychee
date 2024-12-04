@@ -13,10 +13,6 @@ LABEL maintainer="hackerman"
 
 RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bin/cosign \
     --mount=type=bind,source=/lychee.pub,target=/config/lychee.pub \
-  echo "**** install build packages ****" && \
-  apk add --no-cache --upgrade --virtual=build-dependencies \
-    nodejs \
-    npm && \
   echo "**** install runtime packages ****" && \
   apk add --no-cache --upgrade \
     exiftool \
@@ -74,8 +70,6 @@ RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bi
   rm -rf /app/www/storage/logs/* && \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
-  apk del --purge \
-    build-dependencies && \
   rm -rf \
     /tmp/* \
     $HOME/.cache \

@@ -6,39 +6,34 @@ project_url: "https://lycheeorg.github.io/"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png"
 project_blurb: |
   [{{ project_name|capitalize }}]({{ project_url }}) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely."
-
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-
 # supported architectures
 available_architectures:
-  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
-  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-
+  - {arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - {arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files." }
-  - { vol_path: "/pictures", vol_host_path: "/path/to/pictures", desc: "Where lychee will store uploaded images." }
+  - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files."}
+  - {vol_path: "/pictures", vol_host_path: "/path/to/pictures", desc: "Where lychee will store uploaded images."}
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "80", internal_port: "80", port_desc: "http gui" }
+  - {external_port: "80", internal_port: "80", port_desc: "http gui"}
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "DB_CONNECTION", env_value: "", desc: "DB type, from `sqlite`, `mysql`, `pqsql`." }
-  - { env_var: "DB_HOST", env_value: "", desc: "DB server hostname. For `mysql` and `pgsql` only." }
-  - { env_var: "DB_PORT", env_value: "", desc: "DB server port. For `mysql` and `pgsql` only." }
-  - { env_var: "DB_USERNAME", env_value: "", desc: "DB user. For `mysql` and `pgsql` only." }
-  - { env_var: "DB_PASSWORD", env_value: "", desc: "DB password. For `mysql` and `pgsql` only." }
-  - { env_var: "DB_DATABASE", env_value: "", desc: "Path to DB file for `sqlite`. DB name for `mysql` and `pgsql`." }
-
+  - {env_var: "DB_CONNECTION", env_value: "", desc: "DB type, from `sqlite`, `mysql`, `pqsql`."}
+  - {env_var: "DB_HOST", env_value: "", desc: "DB server hostname. For `mysql` and `pgsql` only."}
+  - {env_var: "DB_PORT", env_value: "", desc: "DB server port. For `mysql` and `pgsql` only."}
+  - {env_var: "DB_USERNAME", env_value: "", desc: "DB user. For `mysql` and `pgsql` only."}
+  - {env_var: "DB_PASSWORD", env_value: "", desc: "DB password. For `mysql` and `pgsql` only."}
+  - {env_var: "DB_DATABASE", env_value: "", desc: "Path to DB file for `sqlite`. DB name for `mysql` and `pgsql`."}
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "APP_NAME", env_value: "Lychee", desc: "The gallery name." }
-  - { env_var: "APP_URL", env_value: "", desc: "The URL you will use to access Lychee including protocol, and port where appropriate." }
-  - { env_var: "TRUSTED_PROXIES", env_value: "", desc: "Set to the IP or netmask covering your reverse proxy, if running behind one. Set to `*` to trust all IPs (**do not** use `*` if exposed to the internet`)." }
-
+  - {env_var: "APP_NAME", env_value: "Lychee", desc: "The gallery name."}
+  - {env_var: "APP_URL", env_value: "", desc: "The URL you will use to access Lychee including protocol, and port where appropriate."}
+  - {env_var: "TRUSTED_PROXIES", env_value: "", desc: "Set to the IP or netmask covering your reverse proxy, if running behind one. Set to `*` to trust all IPs (**do not** use `*` if exposed to the internet`)."}
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
@@ -64,32 +59,86 @@ app_setup_block: |
   After making these changes, you'll need to restart the Docker container for the changes to take effect.
 
   **Please note that these changes might have implications on your server's performance, depending on its available resources. Thus, it's recommended to modify these settings with caution.**
-
+# init diagram
+init_diagram: |
+  "lychee:latest": {
+    docker-mods
+    base {
+      fix-attr +\nlegacy cont-init
+    }
+    docker-mods -> base
+    legacy-services
+    custom services
+    init-services -> legacy-services
+    init-services -> custom services
+    custom services -> legacy-services
+    legacy-services -> ci-service-check
+    init-migrations -> init-adduser
+    init-nginx-end -> init-config
+    init-os-end -> init-config
+    init-config -> init-config-end
+    init-lychee-config -> init-config-end
+    init-os-end -> init-crontab-config
+    init-mods-end -> init-custom-files
+    base -> init-envfile
+    init-os-end -> init-folders
+    init-php -> init-keygen
+    init-nginx-end -> init-lychee-config
+    base -> init-migrations
+    base -> init-mods
+    init-config-end -> init-mods
+    init-version-checks -> init-mods
+    init-mods -> init-mods-end
+    init-mods-package-install -> init-mods-end
+    init-mods -> init-mods-package-install
+    init-samples -> init-nginx
+    init-permissions -> init-nginx-end
+    base -> init-os-end
+    init-adduser -> init-os-end
+    init-envfile -> init-os-end
+    init-migrations -> init-os-end
+    init-keygen -> init-permissions
+    init-nginx -> init-php
+    init-folders -> init-samples
+    init-custom-files -> init-services
+    init-mods-end -> init-services
+    init-config-end -> init-version-checks
+    init-services -> svc-cron
+    svc-cron -> legacy-services
+    init-services -> svc-nginx
+    svc-nginx -> legacy-services
+    init-services -> svc-php-fpm
+    svc-php-fpm -> legacy-services
+  }
+  Base Images: {
+    "baseimage-alpine-nginx:3.20" <- "baseimage-alpine:3.20"
+  }
+  "lychee:latest" <- Base Images
 # changelog
 changelogs:
-  - { date: "03.12.24:", desc: "Verify build artifacts with cosign."}
-  - { date: "27.05.24:", desc: "Rebase to Alpine 3.20. Existing users should update their nginx confs to avoid http2 deprecation warnings."}
-  - { date: "18.01.24:", desc: "Add php-sodium."}
-  - { date: "13.01.24:", desc: "Rebase to Alpine 3.19 with php 8.3."}
-  - { date: "27.12.23:", desc: "Update image to support v5." }
-  - { date: "25.12.23:", desc: "Existing users should update: site-confs/default.conf - Cleanup default site conf. Build npm dependencies into image." }
-  - { date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }
-  - { date: "13.04.23:", desc: "Move ssl.conf include to default.conf." }
-  - { date: "11.01.23:", desc: "Rebasing to alpine 3.17 with php8.1. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base)). Switch to git clone as builds fail with the release artifact." }
-  - { date: "13.05.21:", desc: "Make readme clearer." }
-  - { date: "18.04.21:", desc: "Add php-intl for v4.3." }
-  - { date: "31.01.21:", desc: "Add jpegoptim." }
-  - { date: "15.01.21:", desc: "Rebase to alpine 3.13, add php7-ctype." }
-  - { date: "10.07.20:", desc: "Upgrade to Lychee v4 and rebased to alpine 3.12." }
-  - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
-  - { date: "23.10.19:", desc: "Increase fastcgi timeouts (existing users need to manually update)." }
-  - { date: "19.09.19:", desc: "Update project website url." }
-  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
-  - { date: "05.05.19:", desc: "Rebase to alpine 3.9, use new armv7 image format." }
-  - { date: "21.01.18:", desc: "Added ffmpeg for video thumbnail creation, switched to installing zip release instead of source tarball, created small thumbnails folder, switched to dynamic readme." }
-  - { date: "14.01.19:", desc: "Adding pipeline logic and multi arch.." }
-  - { date: "04.09.18:", desc: "Rebase to alpine 3.8, switch to LycheeOrg repository." }
-  - { date: "08.01.18:", desc: "Rebase to alpine 3.7." }
-  - { date: "25.05.17:", desc: "Rebase to alpine 3.6." }
-  - { date: "03.05.17:", desc: "Use repo pinning to better solve dependencies, use repo version of php7-imagick." }
-  - { date: "12.02.17:", desc: "Initial Release." }
+  - {date: "03.12.24:", desc: "Verify build artifacts with cosign."}
+  - {date: "27.05.24:", desc: "Rebase to Alpine 3.20. Existing users should update their nginx confs to avoid http2 deprecation warnings."}
+  - {date: "18.01.24:", desc: "Add php-sodium."}
+  - {date: "13.01.24:", desc: "Rebase to Alpine 3.19 with php 8.3."}
+  - {date: "27.12.23:", desc: "Update image to support v5."}
+  - {date: "25.12.23:", desc: "Existing users should update: site-confs/default.conf - Cleanup default site conf. Build npm dependencies into image."}
+  - {date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf."}
+  - {date: "13.04.23:", desc: "Move ssl.conf include to default.conf."}
+  - {date: "11.01.23:", desc: "Rebasing to alpine 3.17 with php8.1. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base)). Switch to git clone as builds fail with the release artifact."}
+  - {date: "13.05.21:", desc: "Make readme clearer."}
+  - {date: "18.04.21:", desc: "Add php-intl for v4.3."}
+  - {date: "31.01.21:", desc: "Add jpegoptim."}
+  - {date: "15.01.21:", desc: "Rebase to alpine 3.13, add php7-ctype."}
+  - {date: "10.07.20:", desc: "Upgrade to Lychee v4 and rebased to alpine 3.12."}
+  - {date: "19.12.19:", desc: "Rebasing to alpine 3.11."}
+  - {date: "23.10.19:", desc: "Increase fastcgi timeouts (existing users need to manually update)."}
+  - {date: "19.09.19:", desc: "Update project website url."}
+  - {date: "28.06.19:", desc: "Rebasing to alpine 3.10."}
+  - {date: "05.05.19:", desc: "Rebase to alpine 3.9, use new armv7 image format."}
+  - {date: "21.01.18:", desc: "Added ffmpeg for video thumbnail creation, switched to installing zip release instead of source tarball, created small thumbnails folder, switched to dynamic readme."}
+  - {date: "14.01.19:", desc: "Adding pipeline logic and multi arch.."}
+  - {date: "04.09.18:", desc: "Rebase to alpine 3.8, switch to LycheeOrg repository."}
+  - {date: "08.01.18:", desc: "Rebase to alpine 3.7."}
+  - {date: "25.05.17:", desc: "Rebase to alpine 3.6."}
+  - {date: "03.05.17:", desc: "Use repo pinning to better solve dependencies, use repo version of php7-imagick."}
+  - {date: "12.02.17:", desc: "Initial Release."}

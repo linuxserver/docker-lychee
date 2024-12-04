@@ -384,6 +384,7 @@ thecodingmachine/safe                  v2.5.0                 php-composer
 tiff                                   4.6.0t-r0              apk                           
 tijsverkoyen/css-to-inline-styles      v2.2.7                 php-composer                  
 tzdata                                 2024b-r0               apk                           
+unzip                                  6.0-r14                apk                           
 utmps-libs                             0.1.2.2-r1             apk                           
 v4l-utils-libs                         1.24.1-r1              apk                           
 vidstab                                1.1.1-r0               apk                           

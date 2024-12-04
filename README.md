@@ -82,10 +82,12 @@ After making these changes, you'll need to restart the Docker container for the 
 
 **Please note that these changes might have implications on your server's performance, depending on its available resources. Thus, it's recommended to modify these settings with caution.**
 
- 
 ## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
+
+>[!NOTE]
+>Unless a parameter is flaged as 'optional', it is *mandatory* and a value must be provided.
 
 ### docker-compose (recommended, [click here for more info](https://docs.linuxserver.io/general/docker-compose))
 
@@ -146,7 +148,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 80` | http gui |
+| `-p 80:80` | http gui |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
@@ -324,6 +326,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **03.12.24:** - Verify build artifacts with cosign.
 * **27.05.24:** - Rebase to Alpine 3.20. Existing users should update their nginx confs to avoid http2 deprecation warnings.
 * **18.01.24:** - Add php-sodium.
 * **13.01.24:** - Rebase to Alpine 3.19 with php 8.3.

@@ -148,9 +148,9 @@ libedit                                20240517.3.1-r0        apk
 libexpat                               2.6.4-r0               apk                           
 libffi                                 3.4.6-r0               apk                           
 libflac                                1.4.3-r1               apk                           
-libgcc                                 13.2.1_git20240309-r0  apk                           
+libgcc                                 13.2.1_git20240309-r1  apk                           
 libgd                                  2.3.3-r9               apk                           
-libgomp                                13.2.1_git20240309-r0  apk                           
+libgomp                                13.2.1_git20240309-r1  apk                           
 libhwy                                 1.0.7-r0               apk                           
 libice                                 1.1.1-r6               apk                           
 libidn2                                2.3.7-r0               apk                           
@@ -166,7 +166,7 @@ libopenmpt                             0.7.7-r0               apk
 libpciaccess                           0.18.1-r0              apk                           
 libplacebo                             6.338.2-r1             apk                           
 libpng                                 1.6.44-r0              apk                           
-libpq                                  16.6-r0                apk                           
+libpq                                  16.8-r0                apk                           
 libproc2                               4.0.4-r0               apk                           
 libpsl                                 0.21.5-r1              apk                           
 libpulse                               17.0-r0                apk                           
@@ -178,7 +178,7 @@ libsodium                              1.0.19-r0              apk
 libsrt                                 1.5.3-r0               apk                           
 libssh                                 0.10.6-r0              apk                           
 libssl3                                3.3.3-r0               apk                           
-libstdc++                              13.2.1_git20240309-r0  apk                           
+libstdc++                              13.2.1_git20240309-r1  apk                           
 libtheora                              1.1.1-r18              apk                           
 libunibreak                            6.1-r0                 apk                           
 libunistring                           1.2-r0                 apk                           
@@ -297,7 +297,7 @@ phpseclib/phpseclib                    3.0.43                 php-composer
 phpstan/phpdoc-parser                  2.0.2                  php-composer                  
 popt                                   1.19-r3                apk                           
 postgresql-common                      1.2-r1                 apk                           
-postgresql15-client                    15.10-r0               apk                           
+postgresql15-client                    15.11-r0               apk                           
 procps-ng                              4.0.4-r0               apk                           
 psr/cache                              3.0.0                  php-composer                  
 psr/clock                              1.0.0                  php-composer                  

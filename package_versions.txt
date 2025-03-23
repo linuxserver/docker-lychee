@@ -24,7 +24,7 @@ apr                                    1.7.5-r0               apk
 apr-util                               1.6.3-r1               apk                           
 argon2-libs                            20190702-r5            apk                           
 aws/aws-crt-php                        v1.2.7                 php-composer                  
-aws/aws-sdk-php                        3.339.9                php-composer                  
+aws/aws-sdk-php                        3.342.8                php-composer                  
 bash                                   5.2.26-r0              apk                           
 bepsvpt/secure-headers                 9.0.0                  php-composer                  
 brick/math                             0.12.3                 php-composer                  
@@ -47,7 +47,7 @@ coreutils-sha512sum                    9.5-r2                 apk
 curl                                   8.12.1-r0              apk                           
 daverandom/libdns                      v2.1.0                 php-composer                  
 dbus-libs                              1.14.10-r1             apk                           
-dedoc/scramble                         v0.12.12               php-composer                  
+dedoc/scramble                         v0.12.13               php-composer                  
 dflydev/dot-access-data                v3.0.3                 php-composer                  
 doctrine/cache                         2.2.0                  php-composer                  
 doctrine/dbal                          3.9.4                  php-composer                  
@@ -329,7 +329,7 @@ socialiteproviders/facebook            4.1.0                  php-composer
 socialiteproviders/github              4.1.0                  php-composer                  
 socialiteproviders/google              4.1.0                  php-composer                  
 socialiteproviders/keycloak            5.3.0                  php-composer                  
-socialiteproviders/manager             v4.8.0                 php-composer                  
+socialiteproviders/manager             v4.8.1                 php-composer                  
 socialiteproviders/microsoft           4.6.0                  php-composer                  
 socialiteproviders/nextcloud           4.0.0                  php-composer                  
 sord-libs                              0.16.16-r0             apk                           

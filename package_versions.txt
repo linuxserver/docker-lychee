@@ -24,7 +24,7 @@ apr                                    1.7.5-r0               apk
 apr-util                               1.6.3-r1               apk                           
 argon2-libs                            20190702-r5            apk                           
 aws/aws-crt-php                        v1.2.7                 php-composer                  
-aws/aws-sdk-php                        3.342.8                php-composer                  
+aws/aws-sdk-php                        3.342.14               php-composer                  
 bash                                   5.2.26-r0              apk                           
 bepsvpt/secure-headers                 9.0.0                  php-composer                  
 brick/math                             0.12.3                 php-composer                  
@@ -47,7 +47,7 @@ coreutils-sha512sum                    9.5-r2                 apk
 curl                                   8.12.1-r0              apk                           
 daverandom/libdns                      v2.1.0                 php-composer                  
 dbus-libs                              1.14.10-r1             apk                           
-dedoc/scramble                         v0.12.13               php-composer                  
+dedoc/scramble                         v0.12.16               php-composer                  
 dflydev/dot-access-data                v3.0.3                 php-composer                  
 doctrine/cache                         2.2.0                  php-composer                  
 doctrine/dbal                          3.9.4                  php-composer                  
@@ -56,7 +56,7 @@ doctrine/event-manager                 2.0.1                  php-composer
 doctrine/inflector                     2.0.10                 php-composer                  
 doctrine/lexer                         3.0.1                  php-composer                  
 dragonmantank/cron-expression          v3.4.0                 php-composer                  
-egulias/email-validator                4.0.3                  php-composer                  
+egulias/email-validator                4.0.4                  php-composer                  
 evenement/evenement                    v3.0.2                 php-composer                  
 exiftool                               12.80-r0               apk                           
 ffmpeg                                 6.1.1-r8               apk                           
@@ -205,13 +205,13 @@ lilv-libs                              0.24.24-r1             apk
 linux-pam                              1.6.0-r0               apk                           
 logrotate                              3.21.0-r1              apk                           
 lychee-org/lycheeverify                1.0.2                  php-composer                  
-lychee-org/nestedset                   v9.0.1                 php-composer                  
+lychee-org/nestedset                   v10.0.1                php-composer                  
 lychee-org/php-exif                    v1.0.4                 php-composer                  
 lz4-libs                               1.9.4-r5               apk                           
 maennchen/zipstream-php                3.1.2                  php-composer                  
 mavinoo/laravel-batch                  v2.4.1                 php-composer                  
 mbedtls                                3.6.2-r0               apk                           
-monolog/monolog                        3.8.1                  php-composer                  
+monolog/monolog                        3.9.0                  php-composer                  
 mpg123-libs                            1.32.8-r0              apk                           
 mtdowling/jmespath.php                 2.8.0                  php-composer                  
 musl                                   1.2.5-r1               apk                           
@@ -309,7 +309,7 @@ psr/http-message                       2.0                    php-composer
 psr/log                                3.0.2                  php-composer                  
 psr/simple-cache                       3.0.0                  php-composer                  
 ralouphie/getallheaders                3.0.3                  php-composer                  
-ramsey/collection                      2.1.0                  php-composer                  
+ramsey/collection                      2.1.1                  php-composer                  
 ramsey/uuid                            4.7.6                  php-composer                  
 rav1e-libs                             0.7.1-r0               apk                           
 readline                               8.2.10-r0              apk                           
@@ -340,7 +340,7 @@ spatie/image-optimizer                 1.8.0                  php-composer
 spatie/laravel-data                    4.14.1                 php-composer                  
 spatie/laravel-feed                    4.4.1                  php-composer                  
 spatie/laravel-image-optimizer         1.8.2                  php-composer                  
-spatie/laravel-package-tools           1.19.0                 php-composer                  
+spatie/laravel-package-tools           1.91.1                 php-composer                  
 spatie/laravel-typescript-transformer  2.5.1                  php-composer                  
 spatie/php-structure-discoverer        2.3.1                  php-composer                  
 spatie/temporary-directory             2.3.0                  php-composer                  

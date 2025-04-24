@@ -75,9 +75,9 @@ fribidi                                1.0.15-r0              apk
 fruitcake/php-cors                     v1.3.0                 php-composer    
 fylax/forceutf8                        v3.0.3                 php-composer    
 gd                                     2.3.3-r9               apk             
-geocoder-php/cache-provider            4.4.0                  php-composer    
-geocoder-php/common-http               4.6.0                  php-composer    
-geocoder-php/nominatim-provider        5.7.0                  php-composer    
+geocoder-php/cache-provider            4.5.0                  php-composer    
+geocoder-php/common-http               4.7.0                  php-composer    
+geocoder-php/nominatim-provider        5.8.0                  php-composer    
 giflib                                 5.2.2-r0               apk             
 git                                    2.45.3-r0              apk             
 git-init-template                      2.45.3-r0              apk             
@@ -117,7 +117,7 @@ laravel/socialite                      v5.19.0                php-composer
 lcms2                                  2.16-r0                apk             
 lcobucci/clock                         3.3.1                  php-composer    
 lcobucci/jwt                           5.5.0                  php-composer    
-league/commonmark                      2.6.1                  php-composer    
+league/commonmark                      2.6.2                  php-composer    
 league/config                          v1.2.0                 php-composer    
 league/flysystem                       3.29.1                 php-composer    
 league/flysystem-aws-s3-v3             3.29.0                 php-composer    
@@ -336,7 +336,7 @@ spatie/enum                            3.13.0                 php-composer
 spatie/guzzle-rate-limiter-middleware  2.1.0                  php-composer    
 spatie/image-optimizer                 1.8.0                  php-composer    
 spatie/laravel-data                    4.15.1                 php-composer    
-spatie/laravel-feed                    4.4.1                  php-composer    
+spatie/laravel-feed                    4.4.2                  php-composer    
 spatie/laravel-image-optimizer         1.8.2                  php-composer    
 spatie/laravel-package-tools           1.92.4                 php-composer    
 spatie/laravel-typescript-transformer  2.5.1                  php-composer    
@@ -393,7 +393,7 @@ voku/portable-ascii                    2.0.3                  php-composer
 vulkan-loader                          1.3.261.1-r0           apk             
 wayland-libs-client                    1.22.0-r4              apk             
 webmozart/assert                       1.11.0                 php-composer    
-willdurand/geocoder                    4.6.0                  php-composer    
+willdurand/geocoder                    5.0.0                  php-composer    
 x264-libs                              0.164_git20231001-r0   apk             
 x265-libs                              3.6-r0                 apk             
 xvidcore                               1.3.7-r2               apk             

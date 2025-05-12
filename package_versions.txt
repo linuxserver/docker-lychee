@@ -117,7 +117,7 @@ laravel/socialite                      v5.20.0                php-composer
 lcms2                                  2.16-r0                apk             
 lcobucci/clock                         3.3.1                  php-composer    
 lcobucci/jwt                           5.5.0                  php-composer    
-league/commonmark                      2.6.2                  php-composer    
+league/commonmark                      2.7.0                  php-composer    
 league/config                          v1.2.0                 php-composer    
 league/flysystem                       3.29.1                 php-composer    
 league/flysystem-aws-s3-v3             3.29.0                 php-composer    
@@ -348,7 +348,7 @@ spirv-tools                            1.3.261.1-r0           apk
 sqlite-libs                            3.45.3-r2              apk             
 sratom                                 0.6.16-r0              apk             
 ssl_client                             1.36.1-r29             apk             
-symfony/cache                          v7.2.5                 php-composer    
+symfony/cache                          v7.2.6                 php-composer    
 symfony/cache-contracts                v3.5.1                 php-composer    
 symfony/clock                          v7.2.0                 php-composer    
 symfony/console                        v7.2.5                 php-composer    
@@ -367,7 +367,7 @@ symfony/polyfill-intl-grapheme         v1.31.0                php-composer
 symfony/polyfill-intl-idn              v1.31.0                php-composer    
 symfony/polyfill-intl-normalizer       v1.31.0                php-composer    
 symfony/polyfill-mbstring              v1.31.0                php-composer    
-symfony/polyfill-php80                 v1.31.0                php-composer    
+symfony/polyfill-php80                 v1.32.0                php-composer    
 symfony/polyfill-php83                 v1.31.0                php-composer    
 symfony/polyfill-uuid                  v1.31.0                php-composer    
 symfony/process                        v7.2.5                 php-composer    
@@ -378,7 +378,7 @@ symfony/translation                    v7.2.4                 php-composer
 symfony/translation-contracts          v3.5.1                 php-composer    
 symfony/uid                            v7.2.0                 php-composer    
 symfony/var-dumper                     v7.2.3                 php-composer    
-symfony/var-exporter                   v7.2.5                 php-composer    
+symfony/var-exporter                   v7.2.6                 php-composer    
 tdb-libs                               1.4.9-r1               apk             
 thecodingmachine/safe                  v2.5.0                 php-composer    
 tiff                                   4.6.0t-r0              apk             

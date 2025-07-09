@@ -323,6 +323,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **09.07.25:** - Rebase to Alpine 3.20.
 * **03.12.24:** - Verify build artifacts with cosign.
 * **27.05.24:** - Rebase to Alpine 3.20. Existing users should update their nginx confs to avoid http2 deprecation warnings.
 * **18.01.24:** - Add php-sodium.

@@ -30,8 +30,8 @@ if [[ ! -L /app/www/storage/logs ]]; then
 fi
 
 cp -n /defaults/user.ini /config/user.ini 2> >(grep -v 'cp: not replacing')
-rm -rf /etc/php83/conf.d/99-user.ini
-ln -s /config/user.ini /etc/php83/conf.d/99-user.ini
+rm -rf /etc/php84/conf.d/99-user.ini
+ln -s /config/user.ini /etc/php84/conf.d/99-user.ini
 
 cd /app/www || exit 1
 
@@ -71,7 +71,7 @@ elif [[ "${DB_CONNECTION}" = "pgsql" ]]; then
     echo "Waiting for DB to be available"
     END=$((SECONDS + 30))
     while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
-        if pg_isready -h "${DB_HOST}" -p "${DB_PORT}" -q; then
+        if pg_isready -h "${DB_HOST}" -p "${DB_PORT}" -U "${DB_USERNAME}" -q; then
             if [[ -n "${RUN}" ]]; then
                 break
             fi

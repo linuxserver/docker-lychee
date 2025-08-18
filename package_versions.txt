@@ -215,7 +215,7 @@ libopenmpt                             0.7.15-r0             apk
 libpciaccess                           0.18.1-r0             apk                           
 libplacebo                             6.338.2-r3            apk                           
 libpng                                 1.6.47-r0             apk                           
-libpq                                  17.5-r0               apk                           
+libpq                                  17.6-r0               apk                           
 libproc2                               4.0.4-r3              apk                           
 libpsl                                 0.21.5-r3             apk                           
 libpulse                               17.0-r5               apk                           
@@ -363,7 +363,7 @@ phpseclib/phpseclib                    3.0.46                php-composer
 phpstan/phpdoc-parser                  2.2.0                 php-composer                  
 popt                                   1.19-r4               apk                           
 postgresql-common                      1.2-r1                apk                           
-postgresql16-client                    16.9-r0               apk                           
+postgresql16-client                    16.10-r0              apk                           
 ppv-lite86                             0.2.17                rust-crate                    
 proc-macro2                            1.0.76                rust-crate                    
 procps-ng                              4.0.4-r3              apk                           

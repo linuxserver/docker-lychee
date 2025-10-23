@@ -5,7 +5,7 @@ acl-libs                               2.3.2-r1              apk
 alpine-baselayout                      3.7.0-r0              apk                           
 alpine-baselayout-data                 3.7.0-r0              apk                           
 alpine-keys                            2.5-r0                apk                           
-alpine-release                         3.22.1-r0             apk                           
+alpine-release                         3.22.2-r0             apk                           
 alsa-lib                               1.2.14-r0             apk                           
 amphp/amp                              v3.1.1                php-composer                  
 amphp/byte-stream                      v2.1.2                php-composer                  
@@ -263,7 +263,7 @@ lz4-libs                               1.10.0-r0             apk
 maennchen/zipstream-php                3.2.0                 php-composer                  
 mavinoo/laravel-batch                  v2.4.1                php-composer                  
 maybe-rayon                            0.1.1                 rust-crate                    
-mbedtls                                3.6.4-r0              apk                           
+mbedtls                                3.6.5-r0              apk                           
 memchr                                 2.7.1                 rust-crate                    
 minimal-lexical                        0.2.1                 rust-crate                    
 monolog/monolog                        3.9.0                 php-composer                  
@@ -308,7 +308,7 @@ orc                                    0.4.40-r1             apk
 paragonie/constant_time_encoding       v3.0.0                php-composer                  
 paragonie/random_compat                v9.99.100             php-composer                  
 paste                                  1.0.14                rust-crate                    
-pcre2                                  10.43-r1              apk                           
+pcre2                                  10.46-r0              apk                           
 perl                                   5.40.3-r0             apk                           
 perl-error                             0.17030-r0            apk                           
 perl-git                               2.49.1-r0             apk                           

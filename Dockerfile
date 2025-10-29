@@ -50,9 +50,9 @@ RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bi
     /tmp/lychee.zip -L \
     "https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_VERSION}/Lychee.zip" && \
   curl -o \
-    /tmp/lychee.zip.asc -L \
-    "https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_VERSION}/Lychee.zip.asc" && \
-  cosign verify-blob --key /config/lychee.pub --signature /tmp/lychee.zip.asc /tmp/lychee.zip && \
+    /tmp/lychee.zip.sigstore.json -L \
+    "https://github.com/LycheeOrg/Lychee/releases/download/${LYCHEE_VERSION}/Lychee.zip.sigstore.json" && \
+  cosign verify-blob --key /config/lychee.pub --bundle /tmp/lychee.zip.sigstore.json /tmp/lychee.zip && \
   unzip -q /tmp/lychee.zip -d /app && \
   mv /app/Lychee /app/www && \
   echo "**** install composer dependencies ****" && \

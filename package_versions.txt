@@ -33,8 +33,8 @@ bitvec                                 1.0.1                 rust-crate
 bitvec_helpers                         3.1.6                 rust-crate      
 brick/math                             0.14.0                php-composer    
 brotli-libs                            1.1.0-r2              apk             
-busybox                                1.37.0-r19            apk             
-busybox-binsh                          1.37.0-r19            apk             
+busybox                                1.37.0-r20            apk             
+busybox-binsh                          1.37.0-r20            apk             
 c-ares                                 1.34.5-r0             apk             
 ca-certificates                        20250911-r0           apk             
 ca-certificates-bundle                 20250911-r0           apk             
@@ -49,7 +49,7 @@ clap_derive                            4.4.7                 rust-crate
 clap_lex                               0.6.0                 rust-crate      
 clue/stream-filter                     v1.7.0                php-composer    
 colorchoice                            1.0.0                 rust-crate      
-composer                               2.9.1                 binary          
+composer                               2.9.2                 binary          
 composer/semver                        3.4.4                 php-composer    
 console                                0.15.8                rust-crate      
 coreutils                              9.7-r1                apk             
@@ -426,7 +426,7 @@ speexdsp                               1.2.1-r2              apk
 spirv-tools                            1.4.313.0-r0          apk             
 sqlite-libs                            3.49.2-r1             apk             
 sratom                                 0.6.18-r0             apk             
-ssl_client                             1.37.0-r19            apk             
+ssl_client                             1.37.0-r20            apk             
 symfony/cache                          v7.3.6                php-composer    
 symfony/cache-contracts                v3.6.0                php-composer    
 symfony/clock                          v7.3.0                php-composer    

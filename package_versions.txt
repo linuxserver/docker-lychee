@@ -137,7 +137,7 @@ itertools                              0.10.5                rust-crate
 itertools                              0.12.0                rust-crate      
 ivf                                    0.1.3                 rust-crate      
 jpegoptim                              1.5.5-r0              apk             
-jq                                     1.8.0-r0              apk             
+jq                                     1.8.1-r0              apk             
 lab                                    0.11.0                rust-crate      
 lame-libs                              3.100-r5              apk             
 laragear/meta-model                    v2.0.0                php-composer    
@@ -201,7 +201,7 @@ libogg                                 1.3.5-r5              apk
 libopenmpt                             0.7.15-r0             apk             
 libpciaccess                           0.18.1-r0             apk             
 libplacebo                             6.338.2-r3            apk             
-libpng                                 1.6.47-r0             apk             
+libpng                                 1.6.51-r0             apk             
 libpq                                  17.7-r0               apk             
 libproc2                               4.0.4-r3              apk             
 libpsl                                 0.21.5-r3             apk             

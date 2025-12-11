@@ -13,7 +13,7 @@ anstyle-query                          1.0.2                 rust-crate
 anyhow                                 1.0.79                rust-crate      
 anyhow                                 1.0.98                rust-crate      
 aom-libs                               3.12.1-r0             apk             
-apache2-utils                          2.4.65-r0             apk             
+apache2-utils                          2.4.66-r0             apk             
 apk-tools                              2.14.9-r3             apk             
 apr                                    1.7.5-r0              apk             
 apr-util                               1.6.3-r1              apk             
@@ -66,7 +66,7 @@ crossbeam-queue                        0.3.11                rust-crate
 crossbeam-utils                        0.8.19                rust-crate      
 curl                                   8.14.1-r2             apk             
 dbus-libs                              1.16.2-r1             apk             
-dedoc/scramble                         v0.13.6               php-composer    
+dedoc/scramble                         v0.13.8               php-composer    
 dflydev/dot-access-data                v3.0.3                php-composer    
 doctrine/dbal                          3.10.2                php-composer    
 doctrine/deprecations                  1.1.5                 php-composer    
@@ -97,7 +97,7 @@ firebase/php-jwt                       v6.11.1               php-composer
 fontconfig                             2.15.0-r3             apk             
 freetype                               2.13.3-r0             apk             
 fribidi                                1.0.16-r1             apk             
-fruitcake/php-cors                     v1.3.0                php-composer    
+fruitcake/php-cors                     v1.4.0                php-composer    
 funty                                  2.0.0                 rust-crate      
 fylax/forceutf8                        v3.0.3                php-composer    
 gd                                     2.3.3-r10             apk             
@@ -142,7 +142,7 @@ lab                                    0.11.0                rust-crate
 lame-libs                              3.100-r5              apk             
 laragear/meta-model                    v2.0.0                php-composer    
 laragear/webauthn                      v4.0.1                php-composer    
-laravel/framework                      v12.40.2              php-composer    
+laravel/framework                      v12.41.1              php-composer    
 laravel/prompts                        v0.3.8                php-composer    
 laravel/serializable-closure           v2.0.7                php-composer    
 laravel/socialite                      v5.23.2               php-composer    
@@ -159,8 +159,8 @@ league/flysystem-local                 3.30.2                php-composer
 league/mime-type-detection             1.16.0                php-composer    
 league/oauth1-client                   v1.11.0               php-composer    
 league/omnipay                         v3.2.1                php-composer    
-league/uri                             7.6.0                 php-composer    
-league/uri-interfaces                  7.6.0                 php-composer    
+league/uri                             7.7.0                 php-composer    
+league/uri-interfaces                  7.7.0                 php-composer    
 libSvtAv1Enc                           2.3.0-r0              apk             
 libapk2                                2.14.9-r3             apk             
 libass                                 0.17.3-r0             apk             
@@ -262,14 +262,14 @@ musl-utils                             1.2.5-r10             apk
 myclabs/deep-copy                      1.13.4                php-composer    
 nano                                   8.4-r0                apk             
 ncurses-terminfo-base                  6.5_p20250503-r0      apk             
-nesbot/carbon                          3.10.3                php-composer    
+nesbot/carbon                          3.11.0                php-composer    
 netcat-openbsd                         1.229.1-r0            apk             
 nette/schema                           v1.3.3                php-composer    
 nette/utils                            v4.1.0                php-composer    
 new_debug_unreachable                  1.0.4                 rust-crate      
 nghttp2-libs                           1.65.0-r0             apk             
 nginx                                  1.28.0-r3             apk             
-nikic/php-parser                       v5.6.2                php-composer    
+nikic/php-parser                       v5.7.0                php-composer    
 nom                                    7.1.3                 rust-crate      
 noop_proc_macro                        0.3.0                 rust-crate      
 num-bigint                             0.4.4                 rust-crate      
@@ -430,7 +430,7 @@ ssl_client                             1.37.0-r20            apk
 symfony/cache                          v7.3.6                php-composer    
 symfony/cache-contracts                v3.6.0                php-composer    
 symfony/clock                          v7.4.0                php-composer    
-symfony/console                        v7.4.0                php-composer    
+symfony/console                        v7.4.1                php-composer    
 symfony/css-selector                   v7.4.0                php-composer    
 symfony/deprecation-contracts          v3.6.0                php-composer    
 symfony/error-handler                  v7.4.0                php-composer    
@@ -439,8 +439,8 @@ symfony/event-dispatcher-contracts     v3.6.0                php-composer
 symfony/finder                         v7.4.0                php-composer    
 symfony/http-client                    v7.4.0                php-composer    
 symfony/http-client-contracts          v3.6.0                php-composer    
-symfony/http-foundation                v7.4.0                php-composer    
-symfony/http-kernel                    v7.4.0                php-composer    
+symfony/http-foundation                v7.4.1                php-composer    
+symfony/http-kernel                    v7.4.2                php-composer    
 symfony/mailer                         v7.4.0                php-composer    
 symfony/mime                           v7.4.0                php-composer    
 symfony/polyfill-ctype                 v1.33.0               php-composer    

@@ -148,7 +148,7 @@ lame-libs                              3.100-r5              apk
 laminas/laminas-diactoros              3.8.0                 php-composer    
 laragear/meta-model                    v2.0.0                php-composer    
 laragear/webauthn                      v4.0.1                php-composer    
-laravel/framework                      v12.45.2              php-composer    
+laravel/framework                      v12.46.0              php-composer    
 laravel/octane                         v2.13.4               php-composer    
 laravel/prompts                        v0.3.8                php-composer    
 laravel/serializable-closure           v2.0.7                php-composer    
@@ -362,7 +362,7 @@ phpdocumentor/reflection-docblock      5.6.6                 php-composer
 phpdocumentor/type-resolver            1.12.0                php-composer    
 phpoption/phpoption                    1.9.5                 php-composer    
 phpseclib/phpseclib                    3.0.48                php-composer    
-phpstan/phpdoc-parser                  2.3.0                 php-composer    
+phpstan/phpdoc-parser                  2.3.1                 php-composer    
 popt                                   1.19-r4               apk             
 postgresql-common                      1.2-r1                apk             
 postgresql16-client                    16.11-r0              apk             

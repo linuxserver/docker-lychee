@@ -27,7 +27,7 @@ arrayvec                               0.7.4                 rust-crate
 av-metrics                             0.9.1                 rust-crate      
 av1-grain                              0.2.3                 rust-crate      
 aws/aws-crt-php                        v1.2.7                php-composer    
-aws/aws-sdk-php                        3.369.3               php-composer    
+aws/aws-sdk-php                        3.369.11              php-composer    
 bash                                   5.2.37-r0             apk             
 bepsvpt/secure-headers                 9.0.0                 php-composer    
 bitflags                               2.4.1                 rust-crate      
@@ -428,14 +428,14 @@ spatie/laravel-image-optimizer         1.8.2                 php-composer
 spatie/laravel-package-tools           1.92.7                php-composer    
 spatie/laravel-typescript-transformer  2.5.2                 php-composer    
 spatie/php-structure-discoverer        2.3.3                 php-composer    
-spatie/temporary-directory             2.3.0                 php-composer    
+spatie/temporary-directory             2.3.1                 php-composer    
 spatie/typescript-transformer          2.5.0                 php-composer    
 speexdsp                               1.2.1-r2              apk             
 spirv-tools                            1.4.313.0-r0          apk             
 sqlite-libs                            3.49.2-r1             apk             
 sratom                                 0.6.18-r0             apk             
 ssl_client                             1.37.0-r20            apk             
-symfony/cache                          v7.4.1                php-composer    
+symfony/cache                          v7.4.3                php-composer    
 symfony/cache-contracts                v3.6.0                php-composer    
 symfony/clock                          v8.0.0                php-composer    
 symfony/console                        v7.4.3                php-composer    
@@ -446,7 +446,7 @@ symfony/event-dispatcher               v8.0.0                php-composer
 symfony/event-dispatcher-contracts     v3.6.0                php-composer    
 symfony/filesystem                     v8.0.1                php-composer    
 symfony/finder                         v7.4.3                php-composer    
-symfony/http-client                    v7.4.1                php-composer    
+symfony/http-client                    v7.4.3                php-composer    
 symfony/http-client-contracts          v3.6.0                php-composer    
 symfony/http-foundation                v7.4.3                php-composer    
 symfony/http-kernel                    v7.4.3                php-composer    

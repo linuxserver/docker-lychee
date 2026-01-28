@@ -26,6 +26,7 @@ RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bi
     php84-exif \
     php84-gd \
     php84-intl \
+    php84-ldap \
     php84-mysqli \
     php84-pdo_mysql \
     php84-pdo_pgsql \

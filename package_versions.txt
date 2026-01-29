@@ -468,7 +468,7 @@ symfony/polyfill-php83                 v1.33.0               php-composer
 symfony/polyfill-php84                 v1.33.0               php-composer    
 symfony/polyfill-php85                 v1.33.0               php-composer    
 symfony/polyfill-uuid                  v1.33.0               php-composer    
-symfony/process                        v7.4.4                php-composer    
+symfony/process                        v7.4.5                php-composer    
 symfony/psr-http-message-bridge        v7.4.4                php-composer    
 symfony/routing                        v7.4.4                php-composer    
 symfony/service-contracts              v3.6.1                php-composer    

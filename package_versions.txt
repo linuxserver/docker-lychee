@@ -4,7 +4,7 @@ acl-libs                               2.3.2-r1              apk
 alpine-baselayout                      3.7.0-r0              apk             
 alpine-baselayout-data                 3.7.0-r0              apk             
 alpine-keys                            2.5-r0                apk             
-alpine-release                         3.22.3-r0             apk             
+alpine-release                         3.22.4-r0             apk             
 alsa-lib                               1.2.14-r0             apk             
 anstream                               0.6.8                 rust-crate      
 anstyle                                1.0.4                 rust-crate      
@@ -13,7 +13,7 @@ anstyle-query                          1.0.2                 rust-crate
 anyhow                                 1.0.79                rust-crate      
 anyhow                                 1.0.98                rust-crate      
 aom-libs                               3.12.1-r0             apk             
-apache2-utils                          2.4.66-r0             apk             
+apache2-utils                          2.4.67-r0             apk             
 apimatic/core                          0.3.17                php-composer    
 apimatic/core-interfaces               0.1.5                 php-composer    
 apimatic/jsonmapper                    3.1.7                 php-composer    
@@ -40,8 +40,8 @@ brotli-libs                            1.1.0-r2              apk
 busybox                                1.37.0-r20            apk             
 busybox-binsh                          1.37.0-r20            apk             
 c-ares                                 1.34.6-r0             apk             
-ca-certificates                        20250911-r0           apk             
-ca-certificates-bundle                 20250911-r0           apk             
+ca-certificates                        20260413-r0           apk             
+ca-certificates-bundle                 20260413-r0           apk             
 carbonphp/carbon-doctrine-types        2.1.0                 php-composer    
 catatonit                              0.2.1-r0              apk             
 cfg-if                                 1.0.0                 rust-crate      
@@ -487,7 +487,7 @@ thiserror-impl                         1.0.56                rust-crate
 tiff                                   4.7.1-r0              apk             
 tijsverkoyen/css-to-inline-styles      v2.4.0                php-composer    
 tinyvec                                1.9.0                 rust-crate      
-tzdata                                 2026a-r0              apk             
+tzdata                                 2026b-r0              apk             
 unicode-ident                          1.0.12                rust-crate      
 unicode-width                          0.1.11                rust-crate      
 unzip                                  6.0-r15               apk             

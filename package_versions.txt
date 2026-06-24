@@ -302,10 +302,10 @@ oniguruma                              6.9.10-r0             apk
 opcodesio-log-viewer                   UNKNOWN               npm             
 opcodesio/log-viewer                   dev-lycheeOrg         php-composer    
 opcodesio/mail-parser                  v0.2.4                php-composer    
-openexr-libiex                         3.3.2-r0              apk             
-openexr-libilmthread                   3.3.2-r0              apk             
-openexr-libopenexr                     3.3.2-r0              apk             
-openexr-libopenexrcore                 3.3.2-r0              apk             
+openexr-libiex                         3.3.11-r0             apk             
+openexr-libilmthread                   3.3.11-r0             apk             
+openexr-libopenexr                     3.3.11-r0             apk             
+openexr-libopenexrcore                 3.3.11-r0             apk             
 openssl                                3.5.7-r0              apk             
 opus                                   1.5.2-r1              apk             
 orc                                    0.4.40-r1             apk             

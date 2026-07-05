@@ -2,7 +2,7 @@
 
 FROM ghcr.io/sigstore/cosign/cosign:latest AS cosign-bin
 
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.22
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.24
 
 # set version label
 ARG BUILD_DATE
@@ -21,27 +21,27 @@ RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bi
     grep \
     imagemagick \
     jpegoptim \
-    php84-bcmath \
-    php84-dom \
-    php84-exif \
-    php84-gd \
-    php84-intl \
-    php84-ldap \
-    php84-mysqli \
-    php84-pdo_mysql \
-    php84-pdo_pgsql \
-    php84-pdo_sqlite \
-    php84-pecl-imagick \
-    php84-pecl-redis \
-    php84-pgsql \
-    php84-sodium \
-    php84-sqlite3 \
-    php84-tokenizer \
+    php85-bcmath \
+    php85-dom \
+    php85-exif \
+    php85-gd \
+    php85-intl \
+    php85-ldap \
+    php85-mysqli \
+    php85-pdo_mysql \
+    php85-pdo_pgsql \
+    php85-pdo_sqlite \
+    php85-pecl-imagick \
+    php85-pecl-redis \
+    php85-pgsql \
+    php85-sodium \
+    php85-sqlite3 \
+    php85-tokenizer \
     postgresql16-client \
     unzip && \
   echo "**** configure php-fpm to pass env vars ****" && \
-  sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php84/php-fpm.d/www.conf && \
-  if ! grep -qxF 'clear_env = no' /etc/php84/php-fpm.d/www.conf; then echo 'clear_env = no' >> /etc/php84/php-fpm.d/www.conf; fi && \
+  sed -E -i 's/^;?clear_env ?=.*$/clear_env = no/g' /etc/php85/php-fpm.d/www.conf && \
+  if ! grep -qxF 'clear_env = no' /etc/php85/php-fpm.d/www.conf; then echo 'clear_env = no' >> /etc/php85/php-fpm.d/www.conf; fi && \
   echo "**** install lychee ****" && \
   if [ -z "${LYCHEE_VERSION}" ]; then \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \

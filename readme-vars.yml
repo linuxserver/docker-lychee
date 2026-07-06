@@ -114,6 +114,7 @@ init_diagram: |
   "lychee:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "05.07.26:", desc: "Rebase to Alpine 3.24."}
   - {date: "09.07.25:", desc: "Add php84-ldap as dependency."}
   - {date: "09.07.25:", desc: "Rebase to Alpine 3.22."}
   - {date: "03.12.24:", desc: "Verify build artifacts with cosign."}

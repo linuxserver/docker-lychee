@@ -45,7 +45,7 @@ RUN --mount=type=bind,from=cosign-bin,source=/ko-app/cosign,target=/usr/local/bi
   echo "**** install lychee ****" && \
   if [ -z "${LYCHEE_VERSION}" ]; then \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
+    | jq -r '.tag_name'); \
   fi && \
   curl -o \
     /tmp/lychee.zip -L \

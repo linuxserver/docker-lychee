@@ -20,7 +20,7 @@ apimatic/core                          0.3.18            php-composer
 apimatic/core-interfaces               0.1.5             php-composer                  
 apimatic/jsonmapper                    3.1.7             php-composer                  
 apimatic/unirest-php                   4.0.8             php-composer                  
-apk-tools                              3.0.7-r0          apk                           
+apk-tools                              3.0.8-r0          apk                           
 apr                                    1.7.6-r0          apk                           
 apr-util                               1.6.4-r0          apk                           
 arg_enum_proc_macro                    0.3.4             rust-crate                    
@@ -73,7 +73,7 @@ crossbeam-deque                        0.8.6             rust-crate
 crossbeam-epoch                        0.9.18            rust-crate                    
 crossbeam-queue                        0.3.12            rust-crate                    
 crossbeam-utils                        0.8.21            rust-crate                    
-curl                                   8.21.0-r0         apk                           
+curl                                   8.22.0-r0         apk                           
 dbus-libs                              1.16.2-r2         apk                           
 dedoc/scramble                         v0.13.42          php-composer                  
 dflydev/dot-access-data                v3.0.3            php-composer                  
@@ -149,7 +149,7 @@ itsgoingd/clockwork                    v5.3.5            php-composer
 ivf                                    0.1.4             rust-crate                    
 jetbrains/phpstorm-stubs               v2026.2           php-composer                  
 jpegoptim                              1.5.6-r0          apk                           
-jq                                     1.8.1-r0          apk                           
+jq                                     1.8.2-r0          apk                           
 json-c                                 0.18-r1           apk                           
 lab                                    0.11.0            rust-crate                    
 lame-libs                              3.100-r5          apk                           
@@ -176,7 +176,7 @@ league/omnipay                         v3.2.1            php-composer
 league/uri                             7.8.1             php-composer                  
 league/uri-interfaces                  7.8.1             php-composer                  
 libSvtAv1Enc                           4.1.0-r0          apk                           
-libapk                                 3.0.7-r0          apk                           
+libapk                                 3.0.8-r0          apk                           
 libass                                 0.17.4-r1         apk                           
 libasyncns                             0.8-r5            apk                           
 libattr                                2.5.2-r2          apk                           
@@ -187,7 +187,7 @@ libbsd                                 0.12.2-r0         apk
 libbz2                                 1.0.8-r6          apk                           
 libc                                   0.2.172           rust-crate    (+1 duplicate)  
 libcrypto3                             3.5.8-r0          apk                           
-libcurl                                8.21.0-r0         apk                           
+libcurl                                8.22.0-r0         apk                           
 libdav1d                               1.5.3-r0          apk                           
 libdovi                                3.3.2-r0          apk                           
 libdrm                                 2.4.134-r0        apk                           

@@ -318,7 +318,7 @@ paste                                  1.0.15            rust-crate
 pastey                                 0.1.0             rust-crate                    
 paypal/paypal-server-sdk               2.4.0             php-composer                  
 pcre2                                  10.49-r0          apk                           
-perl                                   5.42.2-r1         apk                           
+perl                                   5.42.3-r0         apk                           
 perl-error                             0.17030-r0        apk                           
 perl-git                               2.54.0-r0         apk                           
 perl-image-exiftool                    13.55-r0          apk                           

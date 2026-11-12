@@ -119,7 +119,6 @@ geocoder-php/nominatim-provider        5.8.0             php-composer
 getrandom                              0.3.3             rust-crate                    
 git                                    2.54.0-r0         apk                           
 git-init-template                      2.54.0-r0         apk                           
-git-perl                               2.54.0-r0         apk                           
 glib                                   2.88.1-r1         apk                           
 glslang-libs                           1.4.341.0-r0      apk                           
 graham-campbell/markdown               v16.1.0           php-composer                  
@@ -317,8 +316,6 @@ pastey                                 0.1.0             rust-crate
 paypal/paypal-server-sdk               2.4.0             php-composer                  
 pcre2                                  10.49-r0          apk                           
 perl                                   5.42.3-r0         apk                           
-perl-error                             0.17030-r0        apk                           
-perl-git                               2.54.0-r0         apk                           
 perl-image-exiftool                    13.55-r0          apk                           
 php-ffmpeg/php-ffmpeg                  v1.4.0            php-composer                  
 php-http/discovery                     1.20.0            php-composer                  

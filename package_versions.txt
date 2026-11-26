@@ -57,7 +57,7 @@ clap_complete                          4.5.54            rust-crate
 clap_lex                               0.7.5             rust-crate                    
 clue/stream-filter                     v1.7.0            php-composer                  
 colorchoice                            1.0.4             rust-crate                    
-composer                               2.11.2            binary                        
+composer                               2.11.3            binary                        
 composer/semver                        3.6.0             php-composer                  
 console                                0.15.11           rust-crate                    
 core2                                  0.4.0             rust-crate                    
@@ -120,7 +120,7 @@ getrandom                              0.3.3             rust-crate
 git                                    2.54.1-r0         apk                           
 git-init-template                      2.54.1-r0         apk                           
 git-perl                               2.54.1-r0         apk                           
-glib                                   2.88.1-r1         apk                           
+glib                                   2.88.4-r0         apk                           
 glslang-libs                           1.4.341.0-r0      apk                           
 graham-campbell/markdown               v16.1.0           php-composer                  
 graham-campbell/result-type            v1.2.0            php-composer                  
@@ -193,8 +193,8 @@ libdvdnav                              6.1.1-r1          apk
 libdvdread                             6.1.3-r2          apk                           
 libeconf                               0.8.3-r0          apk                           
 libedit                                20260508.3.1-r1   apk                           
-libexpat                               2.10.0-r0         apk                           
-libffi                                 3.5.2-r1          apk                           
+libexpat                               2.11.0-r0         apk                           
+libffi                                 3.8.1-r0          apk                           
 libflac                                1.4.3-r2          apk                           
 libgcc                                 15.2.0-r5         apk                           
 libgd                                  2.3.3-r10         apk                           
@@ -285,7 +285,7 @@ nette/schema                           v1.4.0            php-composer
 nette/utils                            v4.1.6            php-composer                  
 new_debug_unreachable                  1.0.6             rust-crate                    
 nghttp2-libs                           1.70.0-r0         apk                           
-nginx                                  1.30.7-r0         apk                           
+nginx                                  1.30.8-r0         apk                           
 nikic/php-parser                       v5.9.0            php-composer                  
 nom                                    7.1.3             rust-crate                    
 nom                                    8.0.0             rust-crate                    
@@ -525,4 +525,4 @@ zerocopy                               0.8.25            rust-crate
 zimg                                   3.0.6-r0          apk                           
 zix-libs                               0.8.0-r0          apk                           
 zlib                                   1.4-r0            apk                           
-zstd-libs                              1.5.7-r2          apk                           
+zstd-libs                              1.6.0-r1          apk                           
